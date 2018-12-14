@@ -2,34 +2,34 @@
 /************login container******************/
 
 #loginContainer{
-    margin:0 auto;
-    height:1000px;
-    width:1500px; 
+    margin: 0 auto;
+    height: 1000px;
+    width: 100%; 
 }
 body{
     font-family: arial;
 }
 .form{
-    height:100px;
-    width:600px;
-    float:left;
-    padding-left:150px;
-    padding-top:100px;
+    height: 100px;
+    width: 600px;
+    float: left;
+    padding-left: 150px;
+    padding-top: 100px;
 }
 form{
-    font-color:#bfbfbf;
+    color: #bfbfbf;
 }
 h2{
-    color:#bfbfbf;
+    color: #bfbfbf;
 }
 h3{
-    color:#bfbfbf;
-    font-size:25px;
+    color: #bfbfbf;
+    font-size: 25px;
 }
 .txtbox{
-     font-size:18pt;
-     height:40px;
-     width:400px;
+     font-size: 18pt;
+     height: 40px;
+     width: 400px;
      background-color: #515151;
      color: #717171;
     }
