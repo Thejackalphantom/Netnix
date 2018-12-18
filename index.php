@@ -11,9 +11,18 @@ INF1C Informatica NHL STENDEN
     </head>
     <body>
         <div id="Wrap">
-            <?php include ("includes/header.php");?>
-            <div id="MainContent">
-                
+            <div id="content">
+                <?php include ("includes/header.php");?>
+                <div id="MainContent">
+                    <div class="video">
+                        <h2 class="title"> AANBEVOLEN </h2>   
+                        <hr>
+                    </div>
+                    <div class="video">
+                        <h2 class="title"> VIDEOS </h2>   
+                        <hr>
+                    </div>   
+                </div>
             </div>
         </div>
     </body>
