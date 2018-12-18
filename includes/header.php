@@ -1,7 +1,7 @@
 <div id="header"> 
     <div id="headerInside"> 
         <div id="logo">          
-            <img src="img/logo.png" id="logoResize"> 
+            <a href="index.php"><img src="img/logo.png" id="logoResize"></a>
         </div>
         <div id="menu">          
             <ul>
