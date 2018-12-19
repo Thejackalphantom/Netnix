@@ -70,9 +70,9 @@ hr{
     height: 150px;
     width: auto;
     padding-top:50px;
-    padding-left:300px;
-    font-size: 35px;
-    color: #bfbfbf;
+    padding-left:200px;
+    font-size: 1.5em;
+    color: #a0a0a0;
     font-family: Arial !important;
     text-decoration: none;
 }
