@@ -1,8 +1,39 @@
-<?php
+<div class="imageRow">
+    <div class="pLinks">
+        <a href=".php">
+            <img src="">
+            <p>Informatiemanagement</p>
+        </a>
+    </div>
+    <div class="pLinks">
+        <a href=".php">
+            <img src="">
+            <p>HTML/CSS</p>
+        </a>
+    </div>
+    <div class="pLinks">
+        <a href=".php">
+            <img src="">
+            <p>PHP</p>
+        </a>
+    </div>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+    <div class="pLinks">
+        <a href=".php">
+            <img src="">
+            <p>C#</p>
+        </a>
+    </div>
+    <div class="pLinks">
+        <a href=".php">
+            <img src="">
+            <p>Database</p>
+        </a>
+    </div>
+    <div class="pLinks">
+        <a href=".php">
+            <img src="">
+            <p>Javascript</p>
+        </a>
+    </div>
+</div>
