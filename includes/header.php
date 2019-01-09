@@ -8,7 +8,7 @@
                 <li><a href="dummylink">VIDEOS</a></li>
                 <li><a href="Categorie.php">CATEGORIE</a></li>
                 <li><a href="dummylink">ACCOUNT</a></li>
-                <li><a href="dummylink">UPLOAD</a></li>
+                <li><a href="upload.php">UPLOAD</a></li>
                 <li><a href="FavoriteList.php">FAVORIET</a></li>
             </ul>
         </div>
