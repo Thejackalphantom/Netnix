@@ -96,4 +96,13 @@ hr{
     font-family: Arial;
 }
 
+.videoBox{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 100px;
+    height: 250px;
+    width: 400px;
+    background-color: grey;
+    float: left;
+}
 
