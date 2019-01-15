@@ -1,4 +1,15 @@
-       <!DOCTYPE html>
+<?php // Begin maken aan de sessie
+        session_start();
+
+        if(!isset($_SESSION['loggedin']))
+        {
+            // not logged in
+            header('Location: login.php');
+            exit();
+        }
+?>
+
+<!DOCTYPE html>
 <!--
 INF1C Informatica NHL STENDEN
 -->

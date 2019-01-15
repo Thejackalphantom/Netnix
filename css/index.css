@@ -105,4 +105,12 @@ hr{
     background-color: grey;
     float: left;
 }
+#logout{
+    height: 30px;
+    width: 10%;
+    top: 0%;
+    right: 0%;
+    position: fixed;
+    padding-top: 30px;
+}
 
