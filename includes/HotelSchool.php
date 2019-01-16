@@ -10,19 +10,19 @@
         <div class="imageRow">
             <div class="pLinks">
                 <a href="dummylink">
-                    <img src="../img/informatiemanagement.png" id="Inf-Logo">
-                    <p>Sociaal gedrag</p>
+                    <img src="../img/nederlands_logo.png" id="Inf-Logo">
+                    <p>Nederlands</p>
                 </a>
             </div>
             <div class="pLinks">
                 <a href="dummylink">
-                    <img src="../img/HTML5_Logo.png" id="Java-Logo">
+                    <img src="../img/economie_logo.png" id="Java-Logo">
                     <p>Economie</p>
                 </a>
             </div>
             <div class="pLinks">
                 <a href="dummylink">
-                    <img src="../img/PHP-logo.png" id="PHP-logo">
+                    <img src="../img/wiskunde_logo.png" id="PHP-logo">
                     <p>Wiskunde</p>
                 </a>
             </div>
