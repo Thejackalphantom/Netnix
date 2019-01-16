@@ -15,9 +15,11 @@ Stenden twitter/login page
     <head>
         <meta charset="UTF-8">
         <title>Twitter Login</title>
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
     </head>
     <body>
+        <?php include ("includes/header.php"); ?>
         <?php
 
         $DBConnect = mysqli_connect("localhost", "root", "");
