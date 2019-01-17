@@ -41,7 +41,7 @@ Netnix login page
                     $password = htmlentities ($_POST['password']);
                     
                     
-                    $string = "SELECT UserID, UserName, Password FROM user WHERE UserName = ?";
+                    $string = "SELECT userID, userName, userPass FROM users WHERE userName = ?";
                     $stmt = mysqli_prepare($DBConnect, $string);
                         mysqli_stmt_bind_param($stmt, 's', $username);
                         mysqli_stmt_execute($stmt);
@@ -111,7 +111,7 @@ Netnix login page
                 }
             }
 
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['signin'])) {
 
                 $username = htmlentities($_POST['username']);
                 $password = password_hash(($_POST['password']), PASSWORD_DEFAULT);
@@ -120,7 +120,7 @@ Netnix login page
                     echo "Vul u gebruikersnaam in.";
                 } else {
                     // Prepare a select statement
-                    $sql = "SELECT UserID FROM user WHERE UserName = ?";
+                    $sql = "SELECT userID FROM users WHERE userName = ?";
 
                     if ($stmt = mysqli_prepare($DBConnect, $sql)) {
                         mysqli_stmt_bind_param($stmt, "s", $param_username);
@@ -139,7 +139,7 @@ Netnix login page
                                 echo "Deze naam is al ingebruik";
                             }if (mysqli_stmt_num_rows($stmt) == 0) { 
                                     mysqli_select_db($DBConnect, $DBName);
-                                    $SQLstring2 = "INSERT INTO user (StudentID, UserName, FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?, ?, ?)";
+                                    $SQLstring2 = "INSERT INTO users (StudentNumber, userName, firstName, lastName, email, userPass) VALUES (?, ?, ?, ?, ?, ?)";
 
                                     if ($stmt = mysqli_prepare($DBConnect, $SQLstring2)) {
                                         mysqli_stmt_bind_param($stmt, 'ssssss', $studentid, $username, $firstname, $lastname, $email, $password);
@@ -193,7 +193,7 @@ Netnix login page
                 <p><label>email</label>
                     <input type="text" name="email"></p>
 
-                <input type="submit" name="submit" value="Submit">
+                <input type="submit" name="signin" value="Submit">
                 <input type="reset"  value="Reset">
             </form>
         </div>

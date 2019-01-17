@@ -32,43 +32,88 @@ Account Pagina
                             $DBConnect = mysqli_select_db($conn, $dbname);
                             if($DBConnect)
                             {
-                                $QueryResult = "SELECT StudentId, UserName, FirstName, LastName, Email FROM user WHERE UserId = ?";
+                                $QueryResult = "SELECT studentNumber, userName, firstName, lastName, email FROM users WHERE userID = ?";
                                 if($stmt = mysqli_prepare($conn, $QueryResult))
                                 {
                                     if(mysqli_stmt_bind_param($stmt, 's', $userid))
                                     {
                                         if (mysqli_stmt_execute($stmt))
                                         {
-                                            
                                         }
                                         else {
                                             echo "Er is iets misgegaan. Probeer het later opnieuw";
-                                            echo mysqli_error($conn);
                                         }
                                     }
                                     else {
                                         echo "Er is iets misgegaan. Probeer het later opnieuw";
-                                        echo mysqli_error($conn);
                                     }
                                     mysqli_stmt_bind_result($stmt, $StudentId, $UserName, $FirstName, $LastName, $Email);
                                     mysqli_stmt_store_result($stmt);
+                                    
                                 }
                                 else {
                                     echo "Er is iets misgegeaan. Probeer het later opnieuw";
-                                    echo mysqli_error($conn);
+                                    die();
                                 }
+                                while(mysqli_stmt_fetch($stmt))
+                                {
+                                    echo "<h1> Your account </h1>";
+                                    echo "<p>Name: " . $FirstName . " " . $LastName . "</p>";
+                                    echo "<p>StudentId: " . $StudentId . "</p>";
+                                    echo "<p>Email: " . $Email . "</p>";
+                                    echo "<hr>";
+                                }
+                                mysqli_stmt_close($stmt);
+                                $QueryResult2 = "SELECT videoID, videoUploadPath FROM videos WHERE userID = ?";
+                                if($stmt = mysqli_prepare($conn, $QueryResult2))
+                                {
+                                    if(mysqli_stmt_bind_param($stmt, 's', $userid))
+                                    {
+                                        if(mysqli_execute($stmt))
+                                        {
+                                            
+                                        }
+                                        else {
+                                            echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                        }
+                                    }
+                                    else {
+                                        echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                    }
+                                }
+                                else {
+                                    echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                }
+                                mysqli_stmt_bind_result($stmt, $videoid, $videoPath);
+                                mysqli_stmt_store_result($stmt);
                             }
+                            while(mysqli_stmt_fetch($stmt))
+                            {
+                                echo "<div class='videoBoxUser'>
+                                    
+                                </div>";
+                            }
+                            mysqli_stmt_close($stmt);
                         }
-                        while(mysqli_stmt_fetch($stmt))
-                        {
-                            echo "<h1> Your account </h1>";
-                            echo "<p>Name: " . $FirstName . " " . $LastName . "</p>";
-                            echo "<p>StudentId: " . $StudentId . "</p>";
-                            echo "<p>Email: " . $Email . "</p>";
-                            echo "<hr>";
+                        else{
+                            echo "Er is iets misgegeaan. Probeer het later opnieuw";
+                            die();
                         }
+                        mysqli_close($conn);
                         ?>
                         <h1> Your videos </h1>
+                        <div class="videoBoxUser">
+                            
+                        </div>
+                        <div class="videoBoxUser">
+                            
+                        </div>
+                        <div class="videoBoxUser">
+                            
+                        </div>
+                        <div class="videoBoxUser">
+                            
+                        </div>
                     </div>   
                 </div>
             </div>
