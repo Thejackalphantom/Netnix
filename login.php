@@ -85,7 +85,6 @@ Netnix login page
 
 
                 <input type="submit" name="submit"  value="Login">
-                <p>Geen account? <a href="signup.php"><div class="underline">Sign up now.</div></a></p>
             </form>
         </div>
         
