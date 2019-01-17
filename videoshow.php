@@ -6,6 +6,7 @@ week 4 door Thijs Rijkers
 $VideoID = '';
 $Title = '';
 $Discription = '';
+$Path = '';
 
 if (isset($_GET["videoid"])) {
     if (intval($_GET["videoid"]) !== 0) {
@@ -19,13 +20,13 @@ if (isset($_GET["videoid"])) {
             } else {
                 $VideoID = $_GET["videoid"];
 
-                $string = "SELECT VideoID, Title, Discription FROM video WHERE VideoID =?";
+                $string = "SELECT VideoID, Title, Discription Path FROM video WHERE VideoID =?";
                 $stmt = mysqli_prepare($DBConnect, $string);
 
                 if ($stmt) {
                     mysqli_stmt_bind_param($stmt, 's', $VideoID);
                     mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $VideoID, $Title, $Discription);
+                    mysqli_stmt_bind_result($stmt, $VideoID, $Title, $Discription, $Path);
                     mysqli_stmt_store_result($stmt);
                     if (mysqli_stmt_num_rows($stmt) == 0) {
                         echo"No bug reports found.";
@@ -35,6 +36,7 @@ if (isset($_GET["videoid"])) {
                             $videoid = $VideoID;
                             $title = $Title;
                             $discription = $Discription;
+                            $path = $Path;
                         }
                     }
                 } else {
