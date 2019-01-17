@@ -1,8 +1,8 @@
 <?php
 session_start();
 $Host = "127.0.0.1";
-$User = "admin";
-$Password = "Admin";
+$User = "root";
+$Password = "";
 $DBName = "netnix";  
 ?>
 <!DOCTYPE html>
@@ -37,9 +37,9 @@ $DBName = "netnix";
                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
 
-                $mimetype = array("image/jpeg","image/png");
-                if(!in_array($_FILES['fileToUpload']['type'],$mimetype)){
-                    echo"This is not the correct file type please upload in .JPG/.PNG";
+                $mimetype = array("video/mp4");
+                if(in_array($_FILES['fileToUpload']['type'],$mimetype)){
+                    echo"This is not the correct file type please upload in mp4";
                 }else{
                     
                     $uploadOk = 0;
