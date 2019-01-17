@@ -64,6 +64,7 @@ Account Pagina
                                     echo "<hr>";
                                 }
                                 mysqli_stmt_close($stmt);
+                                echo "<hr><h1>Uw videos</h1></p>";
                                 $QueryResult2 = "SELECT videoID, videoUploadPath FROM videos WHERE userID = ?";
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))
                                 {
@@ -87,13 +88,20 @@ Account Pagina
                                 mysqli_stmt_bind_result($stmt, $videoid, $videoPath);
                                 mysqli_stmt_store_result($stmt);
                             }
-                            while(mysqli_stmt_fetch($stmt))
+                            if(mysqli_stmt_num_rows($stmt) != 0)
                             {
-                                echo "<div class='videoBoxUser'>
-                                    
-                                </div>";
+                                while(mysqli_stmt_fetch($stmt))
+                                {
+                                    echo "<div class='videoBoxUser'>
+                                        <h2>". $videoid ."</h2>
+                                        <iframe src='". $videoPath ."'></iframe>
+                                    </div>";
+                                }
+                                mysqli_stmt_close($stmt);
                             }
-                            mysqli_stmt_close($stmt);
+                            else {
+                                echo "U heeft nog geen videos geupload.";
+                            }
                         }
                         else{
                             echo "Er is iets misgegeaan. Probeer het later opnieuw";
@@ -101,19 +109,6 @@ Account Pagina
                         }
                         mysqli_close($conn);
                         ?>
-                        <h1> Your videos </h1>
-                        <div class="videoBoxUser">
-                            
-                        </div>
-                        <div class="videoBoxUser">
-                            
-                        </div>
-                        <div class="videoBoxUser">
-                            
-                        </div>
-                        <div class="videoBoxUser">
-                            
-                        </div>
                     </div>   
                 </div>
             </div>
