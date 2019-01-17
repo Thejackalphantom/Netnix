@@ -16,6 +16,24 @@ Account Pagina
                 <?php include ("includes/header.php");?>
                 <div id="MainContent">
                     <div id="account">
+                        <?php
+                        session_start();
+                        if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true){
+                            header("location: login.php");
+                            exit;
+                        }
+                        $conn = mysqli_connect("127.0.0.1", "root", "");
+                        if ($conn)
+                        {
+                            $dbname = "nhlstendentwitter";
+                            $DBConnect = mysqli_select_db($conn, $dbname);
+                            if($DBConnect)
+                            {
+                                
+                            }
+                        }
+                        echo "<p>Name: </p>";
+                        ?>
                         <h1> Your account </h1>
                         <p>Name:</p>
                         <p>Class: </p>
