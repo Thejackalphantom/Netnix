@@ -9,12 +9,12 @@
 ?>
 <!DOCTYPE html>
 <!--
-Stenden twitter/login page
+Netnix login page
 -->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Twitter Login</title>
+        <title>Netnix Login</title>
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/login.css">
     </head>
@@ -85,7 +85,6 @@ Stenden twitter/login page
 
 
                 <input type="submit" name="submit"  value="Login">
-                <p>Geen account? <a href="signup.php">Sign up now</a>.</p>
             </form>
         </div>
         
@@ -196,8 +195,6 @@ Stenden twitter/login page
 
                 <input type="submit" name="submit" value="Submit">
                 <input type="reset"  value="Reset">
-
-                <p>Heb jij al een account? <a href="login.php">ga hier naar toe</a>.</p>
             </form>
         </div>
     </body>
