@@ -13,7 +13,13 @@ body {
 a{
     cursor: default;
     text-decoration: none;
-    color: white;
+    color: #bfbfbf;
+}
+
+p{
+    cursor: default;
+    text-decoration: none;
+    color: #bfbfbf;
 }
 p{
     cursor: default;
