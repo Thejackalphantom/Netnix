@@ -31,10 +31,14 @@
     margin-top: 100px;
     height: 250px;
     width: 400px;
-    background-color: white;
+    background-color: lightgrey;
     float: left;
+    text-align: center;
+    color: black;
 }
-iframe {
-    width:100%;
-    height:100%;
+video {
+    width:90%;
+    height:90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }

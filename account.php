@@ -96,7 +96,7 @@ Account Pagina
                                 {
                                     echo "<div class='videoBoxUser'>
                                         <h2>$videotitle</h2>
-                                        <iframe src='". $videoPath ."'></iframe><a href='videoshow.php?videoid=" . $videoid ."'>Beschrijving</a>
+                                        <img src='". $videoPath ."'></img><a href='videoshow.php?videoid=" . $videoid ."'>Beschrijving</a>
                                     </div>";
                                 }
                                 mysqli_stmt_close($stmt);

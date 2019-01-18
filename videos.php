@@ -81,10 +81,13 @@
                     mysqli_store_result($conn);
                     while(mysqli_stmt_fetch($stmt))
                     {
-                        echo "<div class='videoBoxUser'>
+                        echo "<a href=videoshow.php?videoid=" . $videoId ."><div class='videoBoxUser'>
                                     <h2>". $videoTitle ."</h2>
-                                    <iframe src='". $videoPath ."'></iframe>
-                                </div>";
+                                        <video>
+                                        <source src='".$videoPath."' type=video/mp4>
+                                        <source src='".$videoPath."' type=video/wav>
+                                        </video>
+                                </div></a>";
                     }
                 }
             }
