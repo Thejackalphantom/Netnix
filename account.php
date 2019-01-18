@@ -65,7 +65,7 @@ Account Pagina
                                 }
                                 mysqli_stmt_close($stmt);
                                 echo "<hr><h1>Uw videos</h1></p>";
-                                $QueryResult2 = "SELECT videoID, videoUploadPath FROM videos WHERE userID = ?";
+                                $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ?";
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))
                                 {
                                     if(mysqli_stmt_bind_param($stmt, 's', $userid))
@@ -85,16 +85,18 @@ Account Pagina
                                 else {
                                     echo "Er is iets misgegaan. Probeer het later opnieuw";
                                 }
-                                mysqli_stmt_bind_result($stmt, $videoid, $videoPath);
+                                mysqli_stmt_bind_result($stmt, $videoid, $videotitle, $videoPath);
                                 mysqli_stmt_store_result($stmt);
                             }
+                            
                             if(mysqli_stmt_num_rows($stmt) != 0)
                             {
-                                while(mysqli_stmt_fetch($stmt))
+                                
+                                        while(mysqli_stmt_fetch($stmt))
                                 {
                                     echo "<div class='videoBoxUser'>
-                                        <h2>". $videoid ."</h2>
-                                        <iframe src='". $videoPath ."'></iframe>
+                                        <h2>$videotitle</h2>
+                                        <iframe src='". $videoPath ."'></iframe><a href='videoshow.php?videoid=" . $videoid ."'>Beschrijving</a>
                                     </div>";
                                 }
                                 mysqli_stmt_close($stmt);
@@ -108,6 +110,7 @@ Account Pagina
                             die();
                         }
                         mysqli_close($conn);
+
                         ?>
                     </div>   
                 </div>
