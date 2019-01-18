@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -10,19 +11,19 @@
         <div class="imageRow">
             <div class="pLinks">
                 <a href="dummylink">
-                    <img src="img/nederlands_logo.png" id="Inf-Logo">
+                    <img src="img/nederlands_logo.png" alt="Inf-Logo">
                     <p>Nederlands</p>
                 </a>
             </div>
             <div class="pLinks">
                 <a href="dummylink">
-                    <img src="img/economie_logo.png" id="Java-Logo">
+                    <img src="img/economie_logo.png" alt="Java-Logo">
                     <p>Economie</p>
                 </a>
             </div>
             <div class="pLinks">
                 <a href="dummylink">
-                    <img src="img/wiskunde_logo.png" id="PHP-logo">
+                    <img src="img/wiskunde_logo.png" alt="PHP-logo">
                     <p>Wiskunde</p>
                 </a>
             </div>
