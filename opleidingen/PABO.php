@@ -46,19 +46,19 @@
 		</div>
         <div class="imageRow">
             <div class="pLinks">
-                <a href="videos.php?id=NL">
+                <a href="../videos.php?id=NL">
                     <img src="../img/nederlands_logo.png" alt="Inf-Logo">
                     <p>Nederlands</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="videos.php?id=EC">
+                <a href="../videos.php?id=EC">
                     <img src="../img/economie_logo.png" alt="Java-Logo">
                     <p>Economie</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="videos.php?id=WS">
+                <a href="../videos.php?id=WS">
                     <img src="../img/wiskunde_logo.png" alt="PHP-logo">
                     <p>Wiskunde</p>
                 </a>

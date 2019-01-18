@@ -46,13 +46,13 @@
 		</div>
         <div class="imageRow">
             <div class="pLinks">
-                <a href="videos.php?id=nederlands">
+                <a href="../videos.php?id=nederlands">
                     <img src="../img/nederlands_logo.png" alt="Inf-Logo">
                     <p>Nederlands</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="videos.php?id=economie">
+                <a href="../videos.php?id=economie">
                     <img src="../img/economie_logo.png" alt="Java-Logo">
                     <p>Economie</p>
                 </a>

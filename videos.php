@@ -19,14 +19,14 @@
         <div id="header"> 
 			<div id="headerInside"> 
 				<div id="logo">          
-					<a href="../index.php"><img src="img/logo.png" id="logoResize"></a>
+					<a href="index.php"><img src="img/logo.png" id="logoResize"></a>
 				</div>
 				<div id="menu">          
 					<ul>
-						<li><a href="../Categorie.php">CATEGORIE</a></li>
-						<li><a href="../account.php">ACCOUNT</a></li>
-						<li><a href="../upload.php">UPLOAD</a></li>
-						<li><a href="../FavoriteList.php">FAVORIET</a></li>
+						<li><a href="Categorie.php">CATEGORIE</a></li>
+						<li><a href="account.php">ACCOUNT</a></li>
+						<li><a href="upload.php">UPLOAD</a></li>
+						<li><a href="FavoriteList.php">FAVORIET</a></li>
 					</ul>
 				</div>
 				
