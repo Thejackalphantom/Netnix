@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?php
+        session_start();
+
+        if(!isset($_SESSION['loggedin']))
+        {
+            // not logged in
+            header('Location: login.php');
+            exit();
+        }
+?>
 <html>
     <head>
         <meta charset="UTF-8">

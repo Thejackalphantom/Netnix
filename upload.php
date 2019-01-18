@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
-    header("location: login.php");
+    header("location: index.php");
     exit;
 }
 ?>
@@ -28,73 +28,93 @@ Upload page
                 </div>
                 <div id="uploadFunction">
                     <div id="function">
-                        <form action="" method='post' enctype="multipart/form-data">
-                            Description of Video: <input type="text" name="description_entered"/><br><br>
-                            <input type="file" name="file"/><br><br>
-                            <input type="submit" name="submit" value="Upload"/>
+                        <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
+                            <p>Please upload your video</p>
+                            <p>Title</p>
+                            <p><input type="text" name="title"</p>
+                            <p>Description</p>
+                            <textarea rows="10" cols="50" maxlength="480" minlenght="0" name="message"></textarea>
+                            <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
+                            <select name="categorie">
+                                <option value="wiskunde"> wiskunde</option>
+                                <option value="php"> php</option>
+                                <option value="informatiemanagement"> informatiemanagement</option>
+                                <option value="html"> html</option>
+                                <option value="c#"> c</option>
+                                <option value="java"> java</option>
+                                <option value="database"> database</option>
+                                <option value="economie"> economie</option>
+                                <option value="nederlands"> nederlands</option>  
+                            </select>
+                            <p><input type="submit" name="submit" value="add Video"><input type="reset" name="reset" value="Reset form"></p>
                         </form>  
 
                         <?php
-                        $descript = 0;
-                        $description = $_POST['description_entered'];
-                        if (empty($description)) {
+                        $Conn = mysqli_connect("localhost", "root", "");
+                        if ($Conn === FALSE) {
 
-                            $descript = 1;
-                        }
-                        $name = $_FILES['file']['name'];
-                        $success = -1;
-                        if (isset($name)) {
+                            echo "Failed to connected";
+                        } else {
+                            $DBName = "netnix";
+                            if (!mysqli_select_db($Conn, $DBName)) {
 
-                            $path = 'Uploads/videos/';
-                            $tmp_name = $_FILES['file']['tmp_name'];
-                            $submitbutton = $_POST['submit'];
-                            $position = strpos($name, ".");
-                            $fileextension = substr($name, $position + 1);
-                            $fileextension = strtolower($fileextension);
-
-                            if (!empty($name)) {
-                                if (($fileextension !== "mp4") && ($fileextension !== "ogg") && ($fileextension !== "webm")) {
-                                    $success = 0;
-                                    echo "The file extension must be .mp4, .ogg, or .webm in order to be uploaded";
-                                } else if (($fileextension == "mp4") || ($fileextension == "ogg") || ($fileextension == "webm")) {
-                                    $success = 1;
-                                    if (move_uploaded_file($tmp_name, $path . $name)) {
-                                        echo 'Uploaded!';
+                                $SQLstring = "CREATE DATABASE netnix";
+                                if ($stmt = mysqli_prepare($Conn, $SQLstring)) {
+                                    $QueryResult = mysqli_stmt_execute($stmt);
+                                    if ($QueryResult === FALSE) {
+                                        echo "<p>Well thats a error!</p>";
+                                    } else {
+                                        echo "<p>You are the first visitor!</p>";
                                     }
+                                    mysqli_stmt_close($stmt);
+                                }
+                            }
+
+                            if (isset($_POST['submit'])) {
+                                $target_dir = "uploads/";
+                                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                                $uploadOk = 1;
+
+                                $mimetype = array("image/mp4", "video/mov", "video/wmv", "video/flv");
+                                if (in_array($_FILES['fileToUpload']['type'], $mimetype)) {
+                                    echo"<br><h3>This is not the correct file type, please upload a video!</h3>";
+                                } else {
+
+                                    $uploadOk = 0;
+                                    if ($uploadOk == 0) { // if everything is ok, try to upload file
+                                        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+                                    }
+
+                                    $name = htmlentities($_FILES['fileToUpload']['name']);
+                                    $categorie = htmlentities($_POST['categorie']);
+                                    $title = htmlentities($_POST['title']);
+                                    $message = htmlentities($_POST['message']);
+                                    $pathtotal = "uploads/" . $name . "";
+                                    $userid = $_SESSION['id'];
+
+                                    mysqli_select_db($Conn, $DBName);
+                                    $SQLstring2 = "INSERT INTO videos VALUES(NULL, ?, ?, ?, ?, ?)";
+                                    if ($stmt = mysqli_prepare($Conn, $SQLstring2)) {
+                                        mysqli_stmt_bind_param($stmt, 'sssss', $userid, $title, $message, $pathtotal, $categorie);
+                                        $QueryResult2 = mysqli_stmt_execute($stmt);
+                                        if ($QueryResult2 === FALSE) {
+                                            echo "<p>Unable to execute the query.</p>"
+                                            . "<p>Error code "
+                                            . mysqli_errno($Conn)
+                                            . ": "
+                                            . mysqli_error($Conn)
+                                            . "</p>";
+                                        } else {
+                                            echo "<br><h3>Bedankt voor het uploaden van een video.</h3>";
+                                            //header("Location: login.php");
+                                        }
+                                        mysqli_stmt_close($stmt);
+                                    }
+                                    mysqli_close($Conn);
                                 }
                             }
                         }
                         ?>
-
-                        <?php
-                        $user = "root";
-                        $host = "localhost";
-                        $dbase = "upload";
-                        $table = "video";
-
-                        $connection = mysqli_connect($host, $user, "");
-                        if (!$connection) {
-                            die('Could not connect:' . mysql_error());
-                        } mysqli_select_db($connection, $dbase);
-
-                        $SQLstring2 = "INSERT INTO " . $table . " VALUES(?, ?, ?)";
-
-                        if ($stmt = mysqli_prepare($connection, $SQLstring2)) {
-
-                            mysqli_stmt_bind_param($stmt, 'sss', $description, $name, $fileextension);
-                            $QueryResult2 = mysqli_stmt_execute($stmt);
-                            if ($QueryResult2 === FALSE) {
-                                echo "<p>Unable to execute the query.</p>";
-                            } else {
-                                
-                            }
-                            //Clean up the $stmt after use
-                            mysqli_stmt_close($stmt);
-                        } else {
-                            echo mysqli_error($connection);
-                        }
-                        mysqli_close($connection);
-                        ?> 
                     </div>
                 </div>
             </div>
