@@ -46,38 +46,38 @@
 		</div>
         <div class="imageRow">
             <div class="pLinks">
-                <a href="videos.php?id=IM">
+                <a href="../videos.php?id=informatiemanagement">
                     <img src="../img/informatiemanagement.png" alt="Inf-Logo">
                     <p>Informatiemanagement</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="videos.php?id=HTML">
+                <a href="../videos.php?id=html">
                     <img src="../img/HTML5_Logo.png" alt="Java-Logo">
                     <p>HTML/CSS</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="videos.php?id=PHP">
+                <a href="../videos.php?id=php">
                     <img src="../img/PHP-logo.png" alt="PHP-logo">
                     <p>PHP</p>
                 </a>
             </div>
 
             <div class="pLinks">
-                <a href="videos.php?id=C#">
+                <a href="../videos.php?id=c">
                     <img src="../img/c-logo.png" alt="C#-logo">
                     <p>C#</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="videos.php?id=DB">
+                <a href="../videos.php?id=database">
                     <img src="../img/database-icon.png" alt="database-logo">
                     <p>Database</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="videos.php?id=JS">
+                <a href="../videos.php?id=javascript">
                     <img src="../img/javascript-logo.png" alt="javascript-logo">
                     <p>Javascript</p>
                 </a>
