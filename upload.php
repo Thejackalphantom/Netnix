@@ -24,7 +24,7 @@ Upload page
             </div>
             <div id="upload">
                 <div id="uploadTitle">
-                    <h2> V  Upload your video here  V </h2>
+                    <h2>   Upload your video here   </h2>
                 </div>
                 <div id="uploadFunction">
                     <div id="function">

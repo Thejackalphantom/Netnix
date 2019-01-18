@@ -94,10 +94,13 @@ Account Pagina
                                 
                                         while(mysqli_stmt_fetch($stmt))
                                 {
-                                    echo "<div class='videoBoxUser'>
-                                        <h2>$videotitle</h2>
-                                        <iframe src='". $videoPath ."'></iframe><a href='videoshow.php?videoid=" . $videoid ."'>Beschrijving</a>
-                                    </div>";
+                                    echo "<a href=videoshow.php?videoid=" . $videoid ."><div class='videoBoxUser'>
+                                        <h2>". $videotitle ."</h2>
+                                        <video>
+                                        <source src='".$videoPath."' type=video/mp4>
+                                        <source src='".$videoPath."' type=video/wav>
+                                        </video>
+                                </div></a>";
                                 }
                                 mysqli_stmt_close($stmt);
                             }

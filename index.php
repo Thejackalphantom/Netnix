@@ -25,7 +25,7 @@ INF1C Informatica NHL STENDEN
         $mysqli = new mysqli('127.0.0.1', 'root', '', 'netnix') or die($mysqli->connect_error);
         $table = 'videos';
 
-        $result = $mysqli->query("SELECT videoID, videoDescription, videoUploadPath FROM $table") or die($mysqli->error);
+        $result = $mysqli->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM $table") or die($mysqli->error);
         ?>
         <div id="Wrap">
             <div id="content">
@@ -53,7 +53,7 @@ INF1C Informatica NHL STENDEN
                             while ($data = $result->fetch_assoc()) {
                                 //print_r($data);
                                 echo "<a href=videoshow.php?videoid={$data['videoID']}><div class='videoBoxUser'>
-                                    <h2>{$data['videoDescription']}</h2>
+                                    <h2>{$data['videoTitle']}</h2>
                                         <video width='300' height='300'>
                                         <source src='{$data['videoUploadPath']}' type=video/mp4>
                                         <source src='{$data['videoUploadPath']}' type=video/wav>
