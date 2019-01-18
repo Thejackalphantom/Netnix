@@ -69,5 +69,29 @@ week 4 door Thijs Rijkers
                     </div>
             </div>
         </div>
+        <?php
+        if(isset($_POST['favorite']))
+                {
+                    $string2 = "INSERT INTO favorite(userId, videoID) VALUES(?, ?)";
+                    $stmt = mysqli_prepare($DBConnect, $string2);
+                    
+                    if ($stmt)
+                    {
+                        $userId = $_SESSION['id'];
+                        mysqli_stmt_bind_param($stmt, 'ss',$userId, $VideoID);
+                        mysqli_stmt_execute($stmt);
+                        echo"Added to favourites!";
+                    }
+                    else
+                    {
+                        echo "<p>Favourite failed to add</p>";
+                    }
+                }
+                //End of favourite section.
+                mysqli_stmt_close($stmt);
+        ?>
+        <form action="videoshow.php" method="POST">
+            <input type="submit" name="favorite" value="Add favorite">
+        </form
     </body>
 </html>

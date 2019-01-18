@@ -20,9 +20,8 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="css/favoritelist.css">
     </head>
     <body>
-        <?php include ("includes/header.php"); ?>
-        <?php include ("includes/video.php"); ?>
-        <?php include ("includes/video.php"); ?>
-        <?php include ("includes/video.php"); ?>
+        <div id="MainContent">
+            
+        </div>
     </body>
 </html>
