@@ -50,7 +50,10 @@ week 4 door Thijs Rijkers
                                 } else {
                                     while (mysqli_stmt_fetch($stmt)) {
                                       echo" <div id='iframeBox'>
-                                            <div class='display'><iframe src='".$Path."'></iframe></div>
+                                            <div class='display'><video controls>
+                                        <source src='".$Path."' type=video/mp4>
+                                        <source src='".$Path."' type=video/wav>
+                                        </video></div>
                                             <div class='display'><h3> Titel</h3>
                                             <p>".$Title."</p></div>
                                             <div class='display'></div>
