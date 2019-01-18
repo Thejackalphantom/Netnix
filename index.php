@@ -49,15 +49,18 @@ INF1C Informatica NHL STENDEN
                     </div>
                     <div class="video">
                         <h2 class="title"> VIDEOS </h2>   
-                        <div class="videoBox">
                             <?php
                             while ($data = $result->fetch_assoc()) {
                                 //print_r($data);
-                                echo "<h2>{$data['videoDescription']}</h2>";
-                                echo "<iframe width='395 height='400' src='{$data['videoUploadPath']}'></iframe>";
+                                echo "<a href=videoshow.php?videoid={$data['videoID']}><div class='videoBoxUser'>
+                                    <h2>{$data['videoDescription']}</h2>
+                                        <video width='300' height='300'>
+                                        <source src='{$data['videoUploadPath']}' type=video/mp4>
+                                        <source src='{$data['videoUploadPath']}' type=video/wav>
+                                        </video>
+                                </div></a>";
                             }
-                            ?>
-                        </div>   
+                            ?>  
                     </div>
                 </div>
             </div>
