@@ -1,0 +1,41 @@
+#space{
+    height: 60px;
+    width: 100%;
+}
+
+#upload{
+    height: 450px;
+    width: 70%;
+    margin: 0 auto;
+    background-color: grey;
+}
+
+#uploadTitle{
+    height: 100px;
+    width: 100%;
+    margin: 0 auto;
+    
+    background-color: darkgrey;
+}
+h2{
+    color: white;
+    padding-top: 10px;
+    padding-left: 35%;
+}
+#uploadFunction{
+    height: 340px;
+    width: 98%;
+    margin: 0 auto;
+    background-color: #2f2f2f;
+}
+
+#function{
+    height: 200px;
+    width: 70%;
+    margin: 0 auto;
+}
+h3{
+   color: white;
+    padding-top: 10px;
+    padding-left: 35%; 
+}
