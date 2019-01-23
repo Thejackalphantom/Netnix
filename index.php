@@ -43,9 +43,6 @@ INF1C Informatica NHL STENDEN
                         <div class="videoBox">
 
                         </div>
-                        <div class="videoBox">
-
-                        </div>
                     </div>
                     <div class="video">
                         <h2 class="title"> VIDEOS </h2>   

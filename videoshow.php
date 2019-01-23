@@ -56,7 +56,11 @@ week 4 door Thijs Rijkers
                                         </video></div>
                                             <div class='display'><h3> Titel</h3>
                                             <p>".$Title."</p></div>
-                                            <div class='display'></div>
+                                            <div class='display'>
+                                            <h3>Favoriet</h3>
+                                            <form action='videoshow.php' method='POST'>
+                                                <input type='submit' name='favorite' value='Add favorite'>
+                                            </form></div>
                                             <div class='display'><h4> Beschrijving</h4>
                                             <p>".$Discription."</p></div>
                                             </div>";
@@ -93,8 +97,5 @@ week 4 door Thijs Rijkers
                 }
 
         ?>
-        <form action="videoshow.php" method="POST">
-            <input type="submit" name="favorite" value="Add favorite">
-        </form
     </body>
 </html>
