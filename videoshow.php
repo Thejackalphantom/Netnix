@@ -70,8 +70,6 @@ week 4 door Thijs Rijkers
                             } 
                         }
                     }
-                    mysqli_close($DBConnect);
-
             ?>
                     </div>
             </div>
@@ -79,7 +77,7 @@ week 4 door Thijs Rijkers
         <?php
         if(isset($_POST['favorite']))
                 {
-                    $string2 = "INSERT INTO favorite(userId, videoID) VALUES(?, ?)";
+                    $string2 = "INSERT INTO favorite(userID, videoID) VALUES(?, ?)";
                     $stmt = mysqli_prepare($DBConnect, $string2);
                     
                     if ($stmt)
@@ -95,7 +93,7 @@ week 4 door Thijs Rijkers
                     }
                     mysqli_stmt_close($stmt);
                 }
-
+                
         ?>
     </body>
 </html>
