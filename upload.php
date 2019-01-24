@@ -93,7 +93,7 @@ Upload page
                                     $userid = $_SESSION['id'];
 
                                     mysqli_select_db($Conn, $DBName);
-                                    $SQLstring2 = "INSERT INTO videos VALUES(NULL, ?, ?, ?, ?, ?)";
+                                    $SQLstring2 = "INSERT INTO videos VALUES(NULL, ?, ?, ?, ?, ?, 0)";
                                     if ($stmt = mysqli_prepare($Conn, $SQLstring2)) {
                                         mysqli_stmt_bind_param($stmt, 'sssss', $userid, $title, $message, $pathtotal, $categorie);
                                         $QueryResult2 = mysqli_stmt_execute($stmt);

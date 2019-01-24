@@ -97,7 +97,7 @@ admin aprove page
                                     $userId = $_SESSION['id'];
                                     mysqli_stmt_bind_param($stmt, 's', $_POST['yes']);
                                     mysqli_stmt_execute($stmt);
-                                    echo"Added to favorites!";
+                                    header("location: admin.php");
                                 } else {
                                     echo "<p>Favourite failed to add</p>";
                                 }
