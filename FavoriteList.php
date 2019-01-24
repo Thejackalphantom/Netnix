@@ -32,23 +32,28 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                         
                     } else {
                         $idOfUser = $_SESSION["id"];
-                        $SQL = "SELECT userID, videoID, videoTitle, videoUploadPath
-                                FROM videos
-                                JOIN favorite 
-                                ON videos.userID = favorite.userID 
-                                WHERE userID=?";
+                        $SQLfav = " SELECT v.videoID, v.videoTitle, v.videoUploadPath
+                                    FROM videos AS v
+                                    WHERE v.videoID IN (SELECT f.videoID
+                                    FROM favorite AS f
+                                    WHERE userID=?);";
                         
-                        if ($stmt = mysqli_prepare($DBConnect, $SQL)) {
-                        mysqli_stmt_bind_param($stmt, 's',$idOfUser);
+                        if ($stmt = mysqli_prepare($DBConnect, $SQLfav)) {   
+                        mysqli_stmt_bind_param($stmt, 's', $idOfUser);
                         mysqli_stmt_execute($stmt);
-                        mysqli_stmt_bind_result($stmt, $userID, $videoID, $videotitle, $path);
+                        mysqli_stmt_bind_result($stmt, $videoID, $videotitle, $path);
                         mysqli_stmt_store_result($stmt);
                         if (mysqli_stmt_num_rows($stmt) == 0) {
                             echo "<p>Je hebt nog geen favoriten.</p>";
                         }else{
                             while(mysqli_stmt_fetch($stmt)){
-                            echo "<h2>$videotitle</h2>
-                                  <iframe src='". $path ."'></iframe><a href='videoshow.php?videoid=" . $videoid ."'>Beschrijving</a>";
+                            echo "<a href=videoshow.php?videoid=" . $videoID ."><div class='videoBoxUser'>
+                                        <h2>". $videotitle ."</h2>
+                                        <video width='300' height='300'>
+                                        <source src='".$path."' type=video/mp4>
+                                        <source src='".$path."' type=video/wav>
+                                        </video>
+                                </div></a>";
                             }
                         }
                         mysqli_stmt_close($stmt);

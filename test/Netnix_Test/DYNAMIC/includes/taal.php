@@ -40,6 +40,7 @@ switch($taal)
         );
         $videoshow=array(
             "Titel",
+            "Favoriet",
             "Beschrijving",
             "Toegevoegd aan favorieten!",
             "Favoriet toevoegen is mislukt."
@@ -119,6 +120,7 @@ switch($taal)
         );
         $videoshow=array(
             "Title",
+            "Favorite",
             "Description",
             "Added to favourites!",
             "<p>Favourite failed to add</p>"

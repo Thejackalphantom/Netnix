@@ -36,19 +36,13 @@ Account Pagina
                                 $QueryResult = "SELECT studentNumber, userName, firstName, lastName, email FROM users WHERE userID = ?";
                                 if($stmt = mysqli_prepare($conn, $QueryResult))
                                 {
-                                    if(mysqli_stmt_bind_param($stmt, 's', $userid))
+                                    if(!mysqli_stmt_bind_param($stmt, 's', $userid))
                                     {
-                                        if (mysqli_stmt_execute($stmt))
-                                        {
-                                        }
-                                        else
+                                        echo $error;
+                                        if (!mysqli_stmt_execute($stmt))
                                         {
                                             echo $error;
                                         }
-                                    }
-                                    else
-                                    {
-                                        echo $error;
                                     }
                                     mysqli_stmt_bind_result($stmt, $StudentId, $UserName, $FirstName, $LastName, $Email);
                                     mysqli_stmt_store_result($stmt);
@@ -71,21 +65,17 @@ Account Pagina
                                 $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ?";
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))
                                 {
-                                    if(mysqli_stmt_bind_param($stmt, 's', $userid))
+                                    if(!mysqli_stmt_bind_param($stmt, 's', $userid))
                                     {
-                                        if(mysqli_execute($stmt))
+                                        echo $error;
+                                        if(!mysqli_execute($stmt))
                                         {
-                                            
-                                        }
-                                        else {
                                             echo $error;
                                         }
                                     }
-                                    else {
-                                        echo $error;
-                                    }
                                 }
-                                else {
+                                else
+                                {
                                     echo $error;
                                 }
                                 mysqli_stmt_bind_result($stmt, $videoid, $videotitle, $videoPath);
@@ -94,13 +84,15 @@ Account Pagina
                             
                             if(mysqli_stmt_num_rows($stmt) != 0)
                             {
-                                
-                                        while(mysqli_stmt_fetch($stmt))
+                                while(mysqli_stmt_fetch($stmt))
                                 {
-                                    echo "<div class='videoBoxUser'>
-                                        <h2>$videotitle</h2>
-                                        <iframe src='". $videoPath ."'></iframe><a href='videoshow.php?videoid=" . $videoid ."'>$account[4]</a>
-                                    </div>";
+                                    echo "<a href=videoshow.php?videoid=" . $videoid ."><div class='videoBoxUser'>
+                                        <h2>". $videotitle ."</h2>
+                                        <video width='300' height='300'>
+                                        <source src='".$videoPath."' type=video/mp4>
+                                        <source src='".$videoPath."' type=video/wav>
+                                        </video>
+                                        </div></a>";
                                 }
                                 mysqli_stmt_close($stmt);
                             }

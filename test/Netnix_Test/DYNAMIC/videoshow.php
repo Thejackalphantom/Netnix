@@ -56,8 +56,12 @@ week 4 door Thijs Rijkers
                                         </video></div>
                                             <div class='display'><h3>$videoshow[0]</h3>
                                             <p>".$Title."</p></div>
-                                            <div class='display'></div>
-                                            <div class='display'><h4>$videoshow[1]Beschrijving</h4>
+                                            <div class='display'>
+                                            <h3>$videoshow[1]</h3>
+                                            <form action='videoshow.php' method='POST'>
+                                                <input type='submit' name='favorite' value='Add favorite'>
+                                            </form></div>
+                                            <div class='display'><h4>$videoshow[2]Beschrijving</h4>
                                             <p>".$Discription."</p></div>
                                             </div>";
                                     }
@@ -83,11 +87,11 @@ week 4 door Thijs Rijkers
                         $userId = $_SESSION['id'];
                         mysqli_stmt_bind_param($stmt, 'ss',$userId, $VideoID);
                         mysqli_stmt_execute($stmt);
-                        echo"$videoshow[2]";
+                        echo"$videoshow[3]";
                     }
                     else
                     {
-                        echo "<p>$videoshow[3]</p>";
+                        echo "<p>$videoshow[4]</p>";
                     }
                     mysqli_stmt_close($stmt);
                 }
