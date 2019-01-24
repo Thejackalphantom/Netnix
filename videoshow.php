@@ -58,12 +58,9 @@ week 4 door Thijs Rijkers
                                             <p>".$Title."</p></div>
                                             <div class='display'>
                                             <h3>Favoriet</h3>
-<<<<<<< HEAD
-                                            <form action='videoshow.php?ID=$VideoID' method='POST'>
-=======
                                             <form action='videoshow.php' method='POST'>
                                                 <input type='checkbox' name='yes' value='$VideoID'> Yes
->>>>>>> 620f7a276d60865da089ddeff7bfe8b119ee15cb
+
                                                 <input type='submit' name='favorite' value='Add favorite'>
                                             </form></div>
                                             <div class='display'><h4> Beschrijving</h4>
