@@ -28,7 +28,7 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                                 $DBName = "netnix";
                             }
                     if (!mysqli_select_db($DBConnect, $DBName)) {
-                        echo "<p>Er is een probleempje aanwezig</p>";
+                        echo "<p>$error</p>";
                         
                     } else {
                         $idOfUser = $_SESSION["id"];
@@ -44,7 +44,7 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                         mysqli_stmt_bind_result($stmt, $videoID, $videotitle, $path);
                         mysqli_stmt_store_result($stmt);
                         if (mysqli_stmt_num_rows($stmt) == 0) {
-                            echo "<p>Je hebt nog geen favoriten.</p>";
+                            echo "<p>$favoriteList[0]</p>";
                         }else{
                             while(mysqli_stmt_fetch($stmt)){
                             echo "<a href=videoshow.php?videoid=" . $videoID ."><div class='videoBoxUser'>

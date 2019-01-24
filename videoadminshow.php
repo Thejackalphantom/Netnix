@@ -37,15 +37,15 @@ admin aprove page
                                     if (mysqli_stmt_execute($stmt)) {
                                         
                                     } else {
-                                        echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                        echo $error;
                                     }
                                 } else {
-                                    echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                    echo $error;
                                 }
                                 mysqli_stmt_bind_result($stmt, $userID, $adminID);
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) != 0) {
-                                    echo"U bent op de admin pagina.";
+                                    echo"$videoAdminShow[0]";
                                     echo "<hr>";
                                 } else {
                                     header("location: index.php");
@@ -65,7 +65,7 @@ admin aprove page
                                 mysqli_stmt_bind_result($stmt, $VideoID, $Title, $Discription, $Path);
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) == 0) {
-                                    echo 'There is no video found';
+                                    echo $videoAdminShow[1];
                                     header("location: index.php");
                                 } else {
                                     while (mysqli_stmt_fetch($stmt)) {
@@ -82,7 +82,7 @@ admin aprove page
                                                 <input type='checkbox' name='yes' value='$VideoID'> Yes
                                                 <input type='submit' name='aprove' value='aprove'>
                                             </form></div>
-                                            <div class='display'><h4> Beschrijving</h4>
+                                            <div class='display'><h4>$videoAdminShow[2]</h4>
                                             <p>" . $Discription . "</p></div>
                                             </div>";
                                     }
@@ -99,7 +99,7 @@ admin aprove page
                                     mysqli_stmt_execute($stmt);
                                     header("location: admin.php");
                                 } else {
-                                    echo "<p>Favourite failed to add</p>";
+                                    echo "$error";
                                 }
                                 mysqli_stmt_close($stmt);
                             }

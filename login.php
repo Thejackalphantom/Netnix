@@ -1,6 +1,9 @@
 <?php // Begin maken aan de sessie
         session_start();
-
+if(!isset($_SESSION['lang']))
+{
+    $_SESSION['lang']="nl";
+}
 // Kijk als de user al is ingelogd, zo ja dan gaat die naar het berichten pagina
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             header("location: index.php");
@@ -19,9 +22,8 @@ Netnix login page
         <link rel="stylesheet" type="text/css" href="css/login.css">
     </head>
     <body>
-        <?php include ("includes/header.php"); ?>
         <?php
-
+        include ("includes/header.php");
         $DBConnect = mysqli_connect("localhost", "root", "");
         if ($DBConnect === FALSE)
         {
@@ -34,7 +36,7 @@ Netnix login page
             if(isset($_POST['submit'])){
                 
                 if(empty($_POST['username']) OR empty($_POST['password'])){
-                    echo "Vul alle velden in om in te loggen";
+                    echo $login[0];
                 }else{
                     
                     $username = htmlentities ($_POST['username']);
@@ -49,7 +51,7 @@ Netnix login page
                         while(mysqli_stmt_fetch($stmt)){
                             if ($usernamecheck = $username){ 
                                 if (!password_verify($password, $userPass)){
-                                    die('invalid password');
+                                    die($login[1]);
                                 }
                                 // Als alles goed is, start de session
                                 session_start();
@@ -63,7 +65,7 @@ Netnix login page
                                 // Gaat naar de berichten pagina
                                 header("location: admin.php");
                             }else{
-                                echo "Er is geen goed wachtwoord/gebruikersnaam ingevoerd";
+                                echo $login[2];
                             }
                         }
                         mysqli_stmt_close($stmt);
@@ -77,10 +79,10 @@ Netnix login page
 
             <form action="login.php" METHOD="POST">
 
-                <p><label>Username</label>
+                <p><label><?php echo$login[4]?></label>
                     <input type="text" name="username" ></p>
 
-                <p><label>Password</label>
+                <p><label><?php echo$login[5]?></label>
                     <input type="password" name="password"></p>
 
 
@@ -103,9 +105,9 @@ Netnix login page
                 if ($stmt = mysqli_prepare($DBConnect, $SQLstring)) {
                     $QueryResult = mysqli_stmt_execute($stmt);
                     if ($QueryResult === FALSE) {
-                        echo "<p>Well thats a error!</p>";
+                        echo "<p>$error</p>";
                     } else {
-                        echo "<p>You are the first visitor!</p>";
+                        echo "<p>$login[6]</p>";
                     }
                     mysqli_stmt_close($stmt);
                 }
@@ -152,7 +154,7 @@ Netnix login page
                                             . mysqli_error($DBConnect)
                                             . "</p>";
                                         } else {
-                                            echo"Uw account is aangemaakt";
+                                            echo $login[9];
                                         }
                                         mysqli_stmt_close($stmt);
                                     }
@@ -162,7 +164,7 @@ Netnix login page
                         }
                     }
                     else {
-                        echo "Er is iets fout gegaan";
+                        echo $error;
                     }
                 }
             }
@@ -175,19 +177,19 @@ Netnix login page
 
             <form method="POST" action="login.php" enctype="multipart/form-data">
 
-                <p><label>Username</label>
+                 <p><label><?php echo $login[4]?></label>
                     <input type="text" name="username"></p>
                 
-                <p><label>Password</label>
+                <p><label><?php echo $login[5]?></label>
                     <input type="password" name="password"></p>
                 
-                <p><label>StudentID</label>
+                <p><label><?php echo $login[11]?></label>
                     <input type="text" name="studentid"></p>
                 
-                <p><label>firstname</label>
+                <p><label><?php echo $login[12]?></label>
                     <input type="text" name="firstname"></p>
                 
-                <p><label>lastname</label>
+                <p><label><?php echo $login[13]?></label>
                     <input type="text" name="lastname"></p>
                 
                 <p><label>email</label>

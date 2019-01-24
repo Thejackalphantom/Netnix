@@ -1,4 +1,6 @@
-
+<?php
+include("taal.php");
+?>
 <div id="header"> 
     <div id="headerInside"> 
         <div id="logo">          
@@ -6,10 +8,54 @@
         </div>
         <div id="menu">          
             <ul>
-                <li><a href="Categorie.php">CATEGORIE</a></li>
-                <li><a href="account.php">ACCOUNT</a></li>
-                <li><a href="upload.php">UPLOAD</a></li>
-                <li><a href="FavoriteList.php">FAVORIET</a></li>
+<?php
+    if($_SERVER['PHP_SELF']=="/netnix/includes/HotelSchool.php"OR $_SERVER['PHP_SELF']=="/netnix/includes/PABO.php" OR$_SERVER['PHP_SELF']=="/netnix/includes/Informatica.php")
+    {
+        echo"<li><a href='../Categorie.php'>$header[0]</a></li>
+            <li><a href='../account.php'>$header[1]</a></li>
+            <li><a href='../upload.php'>$header[2]</a></li>
+            <li><a href='../FavoriteList.php'>$header[3]</a></li>";
+        echo "<li>works?</li>";
+    }
+    else
+    {
+        echo"<li><a href='Categorie.php'>$header[0]</a></li>
+            <li><a href='account.php'>$header[1]</a></li>
+            <li><a href='upload.php'>$header[2]</a></li>
+            <li><a href='FavoriteList.php'>$header[3]</a></li>";
+        echo "<li>Bleh</li>";
+    }
+?>
+                <li>
+                    <?php
+                    $lang = $_SESSION['lang'];
+                    switch($lang)
+                    {
+                        case "en":
+                            echo "<form method='POST' action='".$_SERVER['PHP_SELF']."'><input type='submit' name='lang' value='Switch Language'></form>";
+                            if(isset($_POST['lang']))
+                            {
+                                $_SESSION['lang'] = "nl";
+                                header("Refresh:0");
+                            }
+                            break;
+                        case "nl":
+                            echo "<form method='POST' action='".$_SERVER['PHP_SELF']."'><input type='submit' name='lang' value='Verander taal'></form>";
+                            if(isset($_POST['lang']))
+                            {
+                                $_SESSION['lang'] = "en";
+                                header("Refresh:0");
+                            }
+                            break;
+                        default :
+                            echo "<form method='POST' action='".$_SERVER['PHP_SELF']."'><input type='submit' name='lang' value='Verander taal'></form>";
+                            if(isset($_POST['lang']))
+                            {
+                                $_SESSION['lang'] = "en";
+                            }
+                    }
+                    ?>
+                </li>
             </ul>
         </div>
         
@@ -17,9 +63,9 @@
                 <?php
                 
                 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                    echo "<a href='logout.php'>Logout</a>";
+                    echo "<a href='logout.php'>$header[4]</a>";
                     $user = $_SESSION["username"];
-                    echo "<p>U bent ingelogd als: <br>$user</p>";
+                    echo "<p>$header[5]<br>$user</p>";
                 }
                 ?>
 
