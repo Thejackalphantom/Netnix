@@ -49,12 +49,6 @@
                 <div id="MainContent">
                     <div id="vids">
         <?php
-//        if(!$_GET['id'])
-//        {
-//            header('Location: login.php');
-//            exit();
-//        }
-//        else {
             if($conn = mysqli_connect("127.0.0.1", "root", ""))
             {
                 if($DBConnect = mysqli_select_db($conn, "netnix"))
@@ -91,7 +85,6 @@
                     }
                 }
             }
-//        }
         ?>
                     </div>
                 </div>

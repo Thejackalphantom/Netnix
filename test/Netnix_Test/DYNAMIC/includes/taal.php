@@ -36,10 +36,12 @@ switch($taal)
             "Achternaam"
         );
         $index=array(
-            "AANBEVOLEN"
+            "AANBEVOLEN",
+            "Geen videos geüpload."
         );
         $videoshow=array(
             "Titel",
+            "Favoriet",
             "Beschrijving",
             "Toegevoegd aan favorieten!",
             "Favoriet toevoegen is mislukt."
@@ -115,10 +117,12 @@ switch($taal)
             "Last name"
         );
         $index=array(
-            "RECOMMENDED"
+            "RECOMMENDED",
+            "No videos uploaded yet."
         );
         $videoshow=array(
             "Title",
+            "Favorite",
             "Description",
             "Added to favourites!",
             "<p>Favourite failed to add</p>"

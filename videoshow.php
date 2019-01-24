@@ -21,8 +21,8 @@ week 4 door Thijs Rijkers
     </head>
     <body>
         <div id="Wrap">
+            <?php include ("includes/header.php");?>
             <div id="content">
-                <?php include ("includes/header.php");?>
                 <div id="MainContent">
                     <?php
                     $DBConnect = mysqli_connect("localhost", "root", "");

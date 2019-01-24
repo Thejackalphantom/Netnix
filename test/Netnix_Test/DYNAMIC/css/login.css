@@ -1,0 +1,46 @@
+
+/************login container******************/
+
+#loginContainer{
+    margin: 0 auto;
+    height: 1000px;
+    width: 100%;
+}
+body{
+    font-family: arial;
+}
+#formContainer{
+    margin:0 auto;
+    width: 800px;
+    height: 600px;  
+}
+.form{
+    height: 200px;
+    width: 400px;
+    float: left;
+    padding-top:100px;
+}
+form{
+    color: #bfbfbf;
+}
+h2{
+    color: #bfbfbf;
+}
+h3{
+    color: #bfbfbf;
+    font-size: 25px;
+}
+p{
+    color: #bfbfbf;
+}
+.txtbox{
+     font-size: 18pt;
+     height: 40px;
+     width: 350px;
+     background-color: #515151;
+     color: #717171;
+    }
+    .underline{
+        text-decoration: underline;
+    }
+    

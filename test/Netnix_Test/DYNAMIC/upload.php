@@ -31,9 +31,9 @@ Upload page
                         <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
                             <p><?php echo $upload[1]; ?></p>
                             <p><?php echo $upload[2]; ?></p>
-                            <p><input type="text" name="title"</p>
+                            <p><input type="text" name="title"></p>
                             <p><?php echo $upload[3]; ?>Description</p>
-                            <textarea rows="10" cols="50" maxlength="480" minlenght="0" name="message"></textarea>
+                            <textarea rows="10" cols="50" maxlength="480" name="message"></textarea>
                             <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
                             <select name="categorie">
                                 <option value="wiskunde"><?php echo $upload[4]; ?></option>
@@ -75,7 +75,7 @@ Upload page
                                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                                 $uploadOk = 1;
 
-                                $mimetype = array("image/mp4", "video/mov", "video/wmv", "video/flv");
+                                $mimetype = array("video/mp4", "video/mov", "video/wmv", "video/flv");
                                 if (in_array($_FILES['fileToUpload']['type'], $mimetype)) {
                                     echo"<br><h3>$upload[13]</h3>";
                                 } else {
