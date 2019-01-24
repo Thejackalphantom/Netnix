@@ -75,7 +75,7 @@ Upload page
                                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                                 $uploadOk = 1;
 
-                                $mimetype = array("image/mp4", "video/mov", "video/wmv", "video/flv");
+                                $mimetype = array("video/mp4", "video/mov", "video/wmv", "video/flv");
                                 if (in_array($_FILES['fileToUpload']['type'], $mimetype)) {
                                     echo"<br><h3>This is not the correct file type, please upload a video!</h3>";
                                 } else {
