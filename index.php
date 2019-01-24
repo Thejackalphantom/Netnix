@@ -36,7 +36,7 @@ INF1C Informatica NHL STENDEN
                 <?php include ("includes/header.php"); ?>
                 <div id="MainContent">
                     <div class="video">
-                        <h2 class="title"> Willekeurige video's </h2>
+                        <h2 class="title"><?php echo $index[0]?></h2>
                         <?php
                             while ($data2 = $random->fetch_assoc()) {
                                 //print_r($data);
@@ -51,7 +51,7 @@ INF1C Informatica NHL STENDEN
                             ?> 
                     </div>
                     <div class="video">
-                        <h2 class="title"> Geüploade video's </h2>   
+                        <h2 class="title"><?php echo $index[1]?></h2>   
                             <?php
                             while ($data = $result->fetch_assoc()) {
                                 //print_r($data);

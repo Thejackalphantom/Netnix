@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
 session_start();
+if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true)
+{
+    header("location: login.php");
+    exit;
+}
 ?>
 <!--
 Account Pagina
@@ -15,15 +20,11 @@ Account Pagina
     </head>
     <body>
         <div id="Wrap">
+            <?php include ("includes/header.php");?>
             <div id="content">
-                <?php include ("includes/header.php");?>
                 <div id="MainContent">
                     
                         <?php
-                        if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true){
-                            header("location: login.php");
-                            exit;
-                        }
                         $userid = $_SESSION['id'];
                         $conn = mysqli_connect("localhost", "root", "");
                         if ($conn)
@@ -41,31 +42,31 @@ Account Pagina
                                         {
                                         }
                                         else {
-                                            echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                            echo $error;
                                         }
                                     }
                                     else {
-                                        echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                        echo $error;
                                     }
                                     mysqli_stmt_bind_result($stmt, $StudentId, $UserName, $FirstName, $LastName, $Email);
                                     mysqli_stmt_store_result($stmt);
                                     
                                 }
                                 else {
-                                    echo "Er is iets misgegeaan. Probeer het later opnieuw";
+                                    echo $error;
                                     die();
                                 }
                                 while(mysqli_stmt_fetch($stmt))
                                 {
                                     echo "<div id='account'>";
-                                    echo "<h1> Your account </h1>";
-                                    echo "<p>Name: " . $FirstName . " " . $LastName . "</p>";
-                                    echo "<p>StudentId: " . $StudentId . "</p>";
-                                    echo "<p>Email: " . $Email . "</p>";
+                                    echo "<h1>$account[0]</h1>";
+                                    echo "<p>$account[1]: " . $FirstName . " " . $LastName . "</p>";
+                                    echo "<p>$account[2]: " . $StudentId . "</p>";
+                                    echo "<p>E-mail: " . $Email . "</p>";
                                     echo "<hr>";
                                 }
                                 mysqli_stmt_close($stmt);
-                                echo "<hr><h1>Uw videos</h1></p>";
+                                echo "<hr><h1>$account[3]</h1></p>";
                                 echo "</div>";
                                 $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ? AND aprove = 1";
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))
@@ -77,15 +78,15 @@ Account Pagina
                                             
                                         }
                                         else {
-                                            echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                            echo $error;
                                         }
                                     }
                                     else {
-                                        echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                        echo $error;
                                     }
                                 }
                                 else {
-                                    echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                    echo $error;
                                 }
                                 mysqli_stmt_bind_result($stmt, $videoid, $videotitle, $videoPath);
                                 mysqli_stmt_store_result($stmt);
@@ -107,11 +108,11 @@ Account Pagina
                                 mysqli_stmt_close($stmt);
                             }
                             else {
-                                echo "U heeft nog geen videos geupload.";
+                                echo $account[5];
                             }
                         }
                         else{
-                            echo "Er is iets misgegeaan. Probeer het later opnieuw";
+                            echo $error;
                             die();
                         }
                         mysqli_close($conn);
