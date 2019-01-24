@@ -67,7 +67,7 @@ Account Pagina
                                 mysqli_stmt_close($stmt);
                                 echo "<hr><h1>Uw videos</h1></p>";
                                 echo "</div>";
-                                $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ? aprove = 1";
+                                $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ? AND aprove = 1";
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))
                                 {
                                     if(mysqli_stmt_bind_param($stmt, 's', $userid))
@@ -91,11 +91,10 @@ Account Pagina
                                 mysqli_stmt_store_result($stmt);
                             }
                             
-                            if(mysqli_stmt_num_rows($stmt) = 0)
+                            if(mysqli_stmt_num_rows($stmt) != 0)
                             {
-                                header("location: index.php");
-                            }else{
-                                    while(mysqli_stmt_fetch($stmt))
+                                
+                                        while(mysqli_stmt_fetch($stmt))
                                 {
                                     echo "<a href=videoshow.php?videoid=" . $videoid ."><div class='videoBoxUser'>
                                         <h2>". $videotitle ."</h2>
@@ -107,7 +106,9 @@ Account Pagina
                                 }
                                 mysqli_stmt_close($stmt);
                             }
-
+                            else {
+                                echo "U heeft nog geen videos geupload.";
+                            }
                         }
                         else{
                             echo "Er is iets misgegeaan. Probeer het later opnieuw";
@@ -122,4 +123,3 @@ Account Pagina
         </div>
     </body>
 </html>
-
