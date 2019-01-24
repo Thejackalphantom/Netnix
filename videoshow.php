@@ -58,7 +58,12 @@ week 4 door Thijs Rijkers
                                             <p>".$Title."</p></div>
                                             <div class='display'>
                                             <h3>Favoriet</h3>
+<<<<<<< HEAD
                                             <form action='videoshow.php?ID=$VideoID' method='POST'>
+=======
+                                            <form action='videoshow.php' method='POST'>
+                                                <input type='checkbox' name='yes' value='$VideoID'> Yes
+>>>>>>> 620f7a276d60865da089ddeff7bfe8b119ee15cb
                                                 <input type='submit' name='favorite' value='Add favorite'>
                                             </form></div>
                                             <div class='display'><h4> Beschrijving</h4>
@@ -68,34 +73,26 @@ week 4 door Thijs Rijkers
                                 }
                                 mysqli_stmt_close($stmt);
                             } 
+                        if (isset($_POST['favorite'])) {
+                                $string2 = "INSERT INTO favorite VALUES (?, ?);";
+                                $stmt = mysqli_prepare($DBConnect, $string2);
+                                $idset= $_SESSION['id'];
+                                $aprove = $_POST['yes'];
+                                
+                                if ($stmt) {
+                                    mysqli_stmt_bind_param($stmt, 'ss', $idset, $aprove);
+                                    mysqli_stmt_execute($stmt);
+                                    echo"Added to favorites!";
+                                } else {
+                                    echo "<p>Favourite failed to add</p>";
+                                }
+                                mysqli_stmt_close($stmt);
+                            }
                         }
                     }
-                    mysqli_close($DBConnect);
-
             ?>
                     </div>
             </div>
         </div>
-        <?php
-        if(isset($_POST['favorite']))
-                {
-                    $string2 = "INSERT INTO favorite(userId, videoID) VALUES(?, ?)";
-                    $stmt = mysqli_prepare($DBConnect, $string2);
-                    
-                    if ($stmt)
-                    {
-                        $userId = $_SESSION['id'];
-                        mysqli_stmt_bind_param($stmt, 'ss',$userId, $VideoID);
-                        mysqli_stmt_execute($stmt);
-                        echo"Added to favorites!";
-                    }
-                    else
-                    {
-                        echo "<p>Favourite failed to add</p>";
-                    }
-                    mysqli_stmt_close($stmt);
-                }
-
-        ?>
     </body>
 </html>

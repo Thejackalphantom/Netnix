@@ -61,7 +61,7 @@ Netnix login page
  
                                 
                                 // Gaat naar de berichten pagina
-                                header("location: index.php");
+                                header("location: admin.php");
                             }else{
                                 echo "Er is geen goed wachtwoord/gebruikersnaam ingevoerd";
                             }

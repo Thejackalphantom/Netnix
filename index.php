@@ -25,7 +25,7 @@ INF1C Informatica NHL STENDEN
         $mysqli = new mysqli('127.0.0.1', 'root', '', 'netnix') or die($mysqli->connect_error);
         $table = 'videos';
 
-        $result = $mysqli->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM $table") or die($mysqli->error);
+        $result = $mysqli->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM $table WHERE aprove = 1") or die($mysqli->error);
         ?>
         <div id="Wrap">
             <div id="content">
