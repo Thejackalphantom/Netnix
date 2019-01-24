@@ -49,28 +49,29 @@ INF1C Informatica NHL STENDEN
                             $DBConnect = mysqli_select_db($conn, $dbname);
                             if($DBConnect)
                             {
-                                $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ?";
+                                $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos";
+                                $stmt = mysqli_prepare($conn, $QueryResult2);
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))
                                 {
-                                    if(!mysqli_stmt_bind_param($stmt, 's', $userid))
+                                    mysqli_execute($stmt);
+                                    mysqli_stmt_bind_result($stmt, $videoid, $videotitle, $videopath);
+                                    mysqli_stmt_store_result($stmt);
+                                    if(mysqli_stmt_num_rows==0)
                                     {
-                                        echo $error;
-                                        if(!mysqli_execute($stmt))
-                                        {
-                                            echo $error;
-                                        }
+                                        echo$index[1];
+                                    }
+                                    while(mysqli_stmt_fetch($stmt))
+                                    {
+                                        echo "<a href=videoshow.php?videoid=" . $videoid ."><div class='videoBoxUser'>
+                                            <h2>". $videotitle ."</h2>
+                                            <video width='300' height='300'>
+                                            <source src='".$videopath."' type=video/mp4>
+                                            <source src='".$videopath."' type=video/wav>
+                                            </video>
+                                            </div></a>";
                                     }
                                 }
-                                while(mysqli_stmt_fetch($stmt))
-                                {
-                                    echo "<a href=videoshow.php?videoid=" . $videoid ."><div class='videoBoxUser'>
-                                        <h2>". $videotitle ."</h2>
-                                        <video width='300' height='300'>
-                                        <source src='".$videoPath."' type=video/mp4>
-                                        <source src='".$videoPath."' type=video/wav>
-                                        </video>
-                                        </div></a>";
-                                }
+                                
                             }
                         }
                         ?>
