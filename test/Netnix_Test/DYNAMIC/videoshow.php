@@ -42,7 +42,7 @@ week 4 door Thijs Rijkers
 
                                 mysqli_stmt_bind_param($stmt, 's', $VideoID);
                                 mysqli_stmt_execute($stmt);
-                                mysqli_stmt_bind_result($stmt, $VideoID, $Title, $Discription, $Path);
+                                mysqli_stmt_bind_result($stmt, $VideoId, $Title, $Discription, $Path);
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) == 0) {
                                     echo 'There is no video found';
@@ -58,7 +58,7 @@ week 4 door Thijs Rijkers
                                             <p>".$Title."</p></div>
                                             <div class='display'>
                                             <h3>$videoshow[1]</h3>
-                                            <form action='videoshow.php' method='POST'>
+                                            <form action='videoshow.php?ID=$VideoId' method='POST'>
                                                 <input type='submit' name='favorite' value='Add favorite'>
                                             </form></div>
                                             <div class='display'><h4>$videoshow[2]</h4>
@@ -69,17 +69,35 @@ week 4 door Thijs Rijkers
                                 mysqli_stmt_close($stmt);
                             } 
                         }
+                        if(isset($_POST['favorite']))
+                        {
+                            $string2 = "INSERT INTO favorite VALUES(?, ?)";
+                            $stmt2 = mysqli_prepare($DBConnect, $string2);
+
+                            if ($stmt2)
+                            {
+                                $userId = $_SESSION['id'];
+                                mysqli_stmt_bind_param($stmt, 'ss',$userId, $VideoId);
+                                mysqli_stmt_execute($stmt);
+                                echo"$videoshow[3]";
+                            }
+                            else
+                            {
+                                echo "<p>$videoshow[4]</p>";
+                            }
+                            mysqli_stmt_close($stmt);
+                        }
                     }
                     mysqli_close($DBConnect);
 
             ?>
                     </div>
+                </div>
             </div>
-        </div>
         <?php
         if(isset($_POST['favorite']))
                 {
-                    $string2 = "INSERT INTO favorite(userId, videoID) VALUES(?, ?)";
+                    $string2 = "INSERT INTO favorite(userID, videoID) VALUES(?, ?)";
                     $stmt = mysqli_prepare($DBConnect, $string2);
                     
                     if ($stmt)

@@ -54,14 +54,14 @@ week 4 door Thijs Rijkers
                                         <source src='".$Path."' type=video/mp4>
                                         <source src='".$Path."' type=video/wav>
                                         </video></div>
-                                            <div class='display'><h3> Titel</h3>
+                                            <div class='display'><h3>$videoshow[0]</h3>
                                             <p>".$Title."</p></div>
                                             <div class='display'>
-                                            <h3>Favoriet</h3>
-                                            <form action='videoshow.php?ID=$VideoID' method='POST'>
+                                            <h3>$videoshow[1]</h3>
+                                            <form action='videoshow.php' method='POST'>
                                                 <input type='submit' name='favorite' value='Add favorite'>
                                             </form></div>
-                                            <div class='display'><h4> Beschrijving</h4>
+                                            <div class='display'><h4>$videoshow[2]</h4>
                                             <p>".$Discription."</p></div>
                                             </div>";
                                     }
@@ -87,15 +87,14 @@ week 4 door Thijs Rijkers
                         $userId = $_SESSION['id'];
                         mysqli_stmt_bind_param($stmt, 'ss',$userId, $VideoID);
                         mysqli_stmt_execute($stmt);
-                        echo"Added to favorites!";
+                        echo"$videoshow[3]";
                     }
                     else
                     {
-                        echo "<p>Favourite failed to add</p>";
+                        echo "<p>$videoshow[4]</p>";
                     }
                     mysqli_stmt_close($stmt);
                 }
-
         ?>
     </body>
 </html>

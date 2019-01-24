@@ -23,7 +23,7 @@ and open the template in the editor.
         <?php include ("includes/header.php");?>
         <div id="MainContent">
             <?php  
-            $DBConnect = mysqli_connect("127.0.0.1", "root", "");
+            $DBConnect = mysqli_connect("localhost", "root", "");
                     if ($DBConnect === FALSE) {
                         echo "No connection with database";
                     } else {
@@ -31,13 +31,14 @@ and open the template in the editor.
             if (!mysqli_select_db($DBConnect, $DBName)) {
                 echo "<p>$error</p>";
             } else {
+                $userid = $_SESSION["id"];
                 $SQL = "SELECT videoID, videoTitle, videoUploadPath
-                    FROM videos JOIN favorite ON favorite.userID = videos.userID
-                    WHERE favorite.userID=?";
+                    FROM favorite JOIN videos 
+                    WHERE userid=? AND favorite.userid = videos.userid 
+                    ORDER BY msgid DESC;";
                                      
 
                 if ($stmt = mysqli_prepare($DBConnect, $SQL)) {
-                    $userId = $_SESSION["id"];
                     mysqli_stmt_bind_param($stmt, 's',$userId);
                     mysqli_stmt_execute($stmt);
                     mysqli_stmt_bind_result($stmt, $videoID, $videotitle, $path);
@@ -47,17 +48,13 @@ and open the template in the editor.
                     }else{
                         while(mysqli_stmt_fetch($stmt)){
                         echo "<h2>$videotitle</h2>
-                              <iframe src='". $path ."'></iframe><a href='videoshow.php?videoid=" . $videoID ."'>$favoriteList[1]</a>";
+                              <iframe src='". $path ."'></iframe><a href='videoshow.php?videoid=" . $videoid ."'>$favoriteList[1]</a>";
                         }
                     }
                     mysqli_stmt_close($stmt);
-                }
-                else
-                {
-                    echo"DAMN IT";
-                }
+                }    
             } 
-            }
+                    }
             ?>
             
         </div>
