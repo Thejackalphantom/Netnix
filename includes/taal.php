@@ -4,7 +4,7 @@ switch($taal)
 {
     case "nl":
         $header=array(
-            "CATAGORIE",
+            "CATEGORIE",
             "ACCOUNT",
             "UPLOAD",
             "FAVORIETEN",
