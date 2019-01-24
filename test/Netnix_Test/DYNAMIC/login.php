@@ -2,10 +2,14 @@
         session_start();
 
 // Kijk als de user al is ingelogd, zo ja dan gaat die naar het berichten pagina
-        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            header("location: account.php");
-            exit;
-        }
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("location: account.php");
+    exit;
+}
+if(!isset($_SESSION['lang']))
+{
+    $_SESSION['lang']="nl";
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -180,7 +184,7 @@ Netnix login page
                 <p><label><?php echo $login[5]?></label>
                     <input type="password" name="password"></p>
                 
-                <p><label><?php echo $account[11]?></label>
+                <p><label><?php echo $login[11]?></label>
                     <input type="text" name="studentid"></p>
                 
                 <p><label><?php echo $login[12]?></label>

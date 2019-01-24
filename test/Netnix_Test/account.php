@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if (!isset($_SESSION['lang']))
+if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true)
 {
-    $_SESSION['lang'] = "nl";
+    header("location: login.php");
+    exit;
 }
-
 ?>
 <!--
 Account Pagina
@@ -20,8 +20,8 @@ Account Pagina
     </head>
     <body>
         <div id="Wrap">
+            <?php include ("includes/header.php");?>
             <div id="content">
-                <?php include ("includes/header.php");?>
                 <div id="MainContent">
                     <div id="account">
                         <?php
