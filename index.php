@@ -1,6 +1,10 @@
 <?php
 // Begin maken aan de sessie
 session_start();
+$Host = "127.0.0.1";
+$User = "root";
+$Password = "";
+$DBName = "netnix";  
 
 if (!isset($_SESSION['loggedin'])) {
     // not logged in
@@ -21,11 +25,11 @@ INF1C Informatica NHL STENDEN
     </head>
     <body>
         <?php
-        $mysqli = new mysqli('127.0.0.1', 'root', '', 'netnix') or die($mysqli->connect_error);
-        $table = 'videos';
+        $Conn = mysqli_connect($Host, $User, $Password, $DBName)
+        OR DIE ("Connection to the database has failed");
 
-        $result = $mysqli->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM $table WHERE aprove = 1") or die($mysqli->error);
-        $random = $mysqli->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM $table WHERE aprove = 1 ORDER BY RAND() LIMIT 5") or die($mysqli->error);
+        $result = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1") or die($Conn->error);
+        $random = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1 ORDER BY RAND() LIMIT 5") or die($Conn->error);
         ?>
         <div id="Wrap">
             <div id="content">
