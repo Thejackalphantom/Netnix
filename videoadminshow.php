@@ -79,7 +79,7 @@ admin aprove page
                                             <div class='display'>
                                             <h3>Aprove?</h3>
                                             <form action='videoadminshow.php' method='POST'>
-                                                <input type='checkbox' name='yes' value='1'> Yes
+                                                <input type='checkbox' name='yes' value='$VideoID'> Yes
                                                 <input type='submit' name='aprove' value='aprove'>
                                             </form></div>
                                             <div class='display'><h4> Beschrijving</h4>
