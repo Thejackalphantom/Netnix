@@ -21,8 +21,8 @@ week 4 door Thijs Rijkers
     </head>
     <body>
         <div id="Wrap">
+            <?php include ("includes/header.php");?>
             <div id="content">
-                <?php include ("includes/header.php");?>
                 <div id="MainContent">
                     <?php
                     $DBConnect = mysqli_connect("localhost", "root", "");
@@ -54,14 +54,10 @@ week 4 door Thijs Rijkers
                                         <source src='".$Path."' type=video/mp4>
                                         <source src='".$Path."' type=video/wav>
                                         </video></div>
-                                            <div class='display'><h3> Titel</h3>
+                                            <div class='display'><h3>$videoshow[0]</h3>
                                             <p>".$Title."</p></div>
-                                            <div class='display'>
-                                            <h3>Favoriet</h3>
-                                            <form action='videoshow.php' method='POST'>
-                                                <input type='submit' name='favorite' value='Add favorite'>
-                                            </form></div>
-                                            <div class='display'><h4> Beschrijving</h4>
+                                            <div class='display'></div>
+                                            <div class='display'><h4>$videoshow[1]Beschrijving</h4>
                                             <p>".$Discription."</p></div>
                                             </div>";
                                     }
@@ -87,15 +83,18 @@ week 4 door Thijs Rijkers
                         $userId = $_SESSION['id'];
                         mysqli_stmt_bind_param($stmt, 'ss',$userId, $VideoID);
                         mysqli_stmt_execute($stmt);
-                        echo"Added to favorites!";
+                        echo"$videoshow[2]";
                     }
                     else
                     {
-                        echo "<p>Favourite failed to add</p>";
+                        echo "<p>$videoshow[3]</p>";
                     }
                     mysqli_stmt_close($stmt);
                 }
 
         ?>
+        <form action="videoshow.php" method="POST">
+            <input type="submit" name="favorite" value="Add favorite">
+        </form
     </body>
 </html>

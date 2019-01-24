@@ -24,29 +24,29 @@ Upload page
             </div>
             <div id="upload">
                 <div id="uploadTitle">
-                    <h2>   Upload your video here   </h2>
+                    <h2><?php echo $upload[0]; ?></h2>
                 </div>
                 <div id="uploadFunction">
                     <div id="function">
                         <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
-                            <p>Please upload your video</p>
-                            <p>Title</p>
+                            <p><?php echo $upload[1]; ?></p>
+                            <p><?php echo $upload[2]; ?></p>
                             <p><input type="text" name="title"</p>
-                            <p>Description</p>
+                            <p><?php echo $upload[3]; ?>Description</p>
                             <textarea rows="10" cols="50" maxlength="480" minlenght="0" name="message"></textarea>
                             <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
                             <select name="categorie">
-                                <option value="wiskunde"> wiskunde</option>
-                                <option value="php"> php</option>
-                                <option value="informatiemanagement"> informatiemanagement</option>
-                                <option value="html"> html</option>
-                                <option value="c#"> c</option>
-                                <option value="java"> java</option>
-                                <option value="database"> database</option>
-                                <option value="economie"> economie</option>
-                                <option value="nederlands"> nederlands</option>  
+                                <option value="wiskunde"><?php echo $upload[4]; ?></option>
+                                <option value="php"><?php echo $upload[5]; ?></option>
+                                <option value="informatiemanagement"><?php echo $upload[6]; ?></option>
+                                <option value="html"><?php echo $upload[7]; ?></option>
+                                <option value="c#"><?php echo $upload[8]; ?></option>
+                                <option value="java"><?php echo $upload[9]; ?></option>
+                                <option value="database"><?php echo $upload[10]; ?></option>
+                                <option value="economie"><?php echo $upload[11]; ?></option>
+                                <option value="nederlands"><?php echo $upload[12]; ?></option>  
                             </select>
-                            <p><input type="submit" name="submit" value="add Video"><input type="reset" name="reset" value="Reset form"></p>
+                            <p><input type="submit" name="submit" value="Upload Video"><input type="reset" name="reset" value="Reset form"></p>
                         </form>  
 
                         <?php
@@ -62,7 +62,7 @@ Upload page
                                 if ($stmt = mysqli_prepare($Conn, $SQLstring)) {
                                     $QueryResult = mysqli_stmt_execute($stmt);
                                     if ($QueryResult === FALSE) {
-                                        echo "<p>Well thats a error!</p>";
+                                        echo $error;
                                     } else {
                                         echo "<p>You are the first visitor!</p>";
                                     }
@@ -75,9 +75,9 @@ Upload page
                                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                                 $uploadOk = 1;
 
-                                $mimetype = array("video/mp4", "video/mov", "video/wmv", "video/flv");
+                                $mimetype = array("image/mp4", "video/mov", "video/wmv", "video/flv");
                                 if (in_array($_FILES['fileToUpload']['type'], $mimetype)) {
-                                    echo"<br><h3>This is not the correct file type, please upload a video!</h3>";
+                                    echo"<br><h3>$upload[13]</h3>";
                                 } else {
 
                                     $uploadOk = 0;
@@ -105,7 +105,7 @@ Upload page
                                             . mysqli_error($Conn)
                                             . "</p>";
                                         } else {
-                                            echo "<br><h3>Bedankt voor het uploaden van een video.</h3>";
+                                            echo "<br><h3>$upload[14]</h3>";
                                             //header("Location: login.php");
                                         }
                                         mysqli_stmt_close($stmt);

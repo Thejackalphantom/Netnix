@@ -18,7 +18,7 @@ Account Pagina
             <div id="content">
                 <?php include ("includes/header.php");?>
                 <div id="MainContent">
-                    <div id="account">
+                    
                         <?php
                         if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true){
                             header("location: login.php");
@@ -57,6 +57,7 @@ Account Pagina
                                 }
                                 while(mysqli_stmt_fetch($stmt))
                                 {
+                                    echo "<div id='account'>";
                                     echo "<h1> Your account </h1>";
                                     echo "<p>Name: " . $FirstName . " " . $LastName . "</p>";
                                     echo "<p>StudentId: " . $StudentId . "</p>";
@@ -65,6 +66,7 @@ Account Pagina
                                 }
                                 mysqli_stmt_close($stmt);
                                 echo "<hr><h1>Uw videos</h1></p>";
+                                echo "</div>";
                                 $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ?";
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))
                                 {
@@ -96,7 +98,7 @@ Account Pagina
                                 {
                                     echo "<a href=videoshow.php?videoid=" . $videoid ."><div class='videoBoxUser'>
                                         <h2>". $videotitle ."</h2>
-                                        <video>
+                                        <video width='300' height='300'>
                                         <source src='".$videoPath."' type=video/mp4>
                                         <source src='".$videoPath."' type=video/wav>
                                         </video>

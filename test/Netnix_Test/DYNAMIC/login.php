@@ -19,9 +19,8 @@ Netnix login page
         <link rel="stylesheet" type="text/css" href="css/login.css">
     </head>
     <body>
-        <?php include ("includes/header.php"); ?>
         <?php
-
+        include ("includes/header.php");
         $DBConnect = mysqli_connect("localhost", "root", "");
         if ($DBConnect === FALSE)
         {

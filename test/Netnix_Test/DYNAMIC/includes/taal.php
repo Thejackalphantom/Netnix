@@ -1,13 +1,4 @@
 <?php
-//if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true)
-//{
-//    header("location: login.php");
-//    exit;
-//}
-if (!isset($_SESSION['lang']))
-{
-    $_SESSION['lang'] = "nl";
-}
 $taal = $_SESSION['lang'];
 switch($taal)
 {
@@ -47,13 +38,46 @@ switch($taal)
         $index=array(
             "AANBEVOLEN"
         );
-        $addfavorite=array(
+        $videoshow=array(
+            "Titel",
+            "Beschrijving",
             "Toegevoegd aan favorieten!",
-            "<p>Favoriet toevoegen is mislukt.</p>"
+            "Favoriet toevoegen is mislukt."
         );
         $favoriteList=array(
             "Er zijn geen video's",
             "Beschrijving"
+        );
+        $upload=array(
+            "Upload hier uw videos",
+            "Upload alstublieft uw video",
+            "Titel",
+            "Beschrijving",
+            "Wiskunde",
+            "PHP",
+            "Informatiemanagement",
+            "HTML",
+            "C#",
+            "Java",
+            "Databases",
+            "Economy",
+            "Nederlands",
+            "Dit bestand is niet een video, upload alstublieft een video.",
+            "Bedankt voor het uploaden van een video."
+        );
+        $hotelschool=array(
+            "Nederlands",
+            "Economie",
+            "Wiskunde"
+        );
+        $informatica=array(
+            "Informatiemanagement"
+        );
+        $pabo=array(
+            "Nederlands",
+            "Economie",
+            "Wiskunde"
+            
         );
         $error="Er is iets misgegaan. Probeer het later opnieuw";
         break;
@@ -93,13 +117,41 @@ switch($taal)
         $index=array(
             "RECOMMENDED"
         );
-        $addfavorite=array(
+        $videoshow=array(
+            "Title",
+            "Description",
             "Added to favourites!",
             "<p>Favourite failed to add</p>"
         );
         $favoriteList=array(
             "No videos found",
             "Description"
+        );
+        $upload=array(
+            "Upload your video here",
+            "Please upload your video",
+            "Title",
+            "Description",
+            "Math",
+            "PHP",
+            "Information management",
+            "HTML",
+            "C#",
+            "Java",
+            "Databases",
+            "Economy",
+            "Dutch",
+            "This is not the correct file type, please upload a video!",
+            "Thank you for uploading a video!"
+        );
+        $hotelschool=array(
+            
+        );
+        $informatica=array(
+            "Information management"
+        );
+        $pabo=array(
+            
         );
         $error="Something went wrong. Try again later.";
         break;

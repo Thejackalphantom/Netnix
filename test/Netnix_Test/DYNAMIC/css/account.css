@@ -1,19 +1,17 @@
 #account{
+    height: 100%;
     width: 90%;
     margin: 0 auto;
     background-color: grey;
 }
-
 .videoBoxUser{
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 100px;
-    height: 300px;
+    height: 250px;
     width: 400px;
-    background-color: grey;
+    background-color: white;
     float: left;
-    text-align: center;
-    color: black;
 }
 video {
     width:100%;
@@ -21,14 +19,13 @@ video {
 }
 #iframeBox{
     width: 600px;
-    height: 200px;
+    height: 400px;
     margin: 0 auto;
 }
 
 .display{
     width: 290px;
-    height:100px;
+    height:200px;
     float: left;
     padding-left: 10px;
-    background-color: grey;
 }
