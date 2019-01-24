@@ -66,7 +66,6 @@ Account Pagina
                                     echo "<hr>";
                                 }
                                 mysqli_stmt_close($stmt);
-                                echo "<hr><h1>$account[3]</h1></p>";
                                 echo "</div>";
                                 $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ? AND aprove = 1";
                                 if($stmt = mysqli_prepare($conn, $QueryResult2))

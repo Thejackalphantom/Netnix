@@ -9,13 +9,13 @@ include("taal.php");
         <div id="menu">          
             <ul>
 <?php
-    if($_SERVER['PHP_SELF']=="/netnix/includes/HotelSchool.php"OR $_SERVER['PHP_SELF']=="/netnix/includes/PABO.php" OR$_SERVER['PHP_SELF']=="/netnix/includes/Informatica.php")
+    if($_SERVER['PHP_SELF']=="/netnix/HotelSchool.php"OR $_SERVER['PHP_SELF']=="/netnix/PABO.php" OR$_SERVER['PHP_SELF']=="/netnix/Informatica.php")
     {
         echo"<li><a href='../Categorie.php'>$header[0]</a></li>
             <li><a href='../account.php'>$header[1]</a></li>
             <li><a href='../upload.php'>$header[2]</a></li>
             <li><a href='../FavoriteList.php'>$header[3]</a></li>";
-        echo "<li>works?</li>";
+
     }
     else
     {
@@ -23,7 +23,6 @@ include("taal.php");
             <li><a href='account.php'>$header[1]</a></li>
             <li><a href='upload.php'>$header[2]</a></li>
             <li><a href='FavoriteList.php'>$header[3]</a></li>";
-        echo "<li>Bleh</li>";
     }
 ?>
                 <li>
