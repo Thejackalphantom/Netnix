@@ -54,7 +54,7 @@
                 if($DBConnect = mysqli_select_db($conn, "netnix"))
                 {
                     $id = $_GET['id'];
-                    $QueryResult = "SELECT videoId, videoTitle, videoDescription, videoUploadPath FROM videos WHERE categorie = ?";
+                    $QueryResult = "SELECT videoId, videoTitle, videoDescription, videoUploadPath FROM videos WHERE categorie = ? AND aprove = 1";
                     if($stmt = mysqli_prepare($conn, $QueryResult))
                     {
                         if(mysqli_stmt_bind_param($stmt, "s", $id))

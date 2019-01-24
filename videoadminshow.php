@@ -78,7 +78,8 @@ admin aprove page
                                             <p>" . $Title . "</p></div>
                                             <div class='display'>
                                             <h3>Aprove?</h3>
-                                            <form action='videoshow.php' method='POST'>
+                                            <form action='videoadminshow.php' method='POST'>
+                                                <input type='checkbox' name='yes' value='1'> Yes
                                                 <input type='submit' name='aprove' value='aprove'>
                                             </form></div>
                                             <div class='display'><h4> Beschrijving</h4>
@@ -88,27 +89,24 @@ admin aprove page
                                 }
                                 mysqli_stmt_close($stmt);
                             }
+                            if (isset($_POST['aprove'])) {
+                                $string2 = "UPDATE videos SET aprove = 1 WHERE videoID =?";
+                                $stmt = mysqli_prepare($conn, $string2);
+
+                                if ($stmt) {
+                                    $userId = $_SESSION['id'];
+                                    mysqli_stmt_bind_param($stmt, 's', $_POST['yes']);
+                                    mysqli_stmt_execute($stmt);
+                                    echo"Added to favorites!";
+                                } else {
+                                    echo "<p>Favourite failed to add</p>";
+                                }
+                                mysqli_stmt_close($stmt);
+                            }
                         }
                     }
                     ?>
                 </div>
             </div>
-        </div>
-                    <?php
-                    if (isset($_POST['aprove'])) {
-                        $string2 = "UPDATE videos SET aprove = 1 WHERE videoID =?";
-                        $stmt = mysqli_prepare($conn, $string2);
-
-                        if ($stmt) {
-                            $userId = $_SESSION['id'];
-                            mysqli_stmt_bind_param($stmt, 's', $VideoID);
-                            mysqli_stmt_execute($stmt);
-                            echo"Added to favorites!";
-                        } else {
-                            echo "<p>Favourite failed to add</p>";
-                        }
-                        mysqli_stmt_close($stmt);
-                    }
-                    ?>
     </body>
 </html>
