@@ -19,13 +19,13 @@ video {
 }
 #iframeBox{
     width: 600px;
-    height: 400px;
+    height: 200px;
     margin: 0 auto;
 }
 
 .display{
     width: 290px;
-    height:200px;
+    height:100px;
     float: left;
     padding-left: 10px;
 }
