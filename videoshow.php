@@ -33,11 +33,51 @@ week 4 door Thijs Rijkers
                         if (!mysqli_select_db($DBConnect, $DB)) {
 
                         } else {
-                            $VideoID = $_GET["videoid"];
+                            $VideoID = htmlentities($_GET["videoid"]);
+                            // Aantal likes worden geteld..
+                            $query = "SELECT userID FROM likedvideos WHERE videoID = ? AND liked = 'y'";
+                            if($stmt = mysqli_prepare($DBConnect, $query))
+                            {
+                                if(mysqli_stmt_bind_param($stmt, 'i', $VideoID))
+                                {
+                                    if(mysqli_stmt_execute($stmt))
+                                    {
 
+                                    }else {
+                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    }
+                                }else {
+                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                }
+                            }
+                            else {
+                                echo "er is iets misgegaan. Probeer het later opnieuw" . mysqli_error($DBConnect);
+                            }
+                            mysqli_stmt_bind_result($stmt, $likedusers);
+                            mysqli_stmt_store_result($stmt);
+                            $likes = mysqli_stmt_num_rows($stmt);
+                            //Aantal dislikes worden geteld..
+                            $query = "SELECT userID FROM likedvideos WHERE videoID = ? AND disliked = 'y'";
+                            if($stmt = mysqli_prepare($DBConnect, $query))
+                            {
+                                if(mysqli_stmt_bind_param($stmt, 'i', $VideoID))
+                                {
+                                    if(mysqli_stmt_execute($stmt))
+                                    {
+
+                                    }else {
+                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    }
+                                }else {
+                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                }
+                            }
+                            mysqli_stmt_bind_result($stmt, $nt);
+                            mysqli_stmt_store_result($stmt);
+                            $dislikes = mysqli_stmt_num_rows($stmt);
+                            //select videos
                             $string = "SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE videoID =?";
                             $stmt = mysqli_prepare($DBConnect, $string);                         
-
                             if ($stmt) {
 
                                 mysqli_stmt_bind_param($stmt, 's', $VideoID);
@@ -65,8 +105,9 @@ week 4 door Thijs Rijkers
                                             </form></div>
                                             <div class='display'><h4>$videoshow[2]</h4>
                                             <p>".$Discription."</p></div>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=true'>Vind ik leuk<img src='img/tup.png' width='50px' height='50px'></a>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=false'><img src='img/tdown.png' width='50px' height='50px'>Vind ik niet leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true'><img src='img/tup.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false'><img src='img/tdown.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
+                                                
                                             </div>";
                                     }
                                 }
