@@ -65,6 +65,8 @@ week 4 door Thijs Rijkers
                                             </form></div>
                                             <div class='display'><h4>$videoshow[2]</h4>
                                             <p>".$Discription."</p></div>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true'>Vind ik leuk<img src='img/tup.png' width='50px' height='50px'></a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false'><img src='img/tdown.png' width='50px' height='50px'>Vind ik niet leuk</a>
                                             </div>";
                                     }
                                 }
@@ -84,6 +86,170 @@ week 4 door Thijs Rijkers
                                     echo "<p>$videoshow[4]</p>";
                                 }
                                 mysqli_stmt_close($stmt);
+                            }
+                        }
+                        if (isset($_GET['liked']))
+                        {
+                            $userID = $_SESSION['id'];
+                            $VideoID = $_GET["videoid"];
+                            $like = htmlentities($_GET['liked']);
+                            if($like == 'true')
+                            {
+                                $like = 'y';
+                                $query = "SELECT liked, disliked FROM likedvideos WHERE videoID = ? AND userID = ?";
+                                if($stmt = mysqli_prepare($DBConnect, $query))
+                                {
+                                    if(mysqli_stmt_bind_param($stmt, 'ii', $VideoID, $userID))
+                                    {
+                                        if(mysqli_stmt_execute($stmt))
+                                        {
+                                            
+                                        }else {
+                                            echo "er is iets misgegaan. Probeer het later opnieuw";
+                                        }
+                                    }else {
+                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    }
+                                    
+                                }
+                                else {
+                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                }
+                                mysqli_stmt_bind_result($stmt, $liked, $disliked);
+                                mysqli_stmt_store_result($stmt);
+                                $rows = mysqli_stmt_num_rows($stmt);
+                                if($rows === 0)
+                                {
+                                    $query3 = "INSERT INTO likedvideos (videoID, userID, liked, disliked) VALUES (?,?,?,'n')";
+                                    if($stmt = mysqli_prepare($DBConnect, $query3))
+                                    {
+                                        if(mysqli_stmt_bind_param($stmt, 'iis', $VideoID, $userID, $like))
+                                        {
+                                            if(mysqli_stmt_execute($stmt))
+                                            {
+
+                                            }else {
+                                                echo "er is iets misgegaan. Probeer het later opnieuw";
+                                            }
+                                        }else {
+                                            echo "er is iets misgegaan. Probeer het later opnieuw";
+                                        }
+
+                                    }
+                                    else {
+                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    }
+                                }
+                                else {
+                                    while(mysqli_stmt_fetch($stmt))
+                                    {
+                                        if($liked === 'n' && $disliked === 'y')
+                                        {
+                                            $query3 = "UPDATE likedvideos SET liked = 'y', disliked = 'n' WHERE videoID = ? AND userID = ?";
+                                            if($stmt = mysqli_prepare($DBConnect, $query3))
+                                            {
+                                                if(mysqli_stmt_bind_param($stmt, 'ii', $VideoID, $userID))
+                                                {
+                                                    if(mysqli_stmt_execute($stmt))
+                                                    {
+
+                                                    }else {
+                                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                                    }
+                                                }else {
+                                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                                }
+
+                                            }
+                                            else {
+                                                echo "er is iets misgegaan. Probeer het later opnieuw";
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                
+                            }
+                            else {
+                                if($like == 'false')
+                                {
+                                    $like = 'y';
+                                    $query = "SELECT liked, disliked FROM likedvideos WHERE videoID = ? AND userID = ?";
+                                    if($stmt = mysqli_prepare($DBConnect, $query))
+                                    {
+                                        if(mysqli_stmt_bind_param($stmt, 'ii', $VideoID, $userID))
+                                        {
+                                            if(mysqli_stmt_execute($stmt))
+                                            {
+
+                                            }else {
+                                                echo "er is iets misgegaan. Probeer het later opnieuw";
+                                            }
+                                        }else {
+                                            echo "er is iets misgegaan. Probeer het later opnieuw";
+                                        }
+
+                                    }
+                                    else {
+                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    }
+                                    mysqli_stmt_bind_result($stmt, $liked, $disliked);
+                                    mysqli_stmt_store_result($stmt);
+                                    $rows = mysqli_stmt_num_rows($stmt);
+                                    if($rows === 0)
+                                    {
+                                        $query3 = "INSERT INTO likedvideos (videoID, userID, liked, disliked) VALUES (?,?,'n',?)";
+                                        if($stmt = mysqli_prepare($DBConnect, $query3))
+                                        {
+                                            if(mysqli_stmt_bind_param($stmt, 'iis', $VideoID, $userID, $like))
+                                            {
+                                                if(mysqli_stmt_execute($stmt))
+                                                {
+
+                                                }else {
+                                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                                }
+                                            }else {
+                                                echo "er is iets misgegaan. Probeer het later opnieuw";
+                                            }
+
+                                        }
+                                        else {
+                                            echo "er is iets misgegaan. Probeer het later opnieuw";
+                                        }
+                                    }
+                                    else {
+                                        while(mysqli_stmt_fetch($stmt))
+                                        {
+                                            if($liked === 'y' && $disliked === 'n')
+                                            {
+                                                $query3 = "UPDATE likedvideos SET liked = 'n', disliked = 'y' WHERE videoID = ? AND userID = ?";
+                                                if($stmt = mysqli_prepare($DBConnect, $query3))
+                                                {
+                                                    if(mysqli_stmt_bind_param($stmt, 'ii', $VideoID, $userID))
+                                                    {
+                                                        if(mysqli_stmt_execute($stmt))
+                                                        {
+
+                                                        }else {
+                                                            echo "er is iets misgegaan. Probeer het later opnieuw";
+                                                        }
+                                                    }else {
+                                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                                    }
+
+                                                }
+                                                else {
+                                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                else {
+                                    header("location: login.php");
+                                    exit;
+                                }
                             }
                         }
                     }
