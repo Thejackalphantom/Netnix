@@ -8,54 +8,41 @@ include("taal.php");
         </div>
         <div id="menu">          
             <ul>
-<?php
-    if($_SERVER['PHP_SELF']=="/netnix/includes/HotelSchool.php"OR $_SERVER['PHP_SELF']=="/netnix/includes/PABO.php" OR$_SERVER['PHP_SELF']=="/netnix/includes/Informatica.php")
-    {
-        echo"<li><a href='../Categorie.php'>$header[0]</a></li>
-            <li><a href='../account.php'>$header[1]</a></li>
-            <li><a href='../upload.php'>$header[2]</a></li>
-            <li><a href='../FavoriteList.php'>$header[3]</a></li>";
-        echo "<li>works?</li>";
-    }
-    else
-    {
-        echo"<li><a href='Categorie.php'>$header[0]</a></li>
-            <li><a href='account.php'>$header[1]</a></li>
-            <li><a href='upload.php'>$header[2]</a></li>
-            <li><a href='FavoriteList.php'>$header[3]</a></li>";
-        echo "<li>Bleh</li>";
-    }
-?>
-                <li>
-                    <?php
-                    $lang = $_SESSION['lang'];
+                <?php
+                    if(!isset($_GET['lang']))
+                    {
+                        $_GET['lang']="nl";
+                    }
+                    $lang = $_GET['lang'];
+                    if($_SERVER['PHP_SELF']=="/netnix/includes/HotelSchool.php"OR $_SERVER['PHP_SELF']=="/netnix/includes/PABO.php" OR$_SERVER['PHP_SELF']=="/netnix/includes/Informatica.php")
+                    {
+                        echo"<li><a href='../Categorie.php?lang=$lang'>$header[0]</a></li>
+                            <li><a href='../account.php?lang=$lang'>$header[1]</a></li>
+                            <li><a href='../upload.php?lang=$lang'>$header[2]</a></li>
+                            <li><a href='../FavoriteList.php?lang=$lang'>$header[3]</a></li>";
+                    }
+                    else
+                    {
+                        echo"<li><a href='Categorie.php?lang=$lang'>$header[0]</a></li>
+                            <li><a href='account.php?lang=$lang'>$header[1]</a></li>
+                            <li><a href='upload.php?lang=$lang'>$header[2]</a></li>
+                            <li><a href='FavoriteList.php?lang=$lang'>$header[3]</a></li>";
+                    }
                     switch($lang)
                     {
                         case "en":
-                            echo "<form method='POST' action='".$_SERVER['PHP_SELF']."'><input type='submit' name='lang' value='Switch Language'></form>";
-                            if(isset($_POST['lang']))
-                            {
-                                $_SESSION['lang'] = "nl";
-                                header("Refresh:0");
-                            }
+                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=nl'>Switch Language</a></li>";
+                            $_SESSION['lang'] = "nl";
                             break;
                         case "nl":
-                            echo "<form method='POST' action='".$_SERVER['PHP_SELF']."'><input type='submit' name='lang' value='Verander taal'></form>";
-                            if(isset($_POST['lang']))
-                            {
-                                $_SESSION['lang'] = "en";
-                                header("Refresh:0");
-                            }
+                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'>Verander taal</a></li>";
+                            $_SESSION['lang'] = "en";
                             break;
                         default :
-                            echo "<form method='POST' action='".$_SERVER['PHP_SELF']."'><input type='submit' name='lang' value='Verander taal'></form>";
-                            if(isset($_POST['lang']))
-                            {
-                                $_SESSION['lang'] = "en";
-                            }
+                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'>Verander taal</a></li>";
+                            $_SESSION['lang'] = "en";
                     }
                     ?>
-                </li>
             </ul>
         </div>
         

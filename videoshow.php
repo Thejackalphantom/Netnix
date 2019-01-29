@@ -69,6 +69,22 @@ week 4 door Thijs Rijkers
                                     }
                                 }
                                 mysqli_stmt_close($stmt);
+                                $VideoID = $_GET["videoid"];
+                                $string = "SELECT comment, userName FROM comments"
+                                        . "JOIN users ON comment.userID = users.userID"
+                                        . "JOIN videos on comment.videoID = videos.videoID WHERE videoID =?";
+                                $stmt = mysqli_prepare($DBConnect, $string);
+                                if($stmt)
+                                {
+                                    mysqli_stmt_bind_param($stmt, 's', $VideoID);
+                                    mysqli_stmt_execute($stmt);
+                                    mysqli_stmt_bind_result($stmt, $VideoID, $Title, $Discription, $Path);
+                                    mysqli_stmt_store_result($stmt);
+                                    if (mysqli_stmt_num_rows($stmt) == 0)
+                                    {
+                                        echo $videoshow[3];
+                                    }
+                                }
                             } 
                         if (isset($_POST['favorite'])) {
                                 $string2 = "INSERT INTO favorite VALUES (?, ?);";
@@ -79,9 +95,9 @@ week 4 door Thijs Rijkers
                                 if ($stmt) {
                                     mysqli_stmt_bind_param($stmt, 'ss', $idset, $aprove);
                                     mysqli_stmt_execute($stmt);
-                                    echo $videoshow[3];
+                                    echo $videoshow[4];
                                 } else {
-                                    echo "<p>$videoshow[4]</p>";
+                                    echo "<p>$videoshow[5]</p>";
                                 }
                                 mysqli_stmt_close($stmt);
                             }
