@@ -64,6 +64,7 @@ INF1C Informatica NHL STENDEN
                                 </div></a>";
                             }
                             ?>  
+                        <?php include ("includes/footer.php"); ?>
                     </div>
                 </div>
             </div>
