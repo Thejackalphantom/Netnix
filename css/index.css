@@ -221,7 +221,9 @@ hr{
     float: left;
     border-top: 2px solid white;
     margin-top: 25px;
-
+    left: 0;
+    bottom: 0;
+    position: relative;
 }
 .mainFooter a:hover {
     color:lightblue;
