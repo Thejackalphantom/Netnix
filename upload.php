@@ -29,7 +29,7 @@ Upload page
                 <div id="uploadFunction">
                     <div id="function">
                         <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
-                            <p><?php echo $upload[1]; ?></p>
+                            <!--<p><?php// echo $upload[1]; ?></p>-->
                             <p><?php echo $upload[2]; ?></p>
                             <p><input type="text" name="title"></p>
                             <p><?php echo $upload[3]; ?></p>
@@ -118,6 +118,8 @@ Upload page
                     </div>
                 </div>
             </div>
+            <?php include ("includes/footer.php"); ?>
         </div>
+        
     </body>
 </html>
