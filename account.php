@@ -33,6 +33,28 @@ Account Pagina
                             $DBConnect = mysqli_select_db($conn, $dbname);
                             if($DBConnect)
                             {
+                                
+                                $QueryResultadmin = "SELECT userID, admin FROM users WHERE userID = ? AND admin=1";
+                                if($stmt = mysqli_prepare($conn, $QueryResultadmin))
+                                {
+                                    if(mysqli_stmt_bind_param($stmt, 's', $userid))
+                                    {
+                                        if (mysqli_stmt_execute($stmt))
+                                        {
+                                        }
+                                        else {
+                                            echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                        }
+                                    }
+                                    else {
+                                        echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                    }
+                                    mysqli_stmt_bind_result($stmt, $userID, $adminID);
+                                    mysqli_stmt_store_result($stmt);
+                                if(mysqli_stmt_num_rows($stmt) === 1){
+                                    header("location: admin.php");
+                                    }
+                                }
                                 $QueryResult = "SELECT studentNumber, userName, firstName, lastName, email FROM users WHERE userID = ?";
                                 if($stmt = mysqli_prepare($conn, $QueryResult))
                                 {

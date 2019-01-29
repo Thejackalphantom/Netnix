@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
-    header("location: login.php");
+        header("Location: login.php?lang=$lang");
     exit;
 }
 ?>
@@ -70,21 +70,23 @@ admin aprove page
                                 } else {
                                     while (mysqli_stmt_fetch($stmt)) {
                                         echo" <div id='iframeBox'>
-                                            <div class='display'><video controls>
-                                        <source src='" . $Path . "' type=video/mp4>
-                                        <source src='" . $Path . "' type=video/wav>
-                                        </video></div>
-                                            <div class='display'><h3> Titel</h3>
-                                            <p>" . $Title . "</p></div>
+                                            <div class='displayvid'>
+                                            <video width='500' height='400'controls>
+                                            <source src='" . $Path . "' type=video/mp4>
+                                            <source src='" . $Path . "' type=video/wav>
+                                            </video></div>
+                                            <div class='display'>
+                                            <h2>" . $Title . "</h2>
+                                            <p>" . $Discription . "</p>
+                                            </div>
                                             <div class='display'>
                                             <h3>Aprove?</h3>
                                             <form action='videoadminshow.php' method='POST'>
                                                 <input type='radio' name='aprovey' id='yes' value='$VideoID'> Yes<br>
                                                 <input type='radio' name='aproven' id='no' value='$VideoID'> No<br>
-                                                <input type='submit' name='aproveyn' value='Aprove?' >
+                                                <input type='submit' name='aproveyn' class='txtbox' value='Aprove?' >
                                             </form></div>
-                                            <div class='display'><h4>$videoAdminShow[2]</h4>
-                                            <p>" . $Discription . "</p></div>
+                                            <div class='display'></div>
                                             </div>";
                                     }
                                 }
