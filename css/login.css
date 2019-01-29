@@ -19,7 +19,7 @@ body{
     width: 400px;
     float: left;
     padding-top:100px;
-    padding-left: 60px;
+    padding-left: 10%;
 }
 form{
     color: #bfbfbf;
@@ -37,7 +37,7 @@ p{
 }
 .txtbox{
      font-size: 12pt;
-     height: 22px;
+     height: 32px;
      width: 280px;
      background-color: #515151;
      color: #717171;
