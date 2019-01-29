@@ -98,13 +98,15 @@ hr{
     float:left;
 }
 .video{
-    height: 450px;
+    height: 500px;
     width: 100%;
+    /*background-color: red;*/
     float: left;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 .title{
     padding-left:50px;
+    /*background-color: grey;*/
     color: #bfbfbf;
     font-family: Arial;
 }
@@ -113,9 +115,9 @@ hr{
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 100px;
-    height: 250px;
+    height: 400px;
     width: 400px;
-    background-color: grey;
+    background-color: black;
     float: left;
 }
 #logout{
@@ -127,13 +129,29 @@ hr{
     padding-top: 30px;
 }
 
+.loadbar{
+    height: 5px;
+    width: 500px;
+    background-color: #09e5d9;
+    float: left;
+}
+
+.videoTitle{
+    height: 30px;
+    width: 500px;
+    background-color: #444242;
+    float: left;
+}
+
 .videoBoxUser{
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 100px;
-    height: 300px;
-    width: 400px;
-    background-color: grey;
+    height: 320px;
+    width: 500px;
+    font-family: arial;
+    font-size: 1em;
+    /*background-color: #09e5d9;*/
     float: left;
     text-align: center;
     color: black;
