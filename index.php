@@ -41,11 +41,11 @@ INF1C Informatica NHL STENDEN
                             while ($data2 = $random->fetch_assoc()) {
                                 //print_r($data);
                                 echo "<a href=videoshow.php?videoid={$data2['videoID']}><div class='videoBoxUser'>
-                                    <h2>{$data2['videoTitle']}</h2>
-                                        <video width='300' height='300'>
+                                        <video width='300' height='250'>
                                         <source src='{$data2['videoUploadPath']}' type=video/mp4>
                                         <source src='{$data2['videoUploadPath']}' type=video/wav>
                                         </video>
+                                        <h2>{$data2['videoTitle']}</h2>
                                 </div></a>";
                             }
                             ?> 
