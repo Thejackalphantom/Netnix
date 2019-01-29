@@ -7,7 +7,7 @@ if(!isset($_SESSION['lang']))
 }
 // Kijk als de user al is ingelogd, zo ja dan gaat die naar het berichten pagina
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            header("location: index.php");
+            header("location: index.php?lang=$lang");
             exit;
         }
 ?>
