@@ -157,6 +157,19 @@ hr{
     color: black;
 }
 
+#search-text {
+    padding: 0px 20px;
+    width: 300px;
+    height: 40px;
+    font-size: 22px;
+}
+
+#search-button {
+    width: 100px;
+    height: 44px;
+    font-size: 22px;
+}
+
 /************Footer******************/
 .mainFooter {
     width: 100%;
@@ -199,4 +212,3 @@ hr{
     margin-left: 160px;
     margin-top: 10px;
 }
-

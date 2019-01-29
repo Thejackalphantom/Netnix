@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
-    header("location: login.php");
+    header("Location: login.php?lang=$lang");
     exit;
 }
 ?>  
@@ -19,6 +19,6 @@ categorie page
     </head>
     <body>
        <?php include ("includes/header.php");?>
-       <?php include ("CategorieBlok.php");?>
+       <?php include ("includes/CategorieBlok.php");?>
     </body>
 </html>

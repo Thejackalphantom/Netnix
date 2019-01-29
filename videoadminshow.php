@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
-    header("location: login.php");
+    header("Location: login.php?lang=$lang");
     exit;
 }
 ?>
@@ -92,7 +92,6 @@ admin aprove page
                             if (isset($_POST['aprove'])) {
                                 $string2 = "UPDATE videos SET aprove = 1 WHERE videoID =?";
                                 $stmt = mysqli_prepare($conn, $string2);
-
                                 if ($stmt) {
                                     $userId = $_SESSION['id'];
                                     mysqli_stmt_bind_param($stmt, 's', $_POST['yes']);
@@ -116,6 +115,7 @@ admin aprove page
                                     header("location: admin.php");
                                 } else {
                                     echo "$error";
+
                                 }
                             }
                         }
