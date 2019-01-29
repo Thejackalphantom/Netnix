@@ -48,7 +48,7 @@ admin aprove page
                                     echo"$videoAdminShow[0]";
                                     echo "<hr>";
                                 } else {
-                                    header("location: index.php");
+                                    header("location: index.php?lang=$lang");
                                 }
                             }
                             mysqli_stmt_close($stmt);
@@ -66,7 +66,7 @@ admin aprove page
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) == 0) {
                                     echo $videoAdminShow[1];
-                                    header("location: index.php");
+                                    header("location: index.php?lang=$lang");
                                 } else {
                                     while (mysqli_stmt_fetch($stmt)) {
                                         echo" <div id='iframeBox'>
@@ -81,10 +81,20 @@ admin aprove page
                                             </div>
                                             <div class='display'>
                                             <h3>Aprove?</h3>
+<<<<<<< HEAD
+                                            <form action='videoadminshow.php?lang=$lang' method='POST'>
+                                                <input type='checkbox' name='yes' value='$VideoID'> Yes
+                                                <input type='submit' name='aprove' value='aprove'>
+=======
                                             <form action='videoadminshow.php' method='POST'>
                                                 <input type='radio' name='aprovey' id='yes' value='$VideoID'> Yes<br>
                                                 <input type='radio' name='aproven' id='no' value='$VideoID'> No<br>
+<<<<<<< HEAD
+                                                <input type='submit' name='aproveyn' value='Aprove?' >
+>>>>>>> bd917f8d179ccb68faad126366bf9143b1688dc8
+=======
                                                 <input type='submit' name='aproveyn' class='txtbox' value='Aprove?' >
+>>>>>>> a307c5f819fb723d536359731e476fa4a56e0043
                                             </form></div>
                                             <div class='display'></div>
                                             </div>";
@@ -113,7 +123,7 @@ admin aprove page
                                 if ($stmt) {
                                     mysqli_stmt_bind_param($stmt, 's', $_POST["aproven"]);
                                     mysqli_stmt_execute($stmt);
-                                    header("location: admin.php");
+                                    header("location: admin.php?lang=$lang");
                                 } else {
                                     echo $error;
                                 }
@@ -126,5 +136,6 @@ admin aprove page
                     ?>
                 </div>
             </div>
+        </div>
     </body>
 </html>

@@ -76,7 +76,7 @@ Netnix login page
             <h2>Login</h2>
             <br>
 
-            <form action="login.php" METHOD="POST">
+            <form action="login.php?lang=<?php echo $lang?>" METHOD="POST">
                 <p><input type="text" name="username" class="txtbox" placeholder="<?php echo$login[4]?>" ></p><br>
                 <p><input type="password" name="password" class="txtbox" placeholder="<?php echo$login[5]?>"></p><br>
 
@@ -132,7 +132,7 @@ Netnix login page
                             $email = htmlentities($_POST['email']);
 
                             if (mysqli_stmt_num_rows($stmt) == 1) {
-                                echo "Deze naam is al ingebruik";
+                                echo $login[8];
                             }if (mysqli_stmt_num_rows($stmt) == 0) { 
                                     mysqli_select_db($DBConnect, $DBName);
                                     $SQLstring2 = "INSERT INTO users (StudentNumber, userName, firstName, lastName, email, userPass) VALUES (?, ?, ?, ?, ?, ?)";
@@ -168,12 +168,12 @@ Netnix login page
         <div class='form'>
             <h2>Sign Up</h2>
             <br>
-            <form method="POST" action="login.php" enctype="multipart/form-data">
+            <form method="POST" action="login.php?lang=<?php echo $lang?>" enctype="multipart/form-data">
                 <p><input type="text" name="username" class="txtbox" placeholder="<?php echo $login[4]?>"></p><br>
                 <p><input type="password" name="password" class="txtbox" placeholder="<?php echo $login[5]?>"></p><br>
-                <p><input type="text" name="studentid" class="txtbox" placeholder="<?php echo $login[11]?>" ></p><br>
-                <p><input type="text" name="firstname" class="txtbox" placeholder="<?php echo $login[12]?>" ></p><br>
-                <p><input type="text" name="lastname" class="txtbox" placeholder="<?php echo $login[13]?>"></p><br>
+                <p><input type="text" name="studentid" class="txtbox" placeholder="<?php echo $login[10]?>" ></p><br>
+                <p><input type="text" name="firstname" class="txtbox" placeholder="<?php echo $login[11]?>" ></p><br>
+                <p><input type="text" name="lastname" class="txtbox" placeholder="<?php echo $login[12]?>"></p><br>
                 <p><input type="text" name="email" class="txtbox" placeholder="email"></p><br>
                 <input type="submit" name="signin" class="button" value="Register">
                 <input type="reset" class="button" value="Reset">

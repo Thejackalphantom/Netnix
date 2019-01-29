@@ -28,8 +28,13 @@ Upload page
                 </div>
                 <div id="uploadFunction">
                     <div id="function">
+<<<<<<< HEAD
+                        <form id="formSignUp" action="upload.php?lang=<?php echo $lang?>" method="POST" enctype="multipart/form-data" >
+                            <p><?php echo $upload[1]; ?></p>
+=======
                         <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
                             <!--<p><?php// echo $upload[1]; ?></p>-->
+>>>>>>> a307c5f819fb723d536359731e476fa4a56e0043
                             <p><?php echo $upload[2]; ?></p>
                             <p><input type="text" name="title"></p>
                             <p><?php echo $upload[3]; ?></p>
@@ -53,7 +58,7 @@ Upload page
                         $Conn = mysqli_connect("localhost", "root", "");
                         if ($Conn === FALSE) {
 
-                            echo "Failed to connected";
+                            echo "Failed to connect";
                         } else {
                             $DBName = "netnix";
                             if (!mysqli_select_db($Conn, $DBName)) {

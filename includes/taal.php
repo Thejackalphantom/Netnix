@@ -31,7 +31,6 @@ switch($taal)
             "Deze naam is al in gebruik.",
             "Uw account is aangemaakt.",
             "Student nummer",
-            "Studentnummer.",
             "Voornaam",
             "Achternaam"
         );
@@ -85,6 +84,13 @@ switch($taal)
             "Geen video gevonden.",
             "Beschrijving"
         );
+        $admin=array(
+            "U bent op de admin pagina.",
+            "Er zijn geen videos aanwezig voor controle."
+        );
+        $footer=array(
+            "Volg ons:"
+        );
         $error="Er is iets misgegaan. Probeer het later opnieuw";
         break;
     case "en":
@@ -115,8 +121,7 @@ switch($taal)
             "Fill in your username.",
             "Username already taken.",
             "Your account has been created.",
-            "Student ID",
-            "studentID.",
+            "StudentID",
             "First name",
             "Last name"
         );
@@ -169,6 +174,13 @@ switch($taal)
             "You're on the admin page.",
             "There is no video found.",
             "Description"
+        );
+        $admin=array(
+            "You are on the admin page.",
+            "There are no videos awaiting judgement."
+        );
+        $footer=array(
+            "Follow us:"
         );
         $error="Something went wrong. Try again later.";
         break;
