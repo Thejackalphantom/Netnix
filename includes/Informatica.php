@@ -19,38 +19,38 @@
         <?php include ("header.php");?>
         <div class="imageRow">
             <div class="pLinks">
-                <a href="../videos.php?id=informatiemanagement">
+                <a href="../videos.php?id=informatiemanagement&lang=<?php echo $lang?>">
                     <img src="img/informatiemanagement.png" alt="Inf-Logo">
                     <p><?php echo$informatica[0] ?></p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="../videos.php?id=html">
+                <a href="../videos.php?id=html&lang=<?php echo $lang?>">
                     <img src="img/HTML5_Logo.png" alt="Java-Logo">
                     <p>HTML/CSS</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="../videos.php?id=php">
+                <a href="../videos.php?id=php&lang=<?php echo $lang?>">
                     <img src="img/PHP-logo.png" alt="PHP-logo">
                     <p>PHP</p>
                 </a>
             </div>
 
             <div class="pLinks">
-                <a href="../videos.php?id=c">
+                <a href="../videos.php?id=c&lang=<?php echo $lang?>">
                     <img src="img/c-logo.png" alt="C#-logo">
                     <p>C#</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="../videos.php?id=database">
+                <a href="../videos.php?id=database&lang=<?php echo $lang?>">
                     <img src="img/database-icon.png" alt="database-logo">
                     <p>Databases</p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="../videos.php?id=javascript">
+                <a href="../videos.php?id=javascript&lang=<?php echo $lang?>">
                     <img src="img/javascript-logo.png" alt="javascript-logo">
                     <p>Javascript</p>
                 </a>

@@ -47,7 +47,7 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                             echo "<p>$favoriteList[0]</p>";
                         }else{
                             while(mysqli_stmt_fetch($stmt)){
-                            echo "<a href=videoshow.php?videoid=" . $videoID ."><div class='videoBoxUser'>
+                            echo "<a href=videoshow.php?videoid=$videoID&lang=$lang><div class='videoBoxUser'>
                                         <h2>". $videotitle ."</h2>
                                         <video width='300' height='300'>
                                         <source src='".$path."' type=video/mp4>

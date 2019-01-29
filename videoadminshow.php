@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
-    header("Location: login.php?lang=$lang");
+    header("location: login.php");
     exit;
 }
 ?>
@@ -78,9 +78,16 @@ admin aprove page
                                             <p>" . $Title . "</p></div>
                                             <div class='display'>
                                             <h3>Aprove?</h3>
+<<<<<<< HEAD
                                             <form action='videoadminshow.php?lang=$lang' method='POST'>
                                                 <input type='checkbox' name='yes' value='$VideoID'> Yes
                                                 <input type='submit' name='aprove' value='aprove'>
+=======
+                                            <form action='videoadminshow.php' method='POST'>
+                                                <input type='radio' name='aprovey' id='yes' value='$VideoID'> Yes<br>
+                                                <input type='radio' name='aproven' id='no' value='$VideoID'> No<br>
+                                                <input type='submit' name='aproveyn' value='Aprove?' >
+>>>>>>> bd917f8d179ccb68faad126366bf9143b1688dc8
                                             </form></div>
                                             <div class='display'><h4>$videoAdminShow[2]</h4>
                                             <p>" . $Discription . "</p></div>
@@ -89,34 +96,35 @@ admin aprove page
                                 }
                                 mysqli_stmt_close($stmt);
                             }
-                            if (isset($_POST['aprove'])) {
+                            if (isset($_POST['aproveyn'])) {
+                                if (isset($_POST['aprovey'])) {   
                                 $string2 = "UPDATE videos SET aprove = 1 WHERE videoID =?";
                                 $stmt = mysqli_prepare($conn, $string2);
 
                                 if ($stmt) {
                                     $userId = $_SESSION['id'];
-                                    mysqli_stmt_bind_param($stmt, 's', $_POST['yes']);
+                                    mysqli_stmt_bind_param($stmt, 's',$_POST["aprovey"]);
                                     mysqli_stmt_execute($stmt);
                                     header("location: admin.php");
                                 } else {
                                     echo $error;
-                                }
+                                }                                
                                 mysqli_stmt_close($stmt);
-                                    echo "$error";
-                                }
-                                mysqli_stmt_close($stmt);
-                                
-                                $string3 = "INSERT INTO likes (videoID) VALUES (?)";
-                                $stmt = mysqli_prepare($conn, $string3);
+                                }else if (isset($_POST['aproven'])) {{
+                                    $string2 = "DELETE FROM videos WHERE videoID =?";
+                                    $stmt = mysqli_prepare($conn, $string2);
 
                                 if ($stmt) {
-                                    $userId = $_SESSION['id'];
-                                    mysqli_stmt_bind_param($stmt, 's', $_POST['yes']);
+                                    mysqli_stmt_bind_param($stmt, 's', $_POST["aproven"]);
                                     mysqli_stmt_execute($stmt);
                                     header("location: admin.php?lang=$lang");
                                 } else {
-                                    echo "$error";
+                                    echo $error;
                                 }
+                                mysqli_stmt_close($stmt);
+                                }
+                                }
+                            } 
                             }
                         }
                     ?>

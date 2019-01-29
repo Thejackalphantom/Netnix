@@ -28,7 +28,7 @@ Upload page
                 </div>
                 <div id="uploadFunction">
                     <div id="function">
-                        <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
+                        <form id="formSignUp" action="upload.php?lang=<?php echo $lang?>" method="POST" enctype="multipart/form-data" >
                             <p><?php echo $upload[1]; ?></p>
                             <p><?php echo $upload[2]; ?></p>
                             <p><input type="text" name="title"></p>
@@ -53,7 +53,7 @@ Upload page
                         $Conn = mysqli_connect("localhost", "root", "");
                         if ($Conn === FALSE) {
 
-                            echo "Failed to connected";
+                            echo "Failed to connect";
                         } else {
                             $DBName = "netnix";
                             if (!mysqli_select_db($Conn, $DBName)) {

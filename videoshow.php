@@ -298,10 +298,71 @@ week 4 door Thijs Rijkers
                             }
                         }
                         //RATING SYSTEM
-                        $query4 = "";
-                        echo "
+                        $query4 = "SELECT AVG(rating) AS ratingAVG FROM rating WHERE videoID = ?";
+                        if($stmt = mysqli_prepare($DBConnect, $query4))
+                        {
+                            if(mysqli_stmt_bind_param($stmt, 's', $VideoID))
+                            {
+                                if(mysqli_stmt_execute($stmt))
+                                {
+                                    
+                                }
+                                else {
+                                    echo "Er is iets misgegaan. Probeer het later opnieuw.";
+                                }
+                            }
+                            else {
+                                echo "Er is iets misgegaan. Probeer het later opnieuw.";
+                            }
+                        }
+                        else {
+                            echo "Er is iets misgegaan. Probeer het later opnieuw.";
+                        }
+                        mysqli_stmt_bind_result($stmt, $AVG1);
+                        mysqli_stmt_store_result($stmt);
+                        $AVG;
+                        while (mysqli_stmt_fetch($stmt)){
+                            $AVG = $AVG1;
+                        }
+                        $AVG = 3.5;
+                        if ($AVG == 0){
+                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=1'> 1 </a>";
+                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=2'> 2 </a>";
+                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=3'> 3 </a>";
+                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=4'> 4 </a>";
+                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=5'> 5 </a>";
+                        }
+                        else {
+                            if($AVG != 1 OR $AVG != 2 OR $AVG != 3 OR $AVG != 4 OR $AVG != 5)
+                            {
+                                $kommagetal = $AVG % 1;
+                                if($kommagetal > 0.5)
+                                {
+                                    $min = $kommagetal - 0.5;
+                                    $AVG = $AVG - $min;
+                                }
+                                else {
+                                    $AVG = $AVG - $kommagetal;
+                                }
+                                
+                            }
                             
-                        ";
+                            for($i=0.5;$i<$AVG;$i++)
+                            {
+                                $j = $i + 1;
+                                echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=$j'>{}</a>";
+                            }
+                            echo $AVG;
+                            echo $AVG % 1;
+                            if($AVG %1 == 0.5)
+                            {
+                                echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=$j'>{</a>";
+                            }
+                        }
+                        echo 
+                             '
+                             
+                        ';
                     }
             ?>
                     </div>

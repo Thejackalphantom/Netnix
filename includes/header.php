@@ -4,7 +4,7 @@ include("taal.php");
 <div id="header"> 
     <div id="headerInside"> 
         <div id="logo">          
-            <a href="index.php"><img src="img/logo.png" id="logoResize"></a>
+            <a href="index.php?lang=<?php echo $lang?>"><img src="img/logo.png" id="logoResize"></a>
         </div>
         <div id="menu">          
             <ul>
