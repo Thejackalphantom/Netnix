@@ -42,6 +42,7 @@ if(!isset($_GET['lang']))
                 <input type="text" name="search" class="button" placeholder="Search">
                 <button type="submit" class="button" name="submit-search">Search</button>
             </form>
+            
         </div>
         
         <div id='logout'>
