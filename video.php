@@ -31,31 +31,10 @@ INF1C Informatica NHL STENDEN
         $result = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1") or die($Conn->error);
         $random = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1 ORDER BY RAND() LIMIT 3") or die($Conn->error);
         ?>
-
-        <form action="search.php" method="POST">
-            <input id="search-text" type="text" name="search" placeholder="Search">
-            <button id="search-button" type="submit" name="submit-search">Search</button>
-        </form>
-
         <div id="Wrap">
             <div id="content">
                 <?php include ("includes/header.php"); ?>
                 <div id="MainContent">
-                    <div class="video">
-                        <h2 class="title"><?php echo $index[0] ?></h2>
-                        <?php
-                        while ($data2 = $random->fetch_assoc()) {
-                            //print_r($data);
-                            echo "<a href=videoshow.php?videoid={$data2['videoID']}><div class='videoBoxUser'>
-                                    <h2>{$data2['videoTitle']}</h2>
-                                        <video width='300' height='300'>
-                                        <source src='{$data2['videoUploadPath']}' type=video/mp4>
-                                        <source src='{$data2['videoUploadPath']}' type=video/wav>
-                                        </video>
-                                </div></a>";
-                        }
-                        ?> 
-                    </div>
                     <div class="video">
                         <h2 class="title"><?php echo $index[1] ?></h2>   
                         <?php
@@ -76,3 +55,5 @@ INF1C Informatica NHL STENDEN
         </div>
     </body>
 </html>
+
+
