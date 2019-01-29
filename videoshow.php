@@ -297,6 +297,11 @@ week 4 door Thijs Rijkers
                                 }
                             }
                         }
+                        //RATING SYSTEM
+                        $query4 = "";
+                        echo "
+                            
+                        ";
                     }
             ?>
                     </div>
