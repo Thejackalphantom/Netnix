@@ -19,6 +19,6 @@ categorie page
     </head>
     <body>
        <?php include ("includes/header.php");?>
-       <?php include ("includes/CategorieBlok.php");?>
+       <?php include ("CategorieBlok.php");?>
     </body>
 </html>

@@ -31,15 +31,15 @@ include("taal.php");
                     switch($lang)
                     {
                         case "en":
-                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=nl'>Switch Language</a></li>";
+                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=nl'><img src='img/nl.jpg'></a></li>";
                             $_SESSION['lang'] = "nl";
                             break;
                         case "nl":
-                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'>Verander taal</a></li>";
+                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'><img src='img/eng.jpg'></a></li>";
                             $_SESSION['lang'] = "en";
                             break;
                         default :
-                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'>Verander taal</a></li>";
+                            echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'><img src='img/eng.jpg'></a></li>";
                             $_SESSION['lang'] = "en";
                     }
                     ?>

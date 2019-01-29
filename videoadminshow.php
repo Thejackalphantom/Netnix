@@ -99,12 +99,12 @@ admin aprove page
                                     mysqli_stmt_execute($stmt);
                                     header("location: admin.php");
                                 } else {
-                                    echo "$error";
+                                    echo $error;
                                 }
                                 mysqli_stmt_close($stmt);
+                                }
                             }
                         }
-                    }
                     ?>
                 </div>
             </div>

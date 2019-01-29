@@ -29,7 +29,7 @@ INF1C Informatica NHL STENDEN
         OR DIE ("Connection to the database has failed");
 
         $result = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1") or die($Conn->error);
-        $random = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1 ORDER BY RAND() LIMIT 5") or die($Conn->error);
+        $random = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1 ORDER BY RAND() LIMIT 3") or die($Conn->error);
         ?>
         <div id="Wrap">
             <div id="content">
