@@ -80,7 +80,7 @@ admin aprove page
                                             <p>" . $Discription . "</p>
                                             </div>
                                             <div class='display'>
-                                            <h3>Aprove?</h3><<<<<<< HEAD
+                                            <h3>Aprove?</h3>
                                             <form action='videoadminshow.php?lang=$lang' method='POST'>
                                                 <input type='checkbox' name='yes' value='$VideoID'> Yes
                                                 <input type='submit' name='aprove' value='aprove'>

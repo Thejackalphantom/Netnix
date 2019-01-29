@@ -6,6 +6,9 @@ if(!isset($_GET['lang']))
     $lang=$_GET['lang'];
 }
 ?>
+<head>
+        <link rel="stylesheet" type="text/css" href="css/login.css">     
+</head>
 <div id="header"> 
     <div id="headerInside"> 
         <div id="logo">          
@@ -31,7 +34,19 @@ if(!isset($_GET['lang']))
                             <li><a href='upload.php?lang=$lang'>$header[2]</a></li>
                             <li><a href='FavoriteList.php?lang=$lang'>$header[3]</a></li>";
                     }
-                    switch($lang)
+                    
+                    ?>
+            </ul>
+            
+            <form action="search.php" method="POST">
+                <input type="text" name="search" class="button" placeholder="Search">
+                <button type="submit" class="button" name="submit-search">Search</button>
+            </form>
+        </div>
+        
+        <div id='logout'>
+                <?php
+                switch($lang)
                     {
                         case "en":
                             echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=nl'><img src='img/nl.jpg'></a></li>";
@@ -45,17 +60,9 @@ if(!isset($_GET['lang']))
                             echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'><img src='img/eng.jpg'></a></li>";
                             $_SESSION['lang'] = "en";
                     }
-                    ?>
-            </ul>
-        </div>
-        
-        <div id='logout'>
-                <?php
-                
                 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "<a href='logout.php'>$header[4]</a>";
                     $user = $_SESSION["username"];
-                    echo "<p>$header[5]<br>$user</p>";
                 }
                 ?>
 
