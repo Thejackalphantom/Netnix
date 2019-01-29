@@ -20,6 +20,7 @@ INF1C Informatica NHL STENDEN
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Netnix</title>
     </head>
@@ -31,12 +32,7 @@ INF1C Informatica NHL STENDEN
         $result = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1") or die($Conn->error);
         $random = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1 ORDER BY RAND() LIMIT 6") or die($Conn->error);
         ?>
-        
-        <form action="search.php" method="POST">
-            <input type="text" name="search" placeholder="Search">
-            <button type="submit" name="submit-search">Search</button>
-        </form>
-        
+
         <div id="Wrap">
             <div id="content">
                 <?php include ("includes/header.php"); ?>
