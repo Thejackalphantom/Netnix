@@ -81,20 +81,10 @@ admin aprove page
                                             </div>
                                             <div class='display'>
                                             <h3>Aprove?</h3>
-<<<<<<< HEAD
                                             <form action='videoadminshow.php?lang=$lang' method='POST'>
                                                 <input type='checkbox' name='yes' value='$VideoID'> Yes
                                                 <input type='submit' name='aprove' value='aprove'>
-=======
-                                            <form action='videoadminshow.php' method='POST'>
-                                                <input type='radio' name='aprovey' id='yes' value='$VideoID'> Yes<br>
-                                                <input type='radio' name='aproven' id='no' value='$VideoID'> No<br>
-<<<<<<< HEAD
-                                                <input type='submit' name='aproveyn' value='Aprove?' >
->>>>>>> bd917f8d179ccb68faad126366bf9143b1688dc8
-=======
                                                 <input type='submit' name='aproveyn' class='txtbox' value='Aprove?' >
->>>>>>> a307c5f819fb723d536359731e476fa4a56e0043
                                             </form></div>
                                             <div class='display'></div>
                                             </div>";
