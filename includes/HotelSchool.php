@@ -4,7 +4,7 @@
         if(!isset($_SESSION['loggedin']))
         {
             // not logged in
-            header('Location: login.php');
+            header("Location: login.php?lang=$lang");
             exit();
         }
 ?>
@@ -27,13 +27,13 @@
             <div class="pLinks">
                 <a href="../videos.php?id=economie">
                     <img src="img/economie_logo.png" alt="economie-Logo">
-                    <p><?php echo$hotelschool[0] ?></p>
+                    <p><?php echo$hotelschool[1] ?></p>
                 </a>
             </div>
             <div class="pLinks">
                 <a href="../videos.php?id=wiskunde">
                     <img src="img/wiskunde_logo.png" alt="wiskunde-logo">
-                    <p><?php echo$hotelschool[0] ?></p>
+                    <p><?php echo$hotelschool[2] ?></p>
                 </a>
             </div>
         </div>

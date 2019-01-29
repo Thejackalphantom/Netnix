@@ -43,6 +43,7 @@ switch($taal)
             "Titel",
             "Favoriet",
             "Beschrijving",
+            "Geen reacties gevonden.",
             "Toegevoegd aan favorieten!",
             "Favoriet toevoegen is mislukt."
         );
@@ -127,6 +128,7 @@ switch($taal)
             "Title",
             "Favorite",
             "Description",
+            "No comments found.",
             "Added to favourites!",
             "<p>Favourite failed to add</p>"
         );

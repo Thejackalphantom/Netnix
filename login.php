@@ -2,11 +2,12 @@
         session_start();
 if(!isset($_SESSION['lang']))
 {
+    $_GET['lang']="nl";
     $_SESSION['lang']="nl";
 }
 // Kijk als de user al is ingelogd, zo ja dan gaat die naar het berichten pagina
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            header("location: index.php");
+            header("location: index.php?lang=$lang");
             exit;
         }
 ?>
@@ -53,8 +54,6 @@ Netnix login page
                                 if (!password_verify($password, $userPass)){
                                     die($login[1]);
                                 }
-                                // Als alles goed is, start de session
-                                session_start();
 
                                 // Vult de data bij variables in
                                 $_SESSION["loggedin"] = true;
@@ -63,7 +62,7 @@ Netnix login page
  
                                 
                                 // Gaat naar de berichten pagina
-                                header("location: admin.php");
+                                header("location: admin.php?lang=$lang");
                             }else{
                                 echo $login[2];
                             }
@@ -75,18 +74,13 @@ Netnix login page
         
         <div class='form'>
             <h2>Login</h2>
-            <p>Vul u login gegevens aub in.</p>
+            <br>
 
             <form action="login.php" METHOD="POST">
+                <p><input type="text" name="username" class="txtbox" placeholder="<?php echo$login[4]?>" ></p><br>
+                <p><input type="password" name="password" class="txtbox" placeholder="<?php echo$login[5]?>"></p><br>
 
-                <p><label><?php echo$login[4]?></label>
-                    <input type="text" name="username" ></p>
-
-                <p><label><?php echo$login[5]?></label>
-                    <input type="password" name="password"></p>
-
-
-                <input type="submit" name="submit"  value="Login">
+                <input type="submit" name="submit" class="button" value="Login">
             </form>
         </div>
         
@@ -173,30 +167,16 @@ Netnix login page
         
         <div class='form'>
             <h2>Sign Up</h2>
-            <p>Maak hier je account aan</p>
-
+            <br>
             <form method="POST" action="login.php" enctype="multipart/form-data">
-
-                 <p><label><?php echo $login[4]?></label>
-                    <input type="text" name="username"></p>
-                
-                <p><label><?php echo $login[5]?></label>
-                    <input type="password" name="password"></p>
-                
-                <p><label><?php echo $login[11]?></label>
-                    <input type="text" name="studentid"></p>
-                
-                <p><label><?php echo $login[12]?></label>
-                    <input type="text" name="firstname"></p>
-                
-                <p><label><?php echo $login[13]?></label>
-                    <input type="text" name="lastname"></p>
-                
-                <p><label>email</label>
-                    <input type="text" name="email"></p>
-
-                <input type="submit" name="signin" value="Submit">
-                <input type="reset"  value="Reset">
+                <p><input type="text" name="username" class="txtbox" placeholder="<?php echo $login[4]?>"></p><br>
+                <p><input type="password" name="password" class="txtbox" placeholder="<?php echo $login[5]?>"></p><br>
+                <p><input type="text" name="studentid" class="txtbox" placeholder="<?php echo $login[11]?>" ></p><br>
+                <p><input type="text" name="firstname" class="txtbox" placeholder="<?php echo $login[12]?>" ></p><br>
+                <p><input type="text" name="lastname" class="txtbox" placeholder="<?php echo $login[13]?>"></p><br>
+                <p><input type="text" name="email" class="txtbox" placeholder="email"></p><br>
+                <input type="submit" name="signin" class="button" value="Register">
+                <input type="reset" class="button" value="Reset">
             </form>
         </div>
     </body>

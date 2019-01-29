@@ -15,16 +15,18 @@ body{
     height: 600px;  
 }
 .form{
-    height: 200px;
+    height: 250px;
     width: 400px;
     float: left;
     padding-top:100px;
+    padding-left: 60px;
 }
 form{
     color: #bfbfbf;
 }
 h2{
     color: #bfbfbf;
+    padding-left: 90px;
 }
 h3{
     color: #bfbfbf;
@@ -34,13 +36,25 @@ p{
     color: #bfbfbf;
 }
 .txtbox{
-     font-size: 18pt;
-     height: 40px;
-     width: 350px;
+     font-size: 12pt;
+     height: 22px;
+     width: 280px;
      background-color: #515151;
      color: #717171;
-    }
-    .underline{
-        text-decoration: underline;
-    }
-    
+     border: none;
+}
+.underline{
+    text-decoration: underline;
+}
+   
+.button {
+  padding-left: 30px;
+  background-color: #1b1b1b;
+  border: none;
+  color: #bbbbbb;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
