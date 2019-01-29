@@ -3,12 +3,13 @@ include("taal.php");
 if(!isset($_GET['lang']))
 {
     $_GET['lang']="nl";
+    $lang=$_GET['lang'];
 }
 ?>
 <div id="header"> 
     <div id="headerInside"> 
         <div id="logo">          
-            <a href="index.php?lang=<?php echo $lang?>"><img src="img/logo.png" id="logoResize"></a>
+            <img src="img/logo.png" id="logoResize">
         </div>
         <div id="menu">          
             <ul>
@@ -16,14 +17,16 @@ if(!isset($_GET['lang']))
                     $lang = $_GET['lang'];
                     if($_SERVER['PHP_SELF']=="/netnix/includes/HotelSchool.php"OR $_SERVER['PHP_SELF']=="/netnix/includes/PABO.php" OR$_SERVER['PHP_SELF']=="/netnix/includes/Informatica.php")
                     {
-                        echo"<li><a href='../Categorie.php?lang=$lang'>$header[0]</a></li>
-                            <li><a href='../account.php?lang=$lang'>$header[1]</a></li>
-                            <li><a href='../upload.php?lang=$lang'>$header[2]</a></li>
-                            <li><a href='../FavoriteList.php?lang=$lang'>$header[3]</a></li>";
+                        echo"<li><a href='../index.php?lang=$lang'> HOME</a></li>
+                            <li><a href='../Categorie.php?lang=$lang'> $header[0]</a></li>
+                            <li><a href='../account.php?lang=$lang'> $header[1]</a></li>
+                            <li><a href='../upload.php?lang=$lang'> $header[2]</a></li>
+                            <li><a href='../FavoriteList.php?lang=$lang'> $header[3]</a></li>";
                     }
                     else
                     {
-                        echo"<li><a href='Categorie.php?lang=$lang'>$header[0]</a></li>
+                        echo"<li><a href='index.php?lang=$lang'> HOME</a></li>
+                            <li><a href='Categorie.php?lang=$lang'>$header[0]</a></li>
                             <li><a href='account.php?lang=$lang'>$header[1]</a></li>
                             <li><a href='upload.php?lang=$lang'>$header[2]</a></li>
                             <li><a href='FavoriteList.php?lang=$lang'>$header[3]</a></li>";
