@@ -33,19 +33,16 @@ if(!isset($_GET['lang']))
                             <li><a href='account.php?lang=$lang'>$header[1]</a></li>
                             <li><a href='upload.php?lang=$lang'>$header[2]</a></li>
                             <li><a href='FavoriteList.php?lang=$lang'>$header[3]</a></li>";
-                        echo '<form action="search.php" method="POST">
-                                <input type="text" name="search" placeholder="Search">
-                                <button type="submit" name="submit-search">Search</button>
-                            </form>';
                     }
                     
                     ?>
             </ul>
             
             <form action="search.php" method="POST">
-                <input type="text" name="search" class="button" placeholder="Search">
+                <input type="text" name="search" class="button" placeholder="Search" required>
                 <button type="submit" class="button" name="submit-search">Search</button>
             </form>
+            
         </div>
         
         <div id='logout'>

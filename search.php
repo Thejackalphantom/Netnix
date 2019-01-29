@@ -36,7 +36,7 @@ INF1C Informatica NHL STENDEN
             <?php
             if (isset($_POST['submit-search'])) {
                 $search = mysqli_real_escape_string($Conn, $_POST['search']);
-                $sql = "SELECT * FROM videos WHERE videoTitle LIKE '%$search%'";
+                $sql = "SELECT * FROM videos WHERE videoTitle LIKE '%$search%' AND aprove = 1";
                 $result = mysqli_query($Conn, $sql);
                 $QueryResult = mysqli_num_rows($result);
                 
