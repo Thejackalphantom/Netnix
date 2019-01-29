@@ -101,6 +101,7 @@ hr{
     padding-top:50px;
     float:left;
 }
+
 .video{
     height: 500px;
     width: 100%;
@@ -108,6 +109,10 @@ hr{
     float: left;
     /*margin: 0 auto;*/
 }
+.videoinline{
+    display: inline-block;
+}
+
 .title{
     padding-left:50px;
     /*background-color: grey;*/
@@ -150,17 +155,17 @@ hr{
 .videoBoxUser{
     margin-left: 20px;
     margin-right: 20px;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     height: 320px;
     width: 500px;
     font-family: arial;
     font-size: 1em;
-    /*background-color: #09e5d9;*/
+    background-color: black;
     float: left;
     text-align: center;
-    color: black;
+    color: white;
 }
-
 #search-text {
     padding: 0px 20px;
     width: 300px;
