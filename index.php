@@ -44,7 +44,7 @@ INF1C Informatica NHL STENDEN
                                 echo ""
                                     . "<a href=videoshow.php?videoid={$data2['videoID']}&lang=$lang>
                                           <div class='videoBoxUser'>
-                                                  <video width='500'>
+                                                  <video class='videoinline' width='500' height='300'>
                                                   <source src='{$data2['videoUploadPath']}' type=video/mp4>
                                                   <source src='{$data2['videoUploadPath']}' type=video/wav>
                                                   </video>
@@ -53,7 +53,7 @@ INF1C Informatica NHL STENDEN
                                           </div>
                                       </a>";
                             }
-                            ?> 
+                            ?>
                     </div>
                     <div class="video">
                         <h2 class="title"><?php echo $index[1]?></h2>
@@ -64,7 +64,7 @@ INF1C Informatica NHL STENDEN
                                 echo ""
                                     . "<a href=videoshow.php?videoid={$data['videoID']}&lang=$lang>
                                           <div class='videoBoxUser'>
-                                                  <video width='500'>
+                                                  <video width='500' height='300'>
                                                   <source src='{$data['videoUploadPath']}' type=video/mp4>
                                                   <source src='{$data['videoUploadPath']}' type=video/wav>
                                                   </video>
@@ -73,7 +73,7 @@ INF1C Informatica NHL STENDEN
                                           </div>
                                       </a>";
                             }
-                            ?>  
+                            ?> 
                         <?php include ("includes/footer.php"); ?>
                     </div>
                 </div>
