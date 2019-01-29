@@ -92,7 +92,6 @@ admin aprove page
                             if (isset($_POST['aprove'])) {
                                 $string2 = "UPDATE videos SET aprove = 1 WHERE videoID =?";
                                 $stmt = mysqli_prepare($conn, $string2);
-
                                 if ($stmt) {
                                     $userId = $_SESSION['id'];
                                     mysqli_stmt_bind_param($stmt, 's', $_POST['yes']);
@@ -103,11 +102,6 @@ admin aprove page
                                 }
                                 mysqli_stmt_close($stmt);
                                     echo "$error";
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 25862365a963fb6256db847db713b787f08becf3
                                 }
                                 mysqli_stmt_close($stmt);
                                 
@@ -121,10 +115,7 @@ admin aprove page
                                     header("location: admin.php");
                                 } else {
                                     echo "$error";
-<<<<<<< HEAD
 
-=======
->>>>>>> 25862365a963fb6256db847db713b787f08becf3
                                 }
                             }
                         }

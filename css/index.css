@@ -139,7 +139,6 @@ hr{
     color: black;
 }
 
-<<<<<<< HEAD
 #search-text {
     padding: 0px 20px;
     width: 300px;
@@ -152,7 +151,7 @@ hr{
     height: 44px;
     font-size: 22px;
 }
-=======
+
 /************Footer******************/
 .mainFooter {
     width: 100%;
@@ -195,5 +194,3 @@ hr{
     margin-left: 160px;
     margin-top: 10px;
 }
-
->>>>>>> 25862365a963fb6256db847db713b787f08becf3
