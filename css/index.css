@@ -26,6 +26,10 @@ p{
     text-decoration: none;
     color: white;
 }
+h1.rightrow{
+    margin-top: 50px;
+    color: #a0a0a0;
+}
 
 ul{
     list-style-type: none;
