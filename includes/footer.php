@@ -8,7 +8,7 @@
     </div>
     <div class="navFooterCenter">
         <ul>
-            <li class="footerTopElement">Volg ons:</li>
+            <li class="footerTopElement"><?php echo$footer[0]?></li>
             <li><a href="https://twitter.com/">Twitter</a></li>
             <li><a href="https://facebook.com">Facebook</a></li>
             <li><a href="https://instagram.com">Instagram</a></li>
