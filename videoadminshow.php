@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
-    header("location: login.php");
+    header("Location: login.php?lang=$lang");
     exit;
 }
 ?>
@@ -99,9 +99,15 @@ admin aprove page
                                     mysqli_stmt_execute($stmt);
                                     header("location: admin.php");
                                 } else {
+                                    echo $error;
+                                }
+                                mysqli_stmt_close($stmt);
                                     echo "$error";
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 25862365a963fb6256db847db713b787f08becf3
                                 }
                                 mysqli_stmt_close($stmt);
                                 
@@ -115,12 +121,13 @@ admin aprove page
                                     header("location: admin.php");
                                 } else {
                                     echo "$error";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25862365a963fb6256db847db713b787f08becf3
                                 }
-                                mysqli_stmt_close($stmt);
                             }
                         }
-                    }
                     ?>
                 </div>
             </div>
