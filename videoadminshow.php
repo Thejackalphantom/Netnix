@@ -99,11 +99,9 @@ admin aprove page
                                     mysqli_stmt_execute($stmt);
                                     header("location: admin.php");
                                 } else {
-<<<<<<< HEAD
                                     echo $error;
                                 }
                                 mysqli_stmt_close($stmt);
-=======
                                     echo "$error";
                                 }
                                 mysqli_stmt_close($stmt);
@@ -118,7 +116,6 @@ admin aprove page
                                     header("location: admin.php");
                                 } else {
                                     echo "$error";
->>>>>>> 5499b05f910f5d63c03d41355fd784edd53abfdf
                                 }
                             }
                         }
