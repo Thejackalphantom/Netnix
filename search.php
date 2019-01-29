@@ -28,9 +28,11 @@ INF1C Informatica NHL STENDEN
         $Conn = mysqli_connect($Host, $User, $Password, $DBName)
                 OR DIE("Connection to the database has failed");
         ?>
-        <h1>Search page</h1>
-
+        <?php include ("includes/header.php"); ?>
+        
         <div class="video">
+            <h1>Results</h1>
+            <hr>
             <?php
             if (isset($_POST['submit-search'])) {
                 $search = mysqli_real_escape_string($Conn, $_POST['search']);
@@ -38,17 +40,20 @@ INF1C Informatica NHL STENDEN
                 $result = mysqli_query($Conn, $sql);
                 $QueryResult = mysqli_num_rows($result);
                 
-                echo "There are ".$QueryResult." results!";
 
                 if ($QueryResult > 0) {
                     while ($data = mysqli_fetch_assoc($result)) {
-                        echo "<a href=videoshow.php?videoid={$data['videoID']}><div class='videoBoxUser'>
-                                    <h2>{$data['videoTitle']}</h2>
-                                        <video width='300' height='300'>
-                                        <source src='{$data['videoUploadPath']}' type=video/mp4>
-                                        <source src='{$data['videoUploadPath']}' type=video/wav>
-                                        </video>
-                                </div></a>";
+                       echo ""
+                                    . "<a href=videoshow.php?videoid={$data['videoID']}>
+                                          <div class='videoBoxUser'>
+                                                  <video width='500'>
+                                                  <source src='{$data['videoUploadPath']}' type=video/mp4>
+                                                  <source src='{$data['videoUploadPath']}' type=video/wav>
+                                                  </video>
+                                                  <div class='loadbar'></div>
+                                                  <div class='videoTitle'><h2>{$data['videoTitle']}</h2></div>
+                                          </div>
+                                      </a>";
                     }
                 } else {
                     echo "There are no results matching your search!";

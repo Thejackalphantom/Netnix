@@ -9,7 +9,7 @@
     </div>
     <div class="navFooterCenter">
         <ul><?php
-            echo "<li class='footerTopElement'>Volg ons:</li>
+            echo "<li class='footerTopElement'>$footer[0]</li>
             <li><a href='https://twitter.com/?lang=$lang'>Twitter</a></li>
             <li><a href='https://facebook.com?lang=$lang'>Facebook</a></li>
             <li><a href='https://instagram.com?lang=$lang'>Instagram</a></li>"

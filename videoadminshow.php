@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
-    header("location: login.php");
+        header("Location: login.php?lang=$lang");
     exit;
 }
 ?>
@@ -48,7 +48,7 @@ admin aprove page
                                     echo"$videoAdminShow[0]";
                                     echo "<hr>";
                                 } else {
-                                    header("location: index.php");
+                                    header("location: index.php?lang=$lang");
                                 }
                             }
                             mysqli_stmt_close($stmt);
@@ -66,25 +66,27 @@ admin aprove page
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) == 0) {
                                     echo $videoAdminShow[1];
-                                    header("location: index.php");
+                                    header("location: index.php?lang=$lang");
                                 } else {
                                     while (mysqli_stmt_fetch($stmt)) {
                                         echo" <div id='iframeBox'>
-                                            <div class='display'><video controls>
-                                        <source src='" . $Path . "' type=video/mp4>
-                                        <source src='" . $Path . "' type=video/wav>
-                                        </video></div>
-                                            <div class='display'><h3> Titel</h3>
-                                            <p>" . $Title . "</p></div>
+                                            <div class='displayvid'>
+                                            <video width='500' height='400'controls>
+                                            <source src='" . $Path . "' type=video/mp4>
+                                            <source src='" . $Path . "' type=video/wav>
+                                            </video></div>
+                                            <div class='display'>
+                                            <h2>" . $Title . "</h2>
+                                            <p>" . $Discription . "</p>
+                                            </div>
                                             <div class='display'>
                                             <h3>Aprove?</h3>
-                                            <form action='videoadminshow.php' method='POST'>
-                                                <input type='radio' name='aprovey' id='yes' value='$VideoID'> Yes<br>
-                                                <input type='radio' name='aproven' id='no' value='$VideoID'> No<br>
-                                                <input type='submit' name='aproveyn' value='Aprove?' >
+                                            <form action='videoadminshow.php?lang=$lang' method='POST'>
+                                                <input type='checkbox' name='yes' value='$VideoID'> Yes
+                                                <input type='submit' name='aprove' value='aprove'>
+                                                <input type='submit' name='aproveyn' class='txtbox' value='Aprove?' >
                                             </form></div>
-                                            <div class='display'><h4>$videoAdminShow[2]</h4>
-                                            <p>" . $Discription . "</p></div>
+                                            <div class='display'></div>
                                             </div>";
                                     }
                                 }
@@ -111,7 +113,7 @@ admin aprove page
                                 if ($stmt) {
                                     mysqli_stmt_bind_param($stmt, 's', $_POST["aproven"]);
                                     mysqli_stmt_execute($stmt);
-                                    header("location: admin.php");
+                                    header("location: admin.php?lang=$lang");
                                 } else {
                                     echo $error;
                                 }
@@ -124,5 +126,6 @@ admin aprove page
                     ?>
                 </div>
             </div>
+        </div>
     </body>
 </html>

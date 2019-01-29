@@ -19,23 +19,24 @@
         <?php include ("header.php");?>
         <div class="imageRow">
             <div class="pLinks">
-                <a href="../videos.php?id=nederlands">
+                <a href="../videos.php?id=nederlands&lang=<?php echo $lang?>">
                     <img src="img/nederlands_logo.png" alt="nederlands-Logo">
                     <p><?php echo$pabo[0] ?></p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="../videos.php?id=economie">
+                <a href="../videos.php?id=economie&lang=<?php echo $lang?>">
                     <img src="img/economie_logo.png" alt="economie-Logo">
                     <p><?php echo$pabo[1] ?></p>
                 </a>
             </div>
             <div class="pLinks">
-                <a href="../videos.php?id=wiskunde">
+                <a href="../videos.php?id=wiskunde&lang=<?php echo $lang?>">
                     <img src="img/wiskunde_logo.png" alt="wiskunde-logo">
                     <p><?php echo$pabo[2] ?></p>
                 </a>
             </div>
         </div>
+        <?php include ("footer.php");?>
     </body>
 </html>
