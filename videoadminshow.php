@@ -100,6 +100,22 @@ admin aprove page
                                     header("location: admin.php");
                                 } else {
                                     echo "$error";
+<<<<<<< HEAD
+=======
+                                }
+                                mysqli_stmt_close($stmt);
+                                
+                                $string3 = "INSERT INTO likes (videoID) VALUES (?)";
+                                $stmt = mysqli_prepare($conn, $string3);
+
+                                if ($stmt) {
+                                    $userId = $_SESSION['id'];
+                                    mysqli_stmt_bind_param($stmt, 's', $_POST['yes']);
+                                    mysqli_stmt_execute($stmt);
+                                    header("location: admin.php");
+                                } else {
+                                    echo "$error";
+>>>>>>> a99b1841eef66e7a008beff74d9dc74b4becc07a
                                 }
                                 mysqli_stmt_close($stmt);
                             }

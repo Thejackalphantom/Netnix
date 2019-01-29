@@ -31,7 +31,7 @@ switch($taal)
             "Deze naam is al in gebruik.",
             "Uw account is aangemaakt.",
             "Student nummer",
-            "Maak hier uw account aan.",
+            "Studentnummer.",
             "Voornaam",
             "Achternaam"
         );
@@ -115,7 +115,7 @@ switch($taal)
             "Username already taken.",
             "Your account has been created.",
             "Student ID",
-            "Create your account here.",
+            "studentID.",
             "First name",
             "Last name"
         );
