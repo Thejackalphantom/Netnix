@@ -138,3 +138,47 @@ hr{
     text-align: center;
     color: black;
 }
+
+/************Footer******************/
+.mainFooter {
+    width: 100%;
+    height: 170px;
+    background-color: black;
+    float: left;
+    border-top: 2px solid white;
+    margin-top: 25px;
+
+}
+.mainFooter a:hover {
+    color:lightblue;
+    text-decoration: underline;
+}
+.mainFooter a, li{
+    color: white;
+    line-height: 1.5;
+
+}
+
+/* Left list */
+.navFooterLeft {
+    float:left;
+    width: 200px;
+    height: 136px;
+    margin-left: 100px;
+    margin-top: 10px;
+
+}
+
+.footerTopElement {
+    text-decoration: underline;
+}
+
+/* Center list */
+.navFooterCenter {
+    float: left;
+    width: 200px;
+    height: 136px;
+    margin-left: 160px;
+    margin-top: 10px;
+}
+

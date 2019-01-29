@@ -2,6 +2,7 @@
         session_start();
 if(!isset($_SESSION['lang']))
 {
+    $_GET['lang']="nl";
     $_SESSION['lang']="nl";
 }
 // Kijk als de user al is ingelogd, zo ja dan gaat die naar het berichten pagina
@@ -53,8 +54,6 @@ Netnix login page
                                 if (!password_verify($password, $userPass)){
                                     die($login[1]);
                                 }
-                                // Als alles goed is, start de session
-                                session_start();
 
                                 // Vult de data bij variables in
                                 $_SESSION["loggedin"] = true;
@@ -63,7 +62,7 @@ Netnix login page
  
                                 
                                 // Gaat naar de berichten pagina
-                                header("location: admin.php");
+                                header("location: admin.php?lang=$lang");
                             }else{
                                 echo $login[2];
                             }
@@ -170,6 +169,30 @@ Netnix login page
             <h2>Sign Up</h2>
             <br>
 
+<<<<<<< HEAD
+            <form method="POST" action="login.php?lang=<?php echo $lang ?>" enctype="multipart/form-data">
+
+                 <p><label><?php echo $login[4]?></label>
+                    <input type="text" name="username"></p>
+                
+                <p><label><?php echo $login[5]?></label>
+                    <input type="password" name="password"></p>
+                
+                <p><label><?php echo $login[11]?></label>
+                    <input type="text" name="studentid"></p>
+                
+                <p><label><?php echo $login[12]?></label>
+                    <input type="text" name="firstname"></p>
+                
+                <p><label><?php echo $login[13]?></label>
+                    <input type="text" name="lastname"></p>
+                
+                <p><label>email</label>
+                    <input type="text" name="email"></p>
+
+                <input type="submit" name="signin" value="Submit">
+                <input type="reset"  value="Reset">
+=======
             <form method="POST" action="login.php" enctype="multipart/form-data">
                 <p><input type="text" name="username" class="txtbox" placeholder="<?php echo $login[4]?>"></p><br>
                 <p><input type="password" name="password" class="txtbox" placeholder="<?php echo $login[5]?>"></p><br>
@@ -179,6 +202,7 @@ Netnix login page
                 <p><input type="text" name="email" class="txtbox" placeholder="email"></p><br>
                 <input type="submit" name="signin" class="button" value="Register">
                 <input type="reset" class="button" value="Reset">
+>>>>>>> 5499b05f910f5d63c03d41355fd784edd53abfdf
             </form>
         </div>
     </body>

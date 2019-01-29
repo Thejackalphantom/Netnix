@@ -40,12 +40,12 @@ INF1C Informatica NHL STENDEN
                         <?php
                             while ($data2 = $random->fetch_assoc()) {
                                 //print_r($data);
-                                echo "<a href=videoshow.php?videoid={$data2['videoID']}><div class='videoBoxUser'>
-                                        <video width='300' height='250'>
+                                echo "<a href=videoshow.php?videoid={$data2['videoID']}&lang=$lang><div class='videoBoxUser'>
+                                    <h2>{$data2['videoTitle']}</h2>
+                                        <video width='300' height='300'>
                                         <source src='{$data2['videoUploadPath']}' type=video/mp4>
                                         <source src='{$data2['videoUploadPath']}' type=video/wav>
                                         </video>
-                                        <h2>{$data2['videoTitle']}</h2>
                                 </div></a>";
                             }
                             ?> 
@@ -55,7 +55,7 @@ INF1C Informatica NHL STENDEN
                             <?php
                             while ($data = $result->fetch_assoc()) {
                                 //print_r($data);
-                                echo "<a href=videoshow.php?videoid={$data['videoID']}><div class='videoBoxUser'>
+                                echo "<a href=videoshow.php?videoid={$data['videoID']}&lang=$lang><div class='videoBoxUser'>
                                     <h2>{$data['videoTitle']}</h2>
                                         <video width='300' height='300'>
                                         <source src='{$data['videoUploadPath']}' type=video/mp4>
@@ -64,6 +64,7 @@ INF1C Informatica NHL STENDEN
                                 </div></a>";
                             }
                             ?>  
+                        <?php include ("includes/footer.php"); ?>
                     </div>
                 </div>
             </div>
