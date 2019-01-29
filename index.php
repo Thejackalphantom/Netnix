@@ -29,7 +29,7 @@ INF1C Informatica NHL STENDEN
         OR DIE ("Connection to the database has failed");
 
         $result = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1") or die($Conn->error);
-        $random = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1 ORDER BY RAND() LIMIT 3") or die($Conn->error);
+        $random = $Conn->query("SELECT videoID, videoTitle, videoDescription, videoUploadPath FROM videos WHERE aprove = 1 ORDER BY RAND() LIMIT 6") or die($Conn->error);
         ?>
         
         <form action="search.php" method="POST">
@@ -41,15 +41,16 @@ INF1C Informatica NHL STENDEN
             <div id="content">
                 <?php include ("includes/header.php"); ?>
                 <div id="MainContent">
-                    <div class="video">
+                    <div class="videoRandom">
                         <h2 class="title"><?php echo $index[0]?></h2>
                         <hr>
+                        <div class="scroll">
                         <?php
                             while ($data2 = $random->fetch_assoc()) {
                                 //print_r($data);
                                 echo ""
                                     . "<a href=videoshow.php?videoid={$data2['videoID']}&lang=$lang>
-                                          <div class='videoBoxUser'>
+                                          <div class='videoBoxRandom'>
                                                   <video class='videoinline' width='500' height='300'>
                                                   <source src='{$data2['videoUploadPath']}' type=video/mp4>
                                                   <source src='{$data2['videoUploadPath']}' type=video/wav>
@@ -60,6 +61,7 @@ INF1C Informatica NHL STENDEN
                                       </a>";
                             }
                             ?>
+                        </div>
                     </div>
                     <div class="video">
                         <h2 class="title"><?php echo $index[1]?></h2>
