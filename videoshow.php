@@ -164,7 +164,6 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                                         $rated=FALSE;
                                         while (mysqli_stmt_fetch($stmt)){
                                             $AVG = $AVG1;
-                                            echo $users;
                                             if($users == $userID)
                                             {
                                                 $rated = TRUE;
