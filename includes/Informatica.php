@@ -4,7 +4,7 @@
         if(!isset($_SESSION['loggedin']))
         {
             // not logged in
-            header('Location: login.php');
+            header("Location: login.php?lang=$lang");
             exit();
         }
 ?>
