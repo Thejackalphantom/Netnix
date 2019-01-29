@@ -42,19 +42,19 @@ admin page
                                         {
                                         }
                                         else {
-                                            echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                            echo $error;
                                         }
                                     }
                                     else {
-                                        echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                        echo $error;
                                     }
                                     mysqli_stmt_bind_result($stmt, $userID, $adminID);
                                     mysqli_stmt_store_result($stmt);
                                 if(mysqli_stmt_num_rows($stmt) != 0){
-                                    echo"U bent op de admin pagina.";
+                                    echo $admin[0];
                                     echo "<hr>";
                                     }else{
-                                        header("location: index.php");
+                                        header("location: index.php?lang=$lang");
                                     }
                                 }
                                 
@@ -67,11 +67,11 @@ admin page
                                             
                                         }
                                         else {
-                                            echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                            echo $error;
                                         }
                                 }
                                 else {
-                                    echo "Er is iets misgegaan. Probeer het later opnieuw";
+                                    echo $error;
                                 }
                                 mysqli_stmt_bind_result($stmt, $videoid, $videotitle, $videoPath);
                                 mysqli_stmt_store_result($stmt);
@@ -82,7 +82,7 @@ admin page
                                 
                                         while(mysqli_stmt_fetch($stmt))
                                 {
-                                    echo "<a href=videoadminshow.php?videoid=" . $videoid ."><div class='videoBoxUser'>
+                                    echo "<a href=videoadminshow.php?videoid=$videoid&lang=$lang><div class='videoBoxUser'>
                                         <h2>". $videotitle ."</h2>
                                         <video width='300' height='300'>
                                         <source src='".$videoPath."' type=video/mp4>
@@ -93,11 +93,11 @@ admin page
                                 mysqli_stmt_close($stmt);
                             }
                             else {
-                                echo "Er zijn geen videos aanwezig voor controle.";
+                                echo $admin[1];
                             }
                         }
                         else{
-                            echo "Er is iets misgegeaan. Probeer het later opnieuw";
+                            echo $error;
                         }
                         mysqli_close($conn);
                     ?>
