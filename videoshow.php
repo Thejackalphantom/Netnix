@@ -31,7 +31,6 @@ week 4 door Thijs Rijkers
                     } else {
                         $DB = "netnix";
                         if (!mysqli_select_db($DBConnect, $DB)) {
-
                         } else {
                             $VideoID = htmlentities($_GET["videoid"]);
                             // Aantal likes worden geteld..
@@ -44,10 +43,10 @@ week 4 door Thijs Rijkers
                                     {
 
                                     }else {
-                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                        echo $error;
                                     }
                                 }else {
-                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    echo $error;
                                 }
                             }
                             else {
@@ -66,10 +65,10 @@ week 4 door Thijs Rijkers
                                     {
 
                                     }else {
-                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                        echo $error;
                                     }
                                 }else {
-                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    echo $error;
                                 }
                             }
                             mysqli_stmt_bind_result($stmt, $nt);
@@ -87,14 +86,14 @@ week 4 door Thijs Rijkers
                                     {
 
                                     }else {
-                                        echo "er is iets misgegaan. Probeer het later opnieuw";
+                                        echo $error;
                                     }
                                 }else {
-                                    echo "er is iets misgegaan. Probeer het later opnieuw";
+                                    echo $error;
                                 }
                             }
                             else {
-                                echo "er is iets misgegaan. Probeer het later opnieuw";
+                                echo $error;
                             }
                             mysqli_stmt_bind_result($stmt, $liked1, $disliked1);
                             mysqli_stmt_store_result($stmt);
@@ -116,49 +115,105 @@ week 4 door Thijs Rijkers
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) == 0) {
                                     echo 'There is no video found';
-                                    header("location: index.php");
+                                    header("location: index.php?lang=$lang");
                                 } else {
                                     while (mysqli_stmt_fetch($stmt)) {
                                       echo" <div id='iframeBox'>
-                                            <div class='display'><video controls>
-                                        <source src='".$Path."' type=video/mp4>
-                                        <source src='".$Path."' type=video/wav>
-                                        </video></div>
-                                            <div class='display'><h3>$videoshow[0]</h3>
-                                            <p>".$Title."</p></div>
+                                            <div class='displayvid'>
+                                            <video width='500' height='400'controls>
+                                            <source src='" . $Path . "' type=video/mp4>
+                                            <source src='" . $Path . "' type=video/wav>
+                                            </video></div>
+                                            <div class='display'>
+                                            <h2>" . $Title . "</h2>
+                                            <p>" . $Discription . "</p>
+                                            </div>
+                                            <form method='POST' action='videoshow.php?lang=$lang&videoid=$VideoID'>
+                                                <textarea name='comment' maxlength='200'></textarea>
+                                                <input type='submit' name='addcomment' value='submit'>
+                                            </form>
                                             <div class='display'>
                                             <h3>$videoshow[1]</h3>
-                                            <form action='videoshow.php' method='POST'>
+                                            <form action='videoshow.php?lang=$lang&videoid=$VideoID' method='POST'>
                                                 <input type='checkbox' name='yes' value='$VideoID'> Yes
 
                                                 <input type='submit' name='favorite' value='Add favorite'>
-                                            </form></div>
-                                            <div class='display'><h4>$videoshow[2]</h4>
-                                            <p>".$Discription."</p></div>";
+                                            </form>
+                                            </div>
+                                            <div class='display'></div>
+                                            </div>";
                                         if($liked === "y")
                                         {
                                             echo "
-                                                <a href='videoshow.php?videoid=$VideoID&liked=true'><img src='img/tup_selected.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=false'><img src='img/tdown.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup_selected.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
                                             </div>";
                                         }
                                         elseif($disliked === "y")
                                         {
                                             echo "
-                                                <a href='videoshow.php?videoid=$VideoID&liked=true'><img src='img/tup.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=false'><img src='img/tdown_selected.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown_selected.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
                                             </div>";
                                         }
                                         else {
                                             echo "
-                                                <a href='videoshow.php?videoid=$VideoID&liked=true'><img src='img/tup.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=false'><img src='img/tdown.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
                                             </div>";
                                         }
                                     }
                                 }
                                 mysqli_stmt_close($stmt);
-                            } 
+                            }
+                            //Start comment function
+                            $SQLstring="SELECT comment, userName FROM comments"
+                                    . "JOIN users on comments.userID=users.userID"
+                                    . "WHERE videoID=?";
+                            $stmt= mysqli_prepare($DBConnect, $SQLstring);
+                            if($stmt)
+                            {
+                                $video=$_GET['videoid'];
+                                mysqli_stmt_bind_param($stmt, 's',$video);
+                                mysqli_stmt_execute($stmt);
+                                mysqli_stmt_bind_result($stmt, $comment, $username);
+                                mysqli_stmt_store_result($stmt);
+                                if (mysqli_stmt_num_rows($stmt) == 0)
+                                {
+                                    echo $videoshow[3];
+                                }
+                                else
+                                {
+                                    echo"<div class='commentBox'>";
+                                    while(mysqli_stmt_fetch($stmt))
+                                    {
+                                        echo "<div class=comment>$username<br>$comment</div>";
+                                    }
+                                    echo"</div>";
+                                }
+                                mysqli_stmt_close($stmt);
+                            }
+                            if(isset($_POST['addcomment']))
+                            {
+                                $SQLstring="INSERT INTO comments(userID, videoID, comment) VALUES(?, ?, ?)";
+                                $stmt = mysqli_prepare($DBConnect, $SQLstring);
+                                if($stmt)
+                                {
+                                    $userID=$_SESSION['id'];
+                                    $videoID=$_GET['videoid'];
+                                    $comment=$_POST['comment'];
+                                    mysqli_stmt_bind_param($stmt,'sss',$userID,$VideoID,$comment);
+                                    if(mysqli_stmt_execute($stmt)===TRUE)
+                                    {
+                                        header("refresh:0");
+                                    }
+                                    else
+                                    {
+                                        echo $error;
+                                    }
+                                }
+                            }
+                            //end comment function.
                         if (isset($_POST['favorite'])) {
                                 $string2 = "INSERT INTO favorite VALUES (?, ?);";
                                 $stmt = mysqli_prepare($DBConnect, $string2);
@@ -168,9 +223,9 @@ week 4 door Thijs Rijkers
                                 if ($stmt) {
                                     mysqli_stmt_bind_param($stmt, 'ss', $idset, $aprove);
                                     mysqli_stmt_execute($stmt);
-                                    echo $videoshow[3];
+                                    echo $videoshow[4];
                                 } else {
-                                    echo "<p>$videoshow[4]</p>";
+                                    echo "<p>$videoshow[5]</p>";
                                 }
                                 mysqli_stmt_close($stmt);
                             }
@@ -298,71 +353,10 @@ week 4 door Thijs Rijkers
                             }
                         }
                         //RATING SYSTEM
-                        $query4 = "SELECT AVG(rating) AS ratingAVG FROM rating WHERE videoID = ?";
-                        if($stmt = mysqli_prepare($DBConnect, $query4))
-                        {
-                            if(mysqli_stmt_bind_param($stmt, 's', $VideoID))
-                            {
-                                if(mysqli_stmt_execute($stmt))
-                                {
-                                    
-                                }
-                                else {
-                                    echo "Er is iets misgegaan. Probeer het later opnieuw.";
-                                }
-                            }
-                            else {
-                                echo "Er is iets misgegaan. Probeer het later opnieuw.";
-                            }
-                        }
-                        else {
-                            echo "Er is iets misgegaan. Probeer het later opnieuw.";
-                        }
-                        mysqli_stmt_bind_result($stmt, $AVG1);
-                        mysqli_stmt_store_result($stmt);
-                        $AVG;
-                        while (mysqli_stmt_fetch($stmt)){
-                            $AVG = $AVG1;
-                        }
-                        $AVG = 3.5;
-                        if ($AVG == 0){
-                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=1'> 1 </a>";
-                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=2'> 2 </a>";
-                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=3'> 3 </a>";
-                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=4'> 4 </a>";
-                            echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=5'> 5 </a>";
-                        }
-                        else {
-                            if($AVG != 1 OR $AVG != 2 OR $AVG != 3 OR $AVG != 4 OR $AVG != 5)
-                            {
-                                $kommagetal = $AVG % 1;
-                                if($kommagetal > 0.5)
-                                {
-                                    $min = $kommagetal - 0.5;
-                                    $AVG = $AVG - $min;
-                                }
-                                else {
-                                    $AVG = $AVG - $kommagetal;
-                                }
-                                
-                            }
+                        $query4 = "";
+                        echo "
                             
-                            for($i=0.5;$i<$AVG;$i++)
-                            {
-                                $j = $i + 1;
-                                echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=$j'>{}</a>";
-                            }
-                            echo $AVG;
-                            echo $AVG % 1;
-                            if($AVG %1 == 0.5)
-                            {
-                                echo "<a href='videoshow.php?videoid=$VideoID&liked=true&rate=$j'>{</a>";
-                            }
-                        }
-                        echo 
-                             '
-                             
-                        ';
+                        ";
                     }
             ?>
                     </div>
