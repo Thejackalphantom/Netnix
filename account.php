@@ -14,7 +14,7 @@ Account Pagina
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <link rel="stylesheet" type="text/css" href="css/account.css">
+        <!--<link rel="stylesheet" type="text/css" href="css/account.css">-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Netnix</title>
     </head>
@@ -82,8 +82,10 @@ Account Pagina
                                 {
                                     echo "<div id='account'>";
                                     echo "<h1>$account[0]</h1>";
-                                    echo "<p>$account[1]: " . $FirstName . " " . $LastName . "</p>";
-                                    echo "<p>$account[2]: " . $StudentId . "</p>";
+                                    echo "<p>$account[1]: " . $UserName . "</p>";
+                                    echo "<p>$account[2]: " . $FirstName . "</p>";
+                                    echo "<p>$account[3]: " . $LastName . "</p>";
+                                    echo "<p>$account[4]: " . $StudentId . "</p>";
                                     echo "<p>E-mail: " . $Email . "</p>";
                                     echo "<hr>";
                                 }
@@ -115,17 +117,24 @@ Account Pagina
                             
                             if(mysqli_stmt_num_rows($stmt) != 0)
                             {
-                                
-                                        while(mysqli_stmt_fetch($stmt))
-                                {
-                                    echo "<a href=videoshow.php?videoid=$videoid&lang=$lang><div class='videoBoxUser'>
-                                        <h2>". $videotitle ."</h2>
-                                        <video width='300' height='300'>
+                            echo "<div class='video'>"
+                                . "<br>";
+                            echo "<h2>Your uploaded video's</h2>";
+                            while(mysqli_stmt_fetch($stmt)){
+                                echo ""
+                          . "<a href=videoshow.php?videoid=$videoid&lang=$lang>
+                                <div class='videoBoxUser'>
+                                        <video width='500' height='300'>
                                         <source src='".$videoPath."' type=video/mp4>
                                         <source src='".$videoPath."' type=video/wav>
                                         </video>
-                                </div></a>";
+                                        <div class='loadbar'></div>
+                                        <div class='videoTitle'><h2>". $videotitle ."</h2></div>
+                                </div>
+                            </a>
+                            ";
                                 }
+                               echo " </div>";
                                 mysqli_stmt_close($stmt);
                             }
                             else {
@@ -139,6 +148,7 @@ Account Pagina
                         mysqli_close($conn);
 
                         ?>
+                    
                     </div>   
                 </div>
             </div>
