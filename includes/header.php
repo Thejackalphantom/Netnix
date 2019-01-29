@@ -39,7 +39,7 @@ if(!isset($_GET['lang']))
             </ul>
             
             <form action="search.php" method="POST">
-                <input type="text" name="search" class="button" placeholder="Search">
+                <input type="text" name="search" class="button" placeholder="Search" required>
                 <button type="submit" class="button" name="submit-search">Search</button>
             </form>
             
