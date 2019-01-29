@@ -33,11 +33,11 @@ Upload page
                         <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
                            <!--<p><?php// echo $upload[1]; ?></p>-->
                             <p><?php echo $upload[2]; ?></p>
-                            <p><input type="text" name="title"></p>
+                            <p><input type="text" class="txtbox" name="title"></p>
                             <p><?php echo $upload[3]; ?></p>
-                            <textarea rows="10" cols="50" maxlength="480" name="message"></textarea>
-                            <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
-                            <select name="categorie">
+                            <textarea rows="10" cols="50" maxlength="480" class="txtbox" name="message"></textarea><br>
+                            <p><input type="file" name="fileToUpload" class="button"  id="fileToUpload"></p><br>
+                            <p><select name="categorie" class="button"><br>
                                 <option value="wiskunde"><?php echo $upload[4]; ?></option>
                                 <option value="php"><?php echo $upload[5]; ?></option>
                                 <option value="informatiemanagement"><?php echo $upload[6]; ?></option>
@@ -47,8 +47,8 @@ Upload page
                                 <option value="database"><?php echo $upload[10]; ?></option>
                                 <option value="economie"><?php echo $upload[11]; ?></option>
                                 <option value="nederlands"><?php echo $upload[12]; ?></option>
-                            </select>
-                            <p><input type="submit" name="submit" value="add Video"><input type="reset" name="reset" value="Reset form"></p>
+                                </select></p>
+                            <p><input type="submit" name="submit" class="button" value="add Video"><input type="reset" name="reset" class="button" value="Reset form"></p>
                         </form>  
 
                         <?php
