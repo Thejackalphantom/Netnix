@@ -7,7 +7,7 @@ if(!isset($_GET['lang']))
 }
 ?>
 <head>
-        <link rel="stylesheet" type="text/css" href="css/login.css">     
+        <link rel="stylesheet" type="text/css" href="css/header.css">     
 </head>
 <div id="header"> 
     <div id="headerInside"> 
@@ -37,7 +37,6 @@ if(!isset($_GET['lang']))
                     
                     ?>
             </ul>
-            
             <form action="search.php" method="POST">
                 <input type="text" name="search" class="button" placeholder="Search" required>
                 <button type="submit" class="button" name="submit-search">Search</button>
