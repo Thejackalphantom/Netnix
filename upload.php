@@ -30,8 +30,6 @@ Upload page
                     <div id="function">
                         <form id="formSignUp" action="upload.php?lang=<?php echo $lang?>" method="POST" enctype="multipart/form-data" >
                             <p><?php echo $upload[1]; ?></p>
-                        <form id="formSignUp" action="upload.php" method="POST" enctype="multipart/form-data" >
-                           <!--<p><?php// echo $upload[1]; ?></p>-->
                             <p><?php echo $upload[2]; ?></p>
                             <p><input type="text" class="txtbox" name="title"></p>
                             <p><?php echo $upload[3]; ?></p>
@@ -47,7 +45,7 @@ Upload page
                                 <option value="database"><?php echo $upload[10]; ?></option>
                                 <option value="economie"><?php echo $upload[11]; ?></option>
                                 <option value="nederlands"><?php echo $upload[12]; ?></option>
-                                </select></p>
+                                </select></p><br>
                             <p><input type="submit" name="submit" class="button" value="add Video"><input type="reset" name="reset" class="button" value="Reset form"></p>
                         </form>  
 
