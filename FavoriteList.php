@@ -47,13 +47,16 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                             echo "<p>$favoriteList[0]</p>";
                         }else{
                             while(mysqli_stmt_fetch($stmt)){
-                            echo "<a href=videoshow.php?videoid=$videoID&lang=$lang><div class='videoBoxUser'>
-                                        <h2>". $videotitle ."</h2>
-                                        <video width='300' height='300'>
+                            echo "<a href=videoshow.php?videoid=$videoID&lang=$lang>
+                                        <div class='videoBoxUser'>
+                                        <video width='500' height='300'>
                                         <source src='".$path."' type=video/mp4>
                                         <source src='".$path."' type=video/wav>
                                         </video>
-                                </div></a>";
+                                        <div class='loadbar'></div>
+                                        <div class='videoTitle'><h2>". $videotitle ."</h2></div>
+                                </div>
+                            </a>";
                             }
                         }
                         mysqli_stmt_close($stmt);
