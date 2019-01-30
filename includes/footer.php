@@ -16,4 +16,6 @@
             ?>
         </ul>
     </div>
+    <div id="footerBlackSpace">
+    </div>
 </div>	
