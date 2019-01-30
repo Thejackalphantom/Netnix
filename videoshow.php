@@ -176,9 +176,9 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                                         }
 
                                         if (isset($_GET['vote'])) {
-                                            $querysearch = "SELECT videoID, userID, rating FROM rating WHERE userID=?";
+                                            $querysearch = "SELECT videoID, userID, rating FROM rating WHERE userID=? AND videoID=?";
                                             if ($stmt = mysqli_prepare($DBConnect, $querysearch)) {
-                                                if (mysqli_stmt_bind_param($stmt, 's', $userID)) {
+                                                if (mysqli_stmt_bind_param($stmt, 'ss', $userID, $VideoID)) {
                                                     mysqli_stmt_execute($stmt);
                                                     mysqli_stmt_store_result($stmt);
                                                     if (mysqli_stmt_num_rows($stmt) == 0) {

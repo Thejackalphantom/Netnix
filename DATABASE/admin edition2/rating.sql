@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 30 jan 2019 om 12:07
+-- Gegenereerd op: 30 jan 2019 om 12:20
 -- Serverversie: 10.1.37-MariaDB
 -- PHP-versie: 7.2.12
 
@@ -39,20 +39,12 @@ CREATE TABLE `rating` (
 --
 
 INSERT INTO `rating` (`videoID`, `userID`, `rating`) VALUES
-(5, 1, 5),
+(5, 1, 2),
 (5, 2, 5),
 (5, 3, 5),
-(5, 6, 5);
-
---
--- Indexen voor geëxporteerde tabellen
---
-
---
--- Indexen voor tabel `rating`
---
-ALTER TABLE `rating`
-  ADD PRIMARY KEY (`userID`);
+(5, 6, 5),
+(8, 1, 2),
+(8, 3, 5);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
