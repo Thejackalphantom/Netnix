@@ -66,7 +66,10 @@ switch($taal)
             "Economy",
             "Nederlands",
             "Dit bestand is niet een video, upload alstublieft een video.",
-            "Bedankt voor het uploaden van een video."
+            "Bedankt voor het uploaden van een video.",
+            "Selecteer een bestand om te uploaden",
+            "Selecteer een categorie om naar te uploaden"
+            
         );
         $hotelschool=array(
             "Nederlands",
@@ -159,7 +162,9 @@ switch($taal)
             "Economy",
             "Dutch",
             "This is not the correct file type, please upload a video!",
-            "Thank you for uploading a video!"
+            "Thank you for uploading a video!",
+            "Please select a file to upload",
+            "Please select a category to upload to"
         );
         $hotelschool=array(
             "Dutch",
