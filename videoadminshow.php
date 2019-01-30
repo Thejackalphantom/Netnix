@@ -84,7 +84,7 @@ admin aprove page
                                             <form action='videoadminshow.php' method='POST'>
                                                 <input type='radio' name='aprovey' id='yes' value='$VideoID'> Yes<br>
                                                 <input type='radio' name='aproven' id='no' value='$VideoID'> No<br>
-                                                <input type='submit' name='aproveyn' class='button' value='Aprove?' >
+                                                <input type='submit' name='aproveyn' class='button2' value='Aprove?' >
                                             </form></div>
 
                                             <div class='display'></div>
