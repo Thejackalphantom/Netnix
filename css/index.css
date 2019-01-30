@@ -217,7 +217,9 @@ hr{
     height: 44px;
     font-size: 22px;
 }
-
+textarea{
+    resize: none;
+}
 /************Footer******************/
 .mainFooter {
     width: 100%;
