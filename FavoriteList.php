@@ -63,6 +63,7 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                 ?>
                 </div>
             </div>
+            <?php include ("includes/footer.php");?>
         </div>
     </body>
 </html>

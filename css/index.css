@@ -41,6 +41,11 @@ hr{
 }
 
 /************Header******************/
+#account{
+    width: 90%;
+    margin: 0 auto;
+    background-color: grey;
+}
 
 #Wrap{
     margin: 0 auto;

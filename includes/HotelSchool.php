@@ -78,7 +78,7 @@
                                     $_SESSION['lang'] = "en";
                             }
                         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                            echo "<a href='logout.php'>$header[4]</a>";
+                            echo "<a href='../logout.php'>$header[4]</a>";
                             $user = $_SESSION["username"];
                         }
                         ?>

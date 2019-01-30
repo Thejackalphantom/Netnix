@@ -6,16 +6,12 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
 }
 ?>
 <!DOCTYPE html>
-<!--
-week 4 door Thijs Rijkers
--->
-
-
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/account.css">
+        <link rel="stylesheet" type="text/css" href="css/video.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Netnix</title>
     </head>
@@ -140,27 +136,140 @@ week 4 door Thijs Rijkers
                                                 <input type='submit' name='favorite' value='Add favorite'>
                                             </form>
                                             </div>
-                                            <div class='display'></div>
+                                            ";
+                                        //RATING SYSTEM
+                                        $query4 = "SELECT AVG(rating)AS ratingAVG, userID, COUNT(userID) FROM rating WHERE videoID = ?";
+                                        if($stmt = mysqli_prepare($DBConnect, $query4))
+                                        {
+                                            if(mysqli_stmt_bind_param($stmt, 's', $VideoID))
+                                            {
+                                                if(mysqli_stmt_execute($stmt))
+                                                {
+
+                                                }
+                                                else {
+                                                    echo "Er is iets misgegaan. Probeer het later opnieuw.";
+                                                }
+                                            }
+                                            else {
+                                                echo "Er is iets misgegaan. Probeer het later opnieuw.";
+                                            }
+                                        }
+                                        else {
+                                            echo "Er is iets misgegaan. Probeer het later opnieuw.";
+                                        }
+                                        mysqli_stmt_bind_result($stmt, $AVG1, $users, $count);
+                                        mysqli_stmt_store_result($stmt);
+                                        $AVG;
+                                        $rated=FALSE;
+                                        while (mysqli_stmt_fetch($stmt)){
+                                            $AVG = $AVG1;
+                                            if($users == $userID)
+                                            {
+                                                $rated = TRUE;
+                                            }
+                                        }
+                                        round($AVG);
+                                        if($AVG == 0.5 OR $AVG == 1.5 OR $AVG == 2.5 OR $AVG == 3.5 OR $AVG == 4.5)
+                                        {
+                                            $AVG = $AVG-0.5;
+                                        }
+                                        
+                                        echo "<h3>Aantal beoordelingen: $count</h3>";
+                                        if($AVG == 0)
+                                        {
+                                            for($i=0;$i<5;$i++)
+                                            {
+                                                $j = $i + 1;
+                                                echo "<a href='videoshow.php?videoid=$VideoID&vote=$j'><img class='star' src='img/starempty.png'></a>";
+                                            }
+                                        }
+                                        else {
+                                            for($i=0;$i<$AVG;$i++)
+                                            {
+                                                $j = $i + 1;
+                                                echo "<a href='videoshow.php?videoid=$VideoID&vote=$j'><img class='star' src='img/starfilled.png'></a>";
+                                            }
+                                            for($i=$AVG;$i<5;$i++)
+                                            {
+                                                $j = $i + 1;
+                                                echo "<a href='videoshow.php?videoid=$VideoID&vote=$j'><img class='star' src='img/starempty.png'></a>";
+                                            }
+                                        }
+                                        if (isset($_GET['vote']))
+                                        {
+                                            if($rated==FALSE)
+                                            {
+                                                $vote = $_GET['vote'];
+                                                $query4 = "INSERT INTO rating (videoID, userID, rating) VALUES (?,?,?)";
+                                                if($stmt = mysqli_prepare($DBConnect, $query4))
+                                                {
+                                                    if(mysqli_stmt_bind_param($stmt, 'sss', $VideoID, $userID, $vote))
+                                                    {
+                                                        if(mysqli_stmt_execute($stmt))
+                                                        {
+                                                            header("refresh: 0");
+                                                        }
+                                                        else {
+                                                            echo "Er is iets misgegaan. Probeer het later opnieuw." . mysqli_error($DBConnect);
+                                                        }
+                                                    }
+                                                    else {
+                                                        echo "Er is iets misgegaan. Probeer het later opnieuw." . mysqli_error($DBConnect);
+                                                    }
+                                                }
+                                                else {
+                                                    echo "Er is iets misgegaan. Probeer het later opnieuw." . mysqli_error($DBConnect);
+                                                }
+                                            }
+                                            else {
+                                                $vote = $_GET['vote'];
+                                                $query4 = "UPDATE rating SET rating = $vote WHERE userID = ? AND videoID = ?";
+                                                if($stmt = mysqli_prepare($DBConnect, $query4))
+                                                {
+                                                    if(mysqli_stmt_bind_param($stmt, 'ss', $userID, $VideoID))
+                                                    {
+                                                        if(mysqli_stmt_execute($stmt)===TRUE)
+                                                        {
+                                                            
+                                                        }
+                                                        else {
+                                                            echo "Er is iets misgegaan. Probeer het later opnieuw." . mysqli_error($DBConnect);
+                                                        }
+                                                    }
+                                                    else {
+                                                        echo "Er is iets misgegaan. Probeer het later opnieuw." . mysqli_error($DBConnect);
+                                                    }
+                                                    header('refresh: 0');
+                                        exit;
+                                                }
+                                                else {
+                                                    echo "Er is iets misgegaan. Probeer het later opnieuw." . mysqli_error($DBConnect);
+                                                }
+                                                
+                                            }
+                                        }
+                                            echo "<div class='display'></div>
                                             </div>";
                                         if($liked === "y")
                                         {
                                             echo "
-                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup_selected.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
-                                            </div>";
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup_selected.png' width='20px' height='20px'>$likes  Vind ik leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown.png' width='20px' height='20px'>$dislikes Vind ik niet leuk</a>
+                                            ";
                                         }
                                         elseif($disliked === "y")
                                         {
                                             echo "
-                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown_selected.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
-                                            </div>";
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup.png' width='20px' height='20px'>$likes  Vind ik leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown_selected.png' width='20px' height='20px'>$dislikes Vind ik niet leuk</a>
+                                            ";
                                         }
                                         else {
                                             echo "
-                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup.png' width='50px' height='50px'>$likes  Vind ik leuk</a>
-                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown.png' width='50px' height='50px'>$dislikes Vind ik niet leuk</a>
-                                            </div>";
+                                                <a href='videoshow.php?videoid=$VideoID&liked=true&lang=$lang'><img src='img/tup.png' width='20px' height='20px'>$likes  Vind ik leuk</a>
+                                                <a href='videoshow.php?videoid=$VideoID&liked=false&lang=$lang'><img src='img/tdown.png' width='20px' height='20px'>$dislikes Vind ik niet leuk</a>
+                                            ";
                                         }
                                     }
                                 }
@@ -341,8 +450,7 @@ week 4 door Thijs Rijkers
                                             else {
                                                 echo "er is iets misgegaan. Probeer het later opnieuw";
                                             }
-                                            header("refresh: 0");
-                                            exit;
+                                            
                                         }
                                     }
                                 }
@@ -352,11 +460,6 @@ week 4 door Thijs Rijkers
                                 }
                             }
                         }
-                        //RATING SYSTEM
-                        $query4 = "";
-                        echo "
-                            
-                        ";
                     }
             ?>
                     </div>

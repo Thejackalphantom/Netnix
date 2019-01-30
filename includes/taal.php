@@ -13,7 +13,9 @@ switch($taal)
         );
         $account=array(
             "Uw account",
-            "Naam",
+            "Gebruikersnaam",
+            "Voornaam",
+            "Achternaam",
             "Student nummer",
             "Uw account",
             "Beschrijving",
@@ -104,7 +106,9 @@ switch($taal)
         );
         $account=array(
             "Your account",
-            "Name",
+            "Username",
+            "Firstname",
+            "Lastname",
             "Student ID",
             "Your account",
             "Description",
