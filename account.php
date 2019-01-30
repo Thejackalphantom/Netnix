@@ -152,6 +152,7 @@ Account Pagina
                     </div>   
                 </div>
             </div>
+            <?php include ("includes/footer.php");?>
         </div>
     </body>
 </html>
