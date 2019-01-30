@@ -1,0 +1,60 @@
+
+/************login container******************/
+
+#loginContainer{
+    margin: 0 auto;
+    height: 1000px;
+    width: 100%;
+}
+body{
+    font-family: arial;
+}
+#formContainer{
+    margin:0 auto;
+    width: 800px;
+    height: 600px;  
+}
+.form{
+    height: 250px;
+    width: 400px;
+    float: left;
+    padding-top:100px;
+    padding-left: 10%;
+}
+form{
+    color: #bfbfbf;
+}
+h2{
+    color: #bfbfbf;
+    padding-left: 90px;
+}
+h3{
+    color: #bfbfbf;
+    font-size: 25px;
+}
+p{
+    color: #bfbfbf;
+}
+.txtbox{
+     font-size: 12pt;
+     height: 32px;
+     width: 280px;
+     background-color: #515151;
+     color: #717171;
+     border: none;
+}
+.underline{
+    text-decoration: underline;
+}
+   
+.button {
+  margin-left: 30px;
+  background-color: #1b1b1b;
+  border: none;
+  color: #bbbbbb;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

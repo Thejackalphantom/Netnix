@@ -14,7 +14,7 @@
         <title>Netnix-categorie</title>
         <link rel="stylesheet" type="text/css" href="../css/index.css">  
         <link rel="stylesheet" type="text/css" href="../css/categorie.css"> 
-        <link rel="stylesheet" type="text/css" href="../css/login.css"> 
+        <link rel="stylesheet" type="text/css" href="../css/header.css"> 
     </head>
     <body>
         <?php
