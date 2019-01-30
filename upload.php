@@ -80,7 +80,7 @@ Upload page
 
                                 $mimetype = array("video/mp4", "video/MP4", "video/mov", "video/wmv", "video/flv");
                                 if (!in_array($_FILES['fileToUpload']['type'], $mimetype)) {
-                                    echo"<br><h3>$upload[13]</h3>";
+                                    echo"<br><h3 class='uploaded'>$upload[13]</h3>";
                                 } else {
 
                                     $uploadOk = 0;
@@ -108,7 +108,7 @@ Upload page
                                             . mysqli_error($Conn)
                                             . "</p>";
                                         } else {
-                                            echo "<br><h3>$upload[14]</h3>";
+                                            echo "<br><h3 class='uploaded'>>$upload[14]</h3>";
                                             //header("Location: login.php");
                                         }
                                         mysqli_stmt_close($stmt);
