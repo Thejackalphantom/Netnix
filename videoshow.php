@@ -282,8 +282,8 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                             $stmt= mysqli_prepare($DBConnect, $SQLstring);
                             if($stmt)
                             {
-                                $video=$_GET['videoid'];
-                                mysqli_stmt_bind_param($stmt, 's',$video);
+                                $VideoID=$_GET['videoid'];
+                                mysqli_stmt_bind_param($stmt, 's',$VideoID);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_bind_result($stmt, $comment, $username);
                                 mysqli_stmt_store_result($stmt);

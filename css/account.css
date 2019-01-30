@@ -60,3 +60,7 @@ p{
   display: inline-block;
   font-size: 16px;
 }
+.commentBox{
+    height: 100px;
+    width: 600px;
+}
