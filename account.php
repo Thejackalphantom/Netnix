@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true)
-{
+if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
     header("Location: login.php?lang=$lang");
     exit;
 }
@@ -20,139 +19,114 @@ Account Pagina
     </head>
     <body>
         <div id="Wrap">
-            <?php include ("includes/header.php");?>
+            <?php include ("includes/header.php"); ?>
             <div id="content">
                 <div id="MainContent">
-                    
-                        <?php
-                        $userid = $_SESSION['id'];
-                        $conn = mysqli_connect("localhost", "root", "");
-                        if ($conn)
-                        {
-                            $dbname = "netnix";
-                            $DBConnect = mysqli_select_db($conn, $dbname);
-                            if($DBConnect)
-                            {
-                                
-                                $QueryResultadmin = "SELECT userID, admin FROM users WHERE userID = ? AND admin=1";
-                                if($stmt = mysqli_prepare($conn, $QueryResultadmin))
-                                {
-                                    if(mysqli_stmt_bind_param($stmt, 's', $userid))
-                                    {
-                                        if (mysqli_stmt_execute($stmt))
-                                        {
-                                        }
-                                        else {
-                                            echo "Er is iets misgegaan. Probeer het later opnieuw";
-                                        }
-                                    }
-                                    else {
+
+                    <?php
+                    $userid = $_SESSION['id'];
+                    $conn = mysqli_connect("localhost", "root", "");
+                    if ($conn) {
+                        $dbname = "netnix";
+                        $DBConnect = mysqli_select_db($conn, $dbname);
+                        if ($DBConnect) {
+
+                            $QueryResultadmin = "SELECT userID, admin FROM users WHERE userID = ? AND admin=1";
+                            if ($stmt = mysqli_prepare($conn, $QueryResultadmin)) {
+                                if (mysqli_stmt_bind_param($stmt, 's', $userid)) {
+                                    if (mysqli_stmt_execute($stmt)) {
+                                        
+                                    } else {
                                         echo "Er is iets misgegaan. Probeer het later opnieuw";
                                     }
-                                    mysqli_stmt_bind_result($stmt, $userID, $adminID);
-                                    mysqli_stmt_store_result($stmt);
-                                if(mysqli_stmt_num_rows($stmt) === 1){
-                                    header("location: admin.php");
-                                    }
+                                } else {
+                                    echo "Er is iets misgegaan. Probeer het later opnieuw";
                                 }
-                                $QueryResult = "SELECT studentNumber, userName, firstName, lastName, email FROM users WHERE userID = ?";
-                                if($stmt = mysqli_prepare($conn, $QueryResult))
-                                {
-                                    if(mysqli_stmt_bind_param($stmt, 's', $userid))
-                                    {
-                                        if (mysqli_stmt_execute($stmt))
-                                        {
-                                        }
-                                        else {
-                                            echo $error;
-                                        }
-                                    }
-                                    else {
-                                        echo $error;
-                                    }
-                                    mysqli_stmt_bind_result($stmt, $StudentId, $UserName, $FirstName, $LastName, $Email);
-                                    mysqli_stmt_store_result($stmt);
-                                    
-                                }
-                                else {
-                                    echo $error;
-                                    die();
-                                }
-                                while(mysqli_stmt_fetch($stmt))
-                                {
-                                    echo "<div id='account'>";
-                                    echo "<h1>$account[0]</h1>";
-                                    echo "<p>$account[1]: " . $UserName . "</p>";
-                                    echo "<p>$account[2]: " . $FirstName . "</p>";
-                                    echo "<p>$account[3]: " . $LastName . "</p>";
-                                    echo "<p>$account[4]: " . $StudentId . "</p>";
-                                    echo "<p>E-mail: " . $Email . "</p>";
-                                    echo "<hr>";
-                                }
-                                mysqli_stmt_close($stmt);
-                                echo "</div>";
-                                $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ? AND aprove = 1";
-                                if($stmt = mysqli_prepare($conn, $QueryResult2))
-                                {
-                                    if(mysqli_stmt_bind_param($stmt, 's', $userid))
-                                    {
-                                        if(mysqli_execute($stmt))
-                                        {
-                                            
-                                        }
-                                        else {
-                                            echo $error;
-                                        }
-                                    }
-                                    else {
-                                        echo $error;
-                                    }
-                                }
-                                else {
-                                    echo $error;
-                                }
-                                mysqli_stmt_bind_result($stmt, $videoid, $videotitle, $videoPath);
+                                mysqli_stmt_bind_result($stmt, $userID, $adminID);
                                 mysqli_stmt_store_result($stmt);
+                                if (mysqli_stmt_num_rows($stmt) === 1) {
+                                    header("location: admin.php");
+                                }
                             }
-                            
-                            if(mysqli_stmt_num_rows($stmt) != 0)
-                            {
+                            $QueryResult = "SELECT studentNumber, userName, firstName, lastName, email FROM users WHERE userID = ?";
+                            if ($stmt = mysqli_prepare($conn, $QueryResult)) {
+                                if (mysqli_stmt_bind_param($stmt, 's', $userid)) {
+                                    if (mysqli_stmt_execute($stmt)) {
+                                        
+                                    } else {
+                                        echo $error;
+                                    }
+                                } else {
+                                    echo $error;
+                                }
+                                mysqli_stmt_bind_result($stmt, $StudentId, $UserName, $FirstName, $LastName, $Email);
+                                mysqli_stmt_store_result($stmt);
+                            } else {
+                                echo $error;
+                                die();
+                            }
+                            while (mysqli_stmt_fetch($stmt)) {
+                                echo "<div id='account'>";
+                                echo "<h1>$account[0]</h1>";
+                                echo "<p>$account[1]: " . $UserName . "</p>";
+                                echo "<p>$account[2]: " . $FirstName . "</p>";
+                                echo "<p>$account[3]: " . $LastName . "</p>";
+                                echo "<p>$account[4]: " . $StudentId . "</p>";
+                                echo "<p>E-mail: " . $Email . "</p>";
+                                echo "<hr>";
+                            }
+                            mysqli_stmt_close($stmt);
+                            echo "</div>";
+                            $QueryResult2 = "SELECT videoID, videoTitle, videoUploadPath FROM videos WHERE userID = ? AND aprove = 1";
+                            if ($stmt = mysqli_prepare($conn, $QueryResult2)) {
+                                if (mysqli_stmt_bind_param($stmt, 's', $userid)) {
+                                    if (mysqli_execute($stmt)) {
+                                        
+                                    } else {
+                                        echo $error;
+                                    }
+                                } else {
+                                    echo $error;
+                                }
+                            } else {
+                                echo $error;
+                            }
+                            mysqli_stmt_bind_result($stmt, $videoid, $videotitle, $videoPath);
+                            mysqli_stmt_store_result($stmt);
+                        }
+
+                        if (mysqli_stmt_num_rows($stmt) != 0) {
                             echo "<div class='video'>"
-                                . "<br>";
+                            . "<br>";
                             echo "<h2>Your uploaded video's</h2>";
-                            while(mysqli_stmt_fetch($stmt)){
+                            while (mysqli_stmt_fetch($stmt)) {
                                 echo ""
-                          . "<a href=videoshow.php?videoid=$videoid&lang=$lang>
+                                . "<a href=videoshow.php?videoid=$videoid&lang=$lang>
                                 <div class='videoBoxUser'>
                                         <video width='500' height='300'>
-                                        <source src='".$videoPath."' type=video/mp4>
-                                        <source src='".$videoPath."' type=video/wav>
+                                        <source src='" . $videoPath . "' type=video/mp4>
+                                        <source src='" . $videoPath . "' type=video/wav>
                                         </video>
                                         <div class='loadbar'></div>
-                                        <div class='videoTitle'><h2>". $videotitle ."</h2></div>
+                                        <div class='videoTitle'><h2>" . $videotitle . "</h2></div>
                                 </div>
                             </a>
                             ";
-                                }
-                               echo " </div>";
-                                mysqli_stmt_close($stmt);
                             }
-                            else {
-                                echo $account[5];
-                            }
+                            echo " </div>";
+                            mysqli_stmt_close($stmt);
                         }
-                        else{
-                            echo $error;
-                            die();
-                        }
-                        mysqli_close($conn);
+                    } else {
+                        echo $error;
+                        die();
+                    }
+                    mysqli_close($conn);
+                    ?>
 
-                        ?>
-                    
-                    </div>   
-                </div>
+                </div>   
             </div>
-            <?php include ("includes/footer.php");?>
         </div>
-    </body>
+                    <?php include ("includes/footer.php"); ?>
+    </div>
+</body>
 </html>
