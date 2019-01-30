@@ -15,7 +15,7 @@ admin page
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <link rel="stylesheet" type="text/css" href="css/account.css">
+        <link rel="stylesheet" type="text/css" href="css/favoritelist.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Netnix</title>
     </head>
@@ -82,13 +82,16 @@ admin page
                                 
                                         while(mysqli_stmt_fetch($stmt))
                                 {
-                                    echo "<a href=videoadminshow.php?videoid=$videoid&lang=$lang><div class='videoBoxUser'>
-                                        <h2>". $videotitle ."</h2>
-                                        <video width='300' height='300'>
+                                    echo "<a href=videoadminshow.php?videoid=$videoid&lang=$lang>
+                                        <div class='videoBoxUser'>
+                                        <video width='500' height='300'>
                                         <source src='".$videoPath."' type=video/mp4>
                                         <source src='".$videoPath."' type=video/wav>
                                         </video>
-                                        </div></a>";
+                                        <div class='loadbar'></div>
+                                        <div class='videoTitle'><h2>". $videotitle ."</h2></div>
+                                </div>
+                            </a>";
                                 }
                                 mysqli_stmt_close($stmt);
                             }

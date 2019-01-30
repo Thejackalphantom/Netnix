@@ -66,15 +66,15 @@
                         switch($lang)
                             {
                                 case "en":
-                                    echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=nl'><img src='includes/img/nl.jpg'></a></li>";
+                                    echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=nl'><img src='img/nl.jpg'></a></li>";
                                     $_SESSION['lang'] = "nl";
                                     break;
                                 case "nl":
-                                    echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'><img src='includes/img/eng.jpg'></a></li>";
+                                    echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'><img src='img/eng.jpg'></a></li>";
                                     $_SESSION['lang'] = "en";
                                     break;
                                 default :
-                                    echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'><img src='includes/img/eng.jpg'></a></li>";
+                                    echo "<li><a href='".$_SERVER['PHP_SELF']."?lang=en'><img src='img/eng.jpg'></a></li>";
                                     $_SESSION['lang'] = "en";
                             }
                         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
@@ -120,7 +120,7 @@
                 </a>
             </div>
             <div class="pLinks">
-                <a href="../videos.php?id=javascript&lang=<?php echo $lang?>">
+                <a href="../videos.php?id=java&lang=<?php echo $lang?>">
                     <img src="img/javascript-logo.png" alt="javascript-logo">
                     <p>Javascript</p>
                 </a>
