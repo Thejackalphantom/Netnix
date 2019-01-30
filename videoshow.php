@@ -169,7 +169,7 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                                                 $j = $i + 1;
                                                 echo "<a href='videoshow.php?videoid=$VideoID&vote=$j'><img class='star' src='img/starfilled.png'></a>";
                                             }
-                                            for ($i = $AVG; $i < 5; $i++) {
+                                            for ($i = $AVG; $i <=4; $i++) {
                                                 $j = $i + 1;
                                                 echo "<a href='videoshow.php?videoid=$VideoID&vote=$j'><img class='star' src='img/starempty.png'></a>";
                                             }
