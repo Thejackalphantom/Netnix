@@ -113,10 +113,6 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                                             <h2>" . $Title . "</h2>
                                             <p>" . $Discription . "</p>
                                             </div>
-                                            <form method='POST' action='videoshow.php?lang=$lang&videoid=$VideoID'>
-                                                <textarea name='comment' maxlength='200'></textarea>
-                                                <input type='submit' name='addcomment' value='submit'>
-                                            </form>
                                             <div class='display'>
                                             <h3>$videoshow[1]</h3>
                                             <form action='videoshow.php?lang=$lang&videoid=$VideoID' method='POST'>
@@ -385,6 +381,43 @@ if (!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] != true) {
                             }
                         }
                     }
+                    ?>
+                </div>
+                <div id='shower'>
+                    <?php
+                    echo"   <form method='POST' action='videoshow.php?lang=$lang&videoid=$VideoID'>
+                                <p><textarea name='comment' id='stylebox'maxlength='200'></textarea></p>
+                                <input type='submit' class='button2' name='addcomment' value='submit'>
+                            </form><br>";
+                    ?>
+                    
+                    <?php        
+                    if (!mysqli_select_db($DBConnect, $DB)) {
+                        echo "<p>Er is een probleempje aanwezig</p>";
+                    } else {
+                        $SQLcomment = " SELECT comment, videoID, users.userName 
+                                        FROM comments JOIN users ON comments.userID = users.userID
+                                        WHERE videoID=?;";
+
+
+                        if ($stmt = mysqli_prepare($DBConnect, $SQLcomment)) {
+                            mysqli_stmt_bind_param($stmt, 's', $VideoID);
+                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_bind_result($stmt, $messagecomment, $commentvidID, $comUserName);
+                            mysqli_stmt_store_result($stmt);
+                            if (mysqli_stmt_num_rows($stmt) == 0) {
+                                echo "<p>Er zijn geen comments</p>";
+                            }else{
+                                while(mysqli_stmt_fetch($stmt)){
+                                echo"<div class='commentBox'>";
+                                echo "<hr>";
+                                echo "<p><b>".$comUserName."</b></p><p>" . $messagecomment . "</p>";
+                                echo"</div>";
+                                }
+                            }
+                            mysqli_stmt_close($stmt);
+                        }    
+                    }           
                     ?>
                 </div>
             </div>
